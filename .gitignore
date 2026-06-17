@@ -1,0 +1,13 @@
+.superpowers/
+.worktrees/
+worktrees/
+node_modules/
+outputs/
+
+backend/.venv/
+backend/.pytest_cache/
+backend/app/__pycache__/
+backend/tests/__pycache__/
+
+*.pyc
+*.log

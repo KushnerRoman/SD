@@ -1,0 +1,3709 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Roman Kushner
+X-WR-TIMEZONE:America/Edmonton
+BEGIN:VEVENT
+DTSTART:20260520T143000Z
+DTEND:20260520T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:66nfqb35rrp08juq21tpc504ia@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260520T005243Z
+DESCRIPTION:Break in through the front door that we fitted lock\, pushbar\,
+  inter locking etc.  HOW?  FItted the missing shim that Simon mentioned.  W
+ ho has it Roman or Daniil?  Do not want to put ina  latch receiver.   Sound
+ s like it has to be a solid rectangle piece.   When at site call me.\nI am 
+ reaching out regardinga recent break-in at the building\, which occurred at
+  the front entrance in thesame manner as the January 3 incident.\n\nAs you 
+ are aware\, reinforcement work was completed on this door following theprev
+ ious occurrence. However\, based on the current damage and method of entry\
+ ,it appears the door was able to be bypassed again in a similar way despite
+ those upgrades.\n\nMy understanding is that an interlocking blocker plate w
+ as installed as part ofthat scope. If so\, it does not appear to have preve
+ nted the door from beingpried open. I would appreciate your assessment of h
+ ow this occurred and why theexisting measures did not perform as intended.\
+ n\nAdditionally\, there is now damage to the door which is affecting its ab
+ ility tolatch consistently when closed. This is an immediate security conce
+ rn. Couldyou please dispatch a technician to attend site as soon as possibl
+ e to reviewand advise on repairs? Photos have been included for reference.\
+ n\nGiven the recurrence of this issue following the recent upgrades\, the B
+ oard islooking for a clear understanding of what occurred and what can be d
+ one toensure this entrance is properly secured moving forward.
+LAST-MODIFIED:20260520T234756Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Rocky ridge Landing
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260527T141500Z
+DTEND:20260527T144500Z
+DTSTAMP:20260531T230205Z
+UID:79vm16d5esidmffm63pvsv54tb@google.com
+CREATED:20260527T003428Z
+DESCRIPTION:3000 and  4000 Off line\nSee slack for 25th.
+LAST-MODIFIED:20260527T034658Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Lawrie park
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260421T141500Z
+DTEND:20260421T144500Z
+DTSTAMP:20260531T230205Z
+UID:4jogog5ccjq3qrou97gmg31006@google.com
+CREATED:20260420T133713Z
+DESCRIPTION:From: Florence <office@renaissancemanagement.ca (mailto:office@
+ renaissancemanagement.ca)>\nSent: Friday\, April 17\, 2026 9:15 AM\nSubject
+ : CF2 1000 building main door requires repairs. \nPO 26-2180. \nDannielleas
+ ked me to email you to request a visit to repair the main door per attached
+ photos.  The door frame stripping needs repaired. \nRepair the main door pe
+ r photos in slack. The door frame stripping needs to be repaired\n\n\n=====
+ ====\nDidn't have time to reach the site please move on next day.\n\n\n\nRO
+ MAN KUSHNER \n08:30-08:35\nReturned frame back to place.\nImages on Slack c
+ hannel.
+LAST-MODIFIED:20260421T152726Z
+LOCATION:755 Copperpond Blvd SE\, Calgary\, AB T2Z 4R2
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Copperfield Park 2  J23724
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260217T150000Z
+DTEND:20260217T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:0d5kl49marn0sav149ou6aa29g@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260217T012755Z
+LAST-MODIFIED:20260217T012755Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Hestia Shawnee
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260522T150000Z
+DTEND:20260522T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:55r7vb58on5u1qqpkfdct5u19q@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260521T215413Z
+DESCRIPTION:We are changing out the readers to IO Smart.  How many slim lin
+ e and how many single gang.   We have allowed for 19.\n\nWhen here please c
+ heck cameras are on line. Showing so to me but customer provided picture th
+ at at computer in the room they were not.\nJonathan to call  Nadine 403-990
+ -6372.  Help  her resolve issue in the computer room.\n\nI am in the camera
+  room now and cant get live cameras\, only remote\, and then not the whole 
+ configuration\, and not live\, see attached .  Im here all day if someone c
+ an talk me thru resetting everything?\n\n\n\nCompleted:\n2 single gang\n12 
+ slim\n1 slim kp\n\nShowed Nadine how to enter correctly to the main live ta
+ b. No issues there.\nTime : 40m.
+LAST-MODIFIED:20260522T200639Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Gateway J23327
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260128T160000Z
+DTEND:20260128T163000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3iraifo59st3v1uv0486g6ibg0@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ n.secdep@gmail.com;X-NUM-GUESTS=0:mailto:jon.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260128T005926Z
+DESCRIPTION:Carry on with installation.   Work with Jonathan so that he can
+  train and guide you.  This is a typical take over situation we undertake.
+LAST-MODIFIED:20260130T144048Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Symmetry and Harmony J23050
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260429T140000Z
+DTEND:20260429T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=mike@securitydepot.ca:mailto:mike@securitydepot.ca
+UID:2r372k34fapcaet1e4opbeoh3r@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=ray.se
+ cdep@gmail.com;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ku
+ shneroman@gmail.com;X-NUM-GUESTS=0:mailto:kushneroman@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=mike@s
+ ecuritydepot.ca;X-NUM-GUESTS=0:mailto:mike@securitydepot.ca
+CREATED:20260427T221622Z
+DESCRIPTION:Service call accepted below\nDoes Daniil / Roman know how to op
+ en ports on a router to allow for HikWeb access?\nI don’t know how to direc
+ t them to do this but would like to learn\n\n\nRoman: yes I do. If we have 
+ router admin password.\n 
+LAST-MODIFIED:20260429T150824Z
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Varsity 4818 J23749
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260113T143000Z
+DTEND:20260113T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:6lh30ophc8o38b9h68qjib9k6ti38b9p6phj0bb26oo38o9h74q64phj6c@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260113T140426Z
+DESCRIPTION:Use ladder and get remaining cameras done.
+LAST-MODIFIED:20260205T205655Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Argyle J22505
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260526T144500Z
+DTEND:20260526T151500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:4dvghtas2vrk5o9de2bveaqhhh@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260521T205204Z
+DESCRIPTION:The garbage camera is not working.   Speak to Daniil before you
+ r go as he was there last\n\nCompleted:\nChanged data pairs and power suppl
+ y.\nCamera up and recorderding but still fuzzy.\nTime:40min.
+LAST-MODIFIED:20260526T194655Z
+LOCATION:Rivertwin\, 630 8 Ave SE\, Calgary\, AB T2G 5T2\, Canada
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Rivertwin
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260423T143000Z
+DTEND:20260423T150000Z
+DTSTAMP:20260531T230205Z
+UID:08el2k1dd75d8jr0ki93kj1qaj@google.com
+CREATED:20260421T142859Z
+DESCRIPTION:West garbage KT1   Not Connected - Tried Resetting\, didn’t wor
+ k.\n-----------\n\n11:30-14:30\n\nCurrent state\nWhen I arrived the KT1 fla
+ shed green 4 flash in 1sec = firmware update.\nPowered it off after returne
+ d the power it started to flash few time blue\, green and then red 4 flashe
+ s in 1 sec = entered to reset mode\nI Connected to Adalove wireless link. D
+ idn't see it on the network.\n\nAssuming it stuck somewhere between the sta
+ ges.\n\nGarbage shed west door doesn't work.\nReader not responding.
+LAST-MODIFIED:20260424T001405Z
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Evergreen Place J23729
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260114T150000Z
+DTEND:20260114T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:5qesvnl4hs1l2fdd7p3t2t7r3l@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260114T152849Z
+LAST-MODIFIED:20260205T205900Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Argyle J22505
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260521T144500Z
+DTEND:20260521T151500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:5bi8giat27hqu16lrr0uh6k59l@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260520T202314Z
+DESCRIPTION:Canada Post was just in and he said he can not get intobldg 160
+ 0 2800 2900 3200 He says it's the micro switch it turnsbut does not  give h
+ im access Resham 403-371 4439\nAre y anou able to look after this?  Also 32
+ 00 codmetimes makes a funny buzzingnn noise. I hear itwhen I walk by but no
+ t all the time.  Please let me know if you can check these things out.\n\ne
+ -mail Marilyn\n\nCompleted:\nBuilding 3200 fixed the latching of the back d
+ oor exit.\nIntercom: cleaned the terminals and connections. Didn't hear the
+  issue they're mentioning???\n Building: 1600\,2800\,2900\,3200\nIntercom:s
+ howed  Access granted but didn't release the door to open = programing issu
+ e\, Dex did the programing and fixed( all the mentioned intercoms were test
+ ed and tested one that wasn't mentioned just incase\, all good )\nTotal tim
+ e :40min
+LAST-MODIFIED:20260521T195239Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Edgecliffe
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260525T141500Z
+DTEND:20260525T144500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3s5hd1di5e3jtdp32r70hso4e0@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260528T012518Z
+DESCRIPTION:THIS IS NOT CONFIRMED.   IF POSSIBLE DO TODAY.   JONATHAN TO CA
+ LL HER.\n\nFrom: Sandy Coelho \nSent: Tuesday\, 19 May\, 2026 07:18\nTo: <a
+  href="mailto:duncan@securitydepot.ca" target="_blank">duncan@securitydepot
+ .ca</a>\nSubject: Home\nOur garage doors are offline on the app and door be
+ ll camera doesn’t record for days or work properly can you send someone out
+  ? \n\nCompleted: Issues with the lift master gateway. Need to return with 
+ new one\, and internet module thing so I can separate from her network. Not
+  sure if something blocking the lift master\, but Sandy&#39\;s didnt want m
+ e disconnecting stuff from router. \nDoorbell good now. Took 1hr
+LAST-MODIFIED:20260528T012518Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Sandy J23824
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260525T150000Z
+DTEND:20260525T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:1is0secg90dutjbqfsc75tjr7n@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260305T221434Z
+DESCRIPTION:<p>The RBH Integra32 software can be accessed with user name "r
+ bh" and password "password". The Provision CCTVNVR (192.168.16.200) can be 
+ accessed with user "admin" and password"123456". I reset the password for t
+ he "Copperfield" user to "Winter2026!" on the second floor PC and gave the 
+ user admin rights. If there is a separate Hikvision NVR installed somewhere
+ \, I don't have any access to it and most likely it wasn't installed by us.
+  The front door intercom panels would be programmed directly and you can tr
+ y the password"1999" for access.  Intercom 9999 then 0192 to access\, </p><
+ p>With the login for the buildings network video recorder (NVR) I can know 
+ test to confirm if that can be added as is to the new recording software or
+  requires replacement.</p><p>The Garbage NVR we will need to get the passwo
+ rd and can do that through Hikvision for you\, no worries.</p><p>For the in
+ tercoms\; we can test that code for you to ensure it is correct. Who has be
+ en adding entries to the intercom for residents until now? Whomever that is
+ \, would absolutely know the code since it is required for programming. If 
+ not PCS\, please ask that person as well?</p><p>When onsite we will confirm
+  the logins for the PC\, RBH\, and Camera as well.</p>
+LAST-MODIFIED:20260527T154925Z
+SEQUENCE:19
+STATUS:CONFIRMED
+SUMMARY:Symmetry and Harmony J23050
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260423T140000Z
+DTEND:20260423T143000Z
+DTSTAMP:20260531T230205Z
+UID:55cnd25qk9nr7raf16ta1qnm6k@google.com
+CREATED:20260422T211350Z
+DESCRIPTION:See slack channela and test as per Eddy.  Maybe call him\n\n\n8
+ :20-8:35\nTest the intercom with edi on phone.
+LAST-MODIFIED:20260423T230326Z
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:n/c Waterford
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260522T143000Z
+DTEND:20260522T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:781nt6ut2m2209v81a14mcokva@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260521T203902Z
+DESCRIPTION:Fit the build out for the lock\nCompleted:\nAdded metal spacer 
+ to strike house.\n\nNeed Plate for octopod: 1.9X3X0.2\n1X1.3X0.2\nTime: 1.5
+ h
+LAST-MODIFIED:20260522T200837Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Rocky Rdige Landing
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260601T140000Z
+DTEND:20260601T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:5lq5ogarkmaa9fc2aouf6ga1b8@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260529T214558Z
+DESCRIPTION:The telus technician will be on site to upgrade the modem
+LAST-MODIFIED:20260529T214559Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Mantra  APPOINTMENT
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260528T144500Z
+DTEND:20260528T151500Z
+DTSTAMP:20260531T230205Z
+UID:3v6cgif33bemdj99pn5qa5ehd2@google.com
+CREATED:20260527T181107Z
+DESCRIPTION:Collect PO Harmsym\n\nUpdate: Haven't picked up yet
+LAST-MODIFIED:20260528T222230Z
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Anixter
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260402T190000Z
+DTEND:20260402T193000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:78svrnv1oa27r8n6nb8835gm7h@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:director@securitydepot.ca
+CREATED:20260402T185307Z
+DESCRIPTION:From: Angela Murphy \nSent: Thursday\, April 2\, 2026 12:10 PM\
+ nSubject: RE: Pixel Back alley door reader not working\n\nBack Alley Contra
+ ctor door\, Keypad not working. please send someone out to investigate\n\nP
+ lease try codes:\n50314\n33958\n21575\n34674\n-----------------\nRoman Kush
+ ner\nTime 13:35:13-40\nDid visual inspection the reader looked good  led li
+ ghts work\, Activated by touch tested all the codes\, all of them passes.
+LAST-MODIFIED:20260407T161946Z
+LOCATION:235 9A Street NW\, Calgary
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:PIXEL - Back Alley Contractor Key Pad | J23689
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260430T143000Z
+DTEND:20260430T150000Z
+DTSTAMP:20260531T230205Z
+UID:20cvqabfimil6trut4mbu6qiip@google.com
+CREATED:20260430T033007Z
+DESCRIPTION:From: adminskymills <adminskymills@telus.net (mailto:adminskymi
+ lls@telus.net)>\nSent: Wednesday\, 29 April\, 2026 16:58\nSubject: Bldg 300
+ 0 Alarm\n\nMain Entrance door at 3000 in alarm.  Open and closed doors but 
+ stayed in alarm.  Please check electric strike.  Door has been shunted.\n\n
+ The Emergency exit door on building 4000 is alarming and I even went over a
+ nd checked it and shut it and then after a few seconds it started beeping a
+ nd alarming again so the door needs to be adjusted   \nNOT BYPASSED AS NONE
+  SHOWING IN ALARM.  HAVE ASKED.\n\n----------------\n\n\n10:45-11:30\n\nBui
+ lding 4000: Adjusted door closer.\nBuilding 3000: Main exterior door strike
+ 's latch monitor is broken \nPictures attached in slack channel.
+LAST-MODIFIED:20260430T173101Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Skymills  J23766
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260507T173000Z
+DTEND:20260507T180000Z
+DTSTAMP:20260531T230205Z
+UID:27livmr210418p9ru8grag9n4i@google.com
+CREATED:20260128T000839Z
+DESCRIPTION:<p>Legacy 1000 KTES shows AC not supervised in alarm.  Will the
+  below resolve this?</p><p><br></p><p>Need to check and let me know what pl
+ anning we need to do.</p><p>Currently\, both doors unlock at the same time 
+ for a defined set of time and then relock together at the end of the time c
+ ycle.</p><p> </p><p>We will functionally separate the doors into Exterior a
+ nd Interior which will allow for:</p><ul> <li>The exterior door will unlock
+      for up to 10 seconds\, and it will relock once the door closes – so th
+ ose     moving quickly will have a secure door behind them.</li> <li>The in
+ terior door will unlock     for 15 seconds\, allowing time to get to the in
+ terior door and move     through. This door will stay unlocked for the full
+  15 seconds rather than     lock when closed (to avoid issues with someone 
+ leaving at the time and the     door locking prematurely). </li></ul><p> </
+ p><p>If someone doesn’t get to the second door in time\, they can use a new
+  reader in the vestibule to open the interior door.</p><p>If someone uses t
+ he reader in the vestibule\, it will ONLY unlock the interior door. This en
+ hances safety of someone who is waiting in or entered the vestibule and the
+ re is a threat outside the main doors\, they can safely move back into the 
+ building without unlocking the exterior door.</p><p> </p><p>We will continu
+ e the convenience function of swiping at the exterior to unlock both doors 
+ to travel through. The same will occur with the Intercom – as it does now.<
+ /p><p> </p><p>Since 5 elevator cab controls were planned for and never adde
+ d\, there are sufficient free door slots on the controller’s available onsi
+ te to facilitate this work. </p><p>We will rewire and relocate one single d
+ oor controller from the Parkade up to the 2000 Office to facilitate 2000’s 
+ separation.</p><p>In 1000 and 3000\, additional cabling will be required to
+  be run from the main entrance to the parkade mechanical rooms below. </p><
+ p>I believe that the existing cable tracking is full\, so a new route needs
+  to be run alongside\, tracking is used to help conceal cabling and keep it
+  neat and is mounted on the surface of the wall in the lobbies and vestibul
+ e already.</p><p> </p><table> <tbody><tr>  <td>  <p><b><u>Building 1000\, 2
+ 000\, 3000 - Separation of Interior and Exterior  Main Entrance Doors</u></
+ b></p>  </td> </tr> <tr>  <td>  <p>3</p>  </td>  <td>  <p>Smart Prox Reader
+  without Keypad</p>  </td>  <td>  <p>                  </p>  </td>  <td>  <
+ p><br></p>  </td> </tr> <tr>  <td>  <p>3</p>  </td>  <td>  <p>Standard Inst
+ allation\; at-the-door wiring\, installation\, and  configuration</p></td><
+ td></td><td>  </td> </tr> <tr>  <td>  <p>2</p>  </td>  <td>  <p>Conduit and
+  Tracking Allowance</p></td><td></td><td>  </td> </tr> <tr>  <td>  <p>1</p>
+   </td>  <td>  <p>Rewire and Relocate Single-Door Controller\, Tracking for
+  2000</p></td><td></td><td>  </td> </tr> <tr>  <td>  <p><br></p></td><td></
+ td></tr></tbody></table>
+LAST-MODIFIED:20260507T200300Z
+SEQUENCE:31
+STATUS:CONFIRMED
+SUMMARY:Legacy Gate J23358
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260130T150000Z
+DTEND:20260130T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:2n69uevh9c4pm5943gfv01hp2n@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ n.secdep@gmail.com;X-NUM-GUESTS=0:mailto:jon.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260130T144450Z
+DESCRIPTION:Continue
+LAST-MODIFIED:20260130T145802Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Symmetry and Harmony J23050
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260512T140000Z
+DTEND:20260512T143000Z
+DTSTAMP:20260531T230205Z
+UID:2t22i4tf6k2b4rpg2ejkvje1es@google.com
+CREATED:20260512T133000Z
+LAST-MODIFIED:20260512T133000Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Legacy
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260427T161500Z
+DTEND:20260427T164500Z
+DTSTAMP:20260531T230205Z
+UID:clijecj56ph3gb9ocgojab9k6os3ib9oc8r36bb3cgp64chg6gs66dhpc4@google.com
+CREATED:20260423T145250Z
+DESCRIPTION:Go and count how many slim line readers and wide readers on thi
+ s site.  I think 22 total.  Garbage shed is narrow keypad.  Only one.
+LAST-MODIFIED:20260424T190658Z
+SEQUENCE:6
+STATUS:CONFIRMED
+SUMMARY:Highbury
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260519T150000Z
+DTEND:20260519T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:0brdb38h4juo989qf07lhuq5dq@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260519T133751Z
+DESCRIPTION:Install the arm on the closer\n\n\n======Completed ======\nRoma
+ n Kushner\n10:40-10:50\n Checked all the exterior and interior doors all th
+ e closers was attached and worked.
+LAST-MODIFIED:20260520T235015Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:n/c Lawrie Park
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260325T140000Z
+DTEND:20260325T143000Z
+DTSTAMP:20260531T230205Z
+UID:78gh2g8fs4pkrn2fdppqlddemp@google.com
+CREATED:20260327T135254Z
+DESCRIPTION:Fit fan \nDONE: Roman Kushner \nTotal time 1:40 \nNew CPU FAN u
+ nit.
+LAST-MODIFIED:20260330T161238Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:23413 Smith 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260519T140000Z
+DTEND:20260519T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:745leqnm8068u88avf4p8brlt3@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260519T135115Z
+DESCRIPTION:What is neeed here?\nHas it been ordered?
+LAST-MODIFIED:20260525T211101Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Shaheen (asked Duncan)
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260318T140000Z
+DTEND:20260318T143000Z
+DTSTAMP:20260531T230205Z
+UID:2um1sj7cm33j9sahkurb730n4i@google.com
+CREATED:20260318T133731Z
+DESCRIPTION:Jonathan sick so cannot carry on with other work.
+LAST-MODIFIED:20260318T133917Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Aspen
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260513T160000Z
+DTEND:20260513T163000Z
+DTSTAMP:20260531T230205Z
+UID:0qc85ulsqb5rq7eioel0tldff5@google.com
+CREATED:20260513T143514Z
+DESCRIPTION:Do over the site and problems. Resolve.  Review the others and 
+ see what has to be done.\n\nEx Sharon\nI have two doors that are not closin
+ g properly.  They willnot shut tight unless you push hard on them.\n \nIt i
+ s door # 2 in building 2000 and door # 14 in building3000.  The alarm on bo
+ th doors' rings constantly.\n \nCan someone please come out and fix these.\
+ n\n\nRoman kushner: \nDoor 2 building 2000 pulled the latch monitor out a b
+ it and adjusted the latching.\n\nDoor 14 pulled the latch monitors as on 20
+ 00 but the arm holder is broken picture  on slack.
+LAST-MODIFIED:20260514T150718Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:N/C Legacy
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260601T150000Z
+DTEND:20260601T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:15cna75h3tunq93bghtqktvrat@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:duncan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260527T001023Z
+DESCRIPTION:install new readers. -in the office\n  12 x KT-MUL-MT2\n1 x KT-
+ MUL-MT-KP2\nReturn old to office\,
+LAST-MODIFIED:20260529T233240Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Gateway
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260402T211500Z
+DTEND:20260402T214500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:79at59puadvo141jp1n1fh5nj9@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:director@securitydepot.ca
+CREATED:20260402T210644Z
+DESCRIPTION:<p><b>From:</b> Petwin Service MaintenanceTechnician &lt\;<a hr
+ ef="mailto:maintenance@petwin.com" target="_blank">maintenance@petwin.com</
+ a>&gt\;<br><b>Sent:</b> Thursday\, April 2\, 2026 2:01 PM<br><b>Subject:</b
+ > Metropole 901 4 Ave NW FOB tapping device</p><p>May I ask for your assist
+ ance in accessing the reader at the back. The reader has no power located a
+ t the back entrance of the building. Hoping you can attend to this matter t
+ he soonest. </p><p>I have added pictures to slack.</p><p>------------------
+ -----</p><p>Roman Kushner Time 16:10-16:30</p><p>Arrived to back entrance\,
+  the reader didn't have any LED lights on\, disassembled the reader looked 
+ like he didn't received any power. Didn't have other reader to test. Assemb
+ led the reader back and left while the reader still didn't work. <br></p><p
+ ><br></p><p><br></p>
+LAST-MODIFIED:20260408T202457Z
+LOCATION:901 4th Ave NW
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:23690 Metropole
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260428T150000Z
+DTEND:20260428T153000Z
+DTSTAMP:20260531T230205Z
+UID:21fjb0npcquq82plb1u0gj2ksg@google.com
+CREATED:20260415T022023Z
+DESCRIPTION:Finish off the install of the intercom.
+LAST-MODIFIED:20260423T230827Z
+SEQUENCE:4
+STATUS:CONFIRMED
+SUMMARY:Argyle
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260507T211500Z
+DTEND:20260507T214500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:0aq6ept6fh3nehoaub6omd06fb@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:director@securitydepot.ca
+CREATED:20260506T191409Z
+DESCRIPTION:MUST BE HERE AT THIS TIME.\n\nMeet with Canada Post to Install 
+ a new Postal Lock. \n\nNew Postal lock related to J23706.\nand to J23739.
+LAST-MODIFIED:20260507T003329Z
+LOCATION:428 Chaparral Ravine View SE
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:APPOINTMENT Chaparral Point J23729
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260415T180000Z
+DTEND:20260415T183000Z
+DTSTAMP:20260531T230205Z
+UID:7thika99j1t3ojg2vp6paqveh1@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260415T175400Z
+DESCRIPTION:From: Judy <4js@jascad.com (mailto:4js@jascad.com)> \nSent: Wed
+ nesday\, April 15\, 2026 11:39 AM\nSubject: Alley Overhead Exterior Camera 
+ (La Rive)\nGood morning everyone\,\nWhile reviewing the cameras\, I noticed
+  the alley overhead exterior camera has been tampered with. This is a high 
+ priority and needs to be fixed or adjusted today.\nThank you\, \n~Judi \nCa
+ mera Labeled Alley Overhead Exterior\n----------------------------\nRoman K
+ ushner:\n12:40-12:45\nadjusted alley overhead camera.
+LAST-MODIFIED:20260415T203044Z
+LOCATION:108 25th Ave SW
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:23713 La Rive 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260320T140000Z
+DTEND:20260320T143000Z
+DTSTAMP:20260531T230205Z
+UID:0good3tv2b34p2ulvm5f10lhhl@google.com
+CREATED:20260320T032029Z
+DESCRIPTION:Last day.
+LAST-MODIFIED:20260320T033001Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Aspen
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260116T150000Z
+DTEND:20260116T233000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:0vcr07ptro8d2jtns7lkfpjtc2@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ro
+ man.secdep@gmail.com;X-NUM-GUESTS=0:mailto:roman.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260116T143949Z
+LAST-MODIFIED:20260205T211547Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260327
+DTEND;VALUE=DATE:20260328
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:1otqp983mbjbl6fo64tuj75oon@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:director@securitydepot.ca
+CREATED:20260327T210520Z
+DESCRIPTION:From: Yoon Kim \nSent: Friday\, March 27\, 2026 2:49 PM\nSubjec
+ t: RE: FYI: Access Control System - Is OFFLINE - Rivertwin\nPlease dispatch
+  a tech to troubleshoot all systems.\nRecently\, we did a transfer of busin
+ ess ownership for Rivertwin on one of the Telus plans. This switch was done
+  because as it turns out\, Condeau was paying for Rivertwin’s internet bill
+ . Not sure if this related but now Rivertwin is officially being billed and
+  paying fibre internet at 75 Mbps.\n\nCode to lockbox attached to the wall 
+ on the left besidethe individual mail boxes is 4247A.\n--------------------
+ \nRoman Kushner:\nArrived: 15:55 - 16:10\nWhat's done: power  reset Access 
+ Control
+LAST-MODIFIED:20260526T140641Z
+LOCATION:2611 1st Ave NW
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Rivertwin - Offline - J23504
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260528T141500Z
+DTEND:20260528T144500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:5vba5aiha1be5e82usp8jtj16e@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260525T023632Z
+DESCRIPTION:THIS IS NOT CONFIRMED.   IF POSSIBLE DO TODAY.   JONATHAN TO CA
+ LL HER.\n\nFrom: Sandy Coelho \nSent: Tuesday\, 19 May\, 2026 07:18\nTo: du
+ ncan@securitydepot.ca\nSubject: Home\nOur garage doors are offline on the a
+ pp and door bell camera doesn’t record for days or work properly can you se
+ nd someone out ? \n\nCompleted 25th :  Issues with the lift master gateway.
+  Need to return with new one\, and internet module thing so I can separate 
+ from her network. Not sure if something blocking the lift master\, but Sand
+ y's didnt want me disconnecting stuff from router. \nDoorbell good now. Too
+ k 1hr\n=====\nCompleted: Changed liftmaster 828lm we got it from the office
+ .\n\nTested and workes\n\nTime:5mi
+LAST-MODIFIED:20260528T153454Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Sandy J23824
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260527T143000Z
+DTEND:20260527T150000Z
+DTSTAMP:20260531T230205Z
+UID:632551hojqjjgp20fhun0g6biv@google.com
+CREATED:20260527T003159Z
+DESCRIPTION:Howard phone call Friday 22nd \n\nHoward has let me know that t
+ he side door on building 2000 is not working again. It isn’t closing and go
+ ing into alarm.\n\nSimon has been out to check on this.\n-----------------\
+ nMay 27 2026 - See Calendar entry's from May 06 and May 12 2026.\nIt was re
+ ported to us as the SE Door in B2000. But Jon called while at property and 
+ the correct Door is labeled 2000 West Exit.\nSo It is likely anyone that wa
+ s sent to this building was working on the wrong door. \n----------------\n
+ \nCompleted \nMoved strike\, adjusted door closer. \nNeed cx12 for building
+  1000 north exit.\nMeet Howard. \nTime:40m
+LAST-MODIFIED:20260527T182204Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Darcy Heights  J23828
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260417T141500Z
+DTEND:20260417T144500Z
+DTSTAMP:20260531T230205Z
+UID:2nnk6opb3j7bh450vr6as84hts@google.com
+CREATED:20260416T193821Z
+DESCRIPTION:<p><b>From:</b> Judy &lt\;<a href="mailto:4js@jascad.com">4js@j
+ ascad.com</a>&gt\; <br><b>Sent:</b> Thursday\, 16 April\, 2026 13:00<br><b>
+ Subject:</b> Front Lobby Doors La Rive</p><p>Yesterday afternoon\, while co
+ nducting a walk-through with board members\,it was brought to my attention 
+ that an alarm/beeping sound goes off whenopening or closing the front lobby
+  doors. The sound lasts longer than a fewseconds—approximately a minute.</p
+ ><p>Is this normal\, or does it require adjustment?</p><br>----------------
+ --------<br>Roman please check if doors are going into alarm right away whe
+ n opened.<br><br>Front door goes into alarm immediately doors is openned.  
+ This has something to do with the strike of the REX.<br>-------------------
+ ---
+LAST-MODIFIED:20260417T163038Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:La Rive J23721
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260527T194500Z
+DTEND:20260527T201500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:1je98rn4jjghgoa05rjtto7sda@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260520T224844Z
+DESCRIPTION:The whole camera system needs review and resolution.  Speak to 
+ Iain.\nUpdate: didnt have time to get there
+LAST-MODIFIED:20260527T184214Z
+SEQUENCE:5
+STATUS:CONFIRMED
+SUMMARY:N/C Bridleview
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260306T150000Z
+DTEND:20260306T190000Z
+DTSTAMP:20260531T230205Z
+UID:1ep5d85bosd6i0kmeldbvmrh18@google.com
+CREATED:20260305T230635Z
+DESCRIPTION:In the morning here with Dennis and Charles
+LAST-MODIFIED:20260305T230636Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Shawnee
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260128T150000Z
+DTEND:20260128T153000Z
+DTSTAMP:20260531T230205Z
+UID:28nr4umsc702iulufio4fbf7pg@google.com
+CREATED:20260128T005754Z
+DESCRIPTION:When Jonathan is ready to meet you at Symmetry he will let you 
+ know
+LAST-MODIFIED:20260128T005754Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:At home carry on with on line safety course.
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20251223T140000Z
+DTEND:20251223T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:c4pm6chmcpgjebb568qm6b9k74q64b9ocgpj8b9o6lh68opgc4s68oj570@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20251223T160307Z
+LAST-MODIFIED:20251223T164339Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Argyle J22505
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260423T150000Z
+DTEND:20260423T153000Z
+DTSTAMP:20260531T230205Z
+UID:0mdelsp9guk3tolhs26qngevl7@google.com
+CREATED:20260423T201807Z
+DESCRIPTION:<p><b>From:</b> director@securitydepot.ca &lt\;director@securit
+ ydepot.ca&gt\; <br><b>Sent:</b> Tuesday\, April 28\, 2026 11:00 AM<br><b>To
+ :</b> darrell@securitydepot.ca\; director@securitydepot.ca<br><b>Subject:</
+ b> RE: Service Request | Chaparral Pointe - Canada Post Key NotWorking | J2
+ 3739</p><p>We continue to not get it right so we charge for when Daniil wen
+ t tosecure\, when we went back to put on the lock and did not check the pos
+ tallock!!!!! And now when we go back to – hopefully – resolve it with Canad
+ a post –another.</p><br>----------------------------<br><br><br>On Sunday 1
+ 2th someone broek open the intercom.  Daniil returned on 13th to put in new
+  cam lock.   He did nto check the postal lock.   They are reporting that th
+ e postal service cannto get in.  CAll Darrell and take tamper off.  Then op
+ en the intercom and check the postal lock.   The normal is to short across 
+ teh wires by the criminal to open the lock.   See if they works.  Check the
+  postal lock part that it sits in.  Is that damaged?  See slack for image o
+ f the part.<br><br><br>15:00-15:15<br>Check the postal lock doesn't look da
+ maged and  sit tight.<br>Added video in slack
+LAST-MODIFIED:20260428T171744Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:N/C Chaparral J23706
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260515T143000Z
+DTEND:20260515T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:4q657igjj7l5phstdtmfn3h4fe@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=sa
+ les@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260514T232633Z
+DESCRIPTION:Collecgt SIM for Jonathans phone
+LAST-MODIFIED:20260514T233900Z
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Bell
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260601T150000Z
+DTEND:20260601T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:0rskhrijapgvo41gs7qjm5p43v@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:duncan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260529T232759Z
+DESCRIPTION:Email Kevin 29 05<br><p>The entry Key pads are showing a red li
+ ght at all timeswhich is not </p><p>&gt\; normal from my past experience. T
+ he door still openswith the use of </p><p>&gt\; the fob’s. Can we get someo
+ ne out to look at thesystem to ensure that everything is ok.</p>
+LAST-MODIFIED:20260529T233203Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Noble
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260119T150000Z
+DTEND:20260119T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:4pp1a8enm53ohffpdg80ebpse8@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ro
+ man.secdep@gmail.com;X-NUM-GUESTS=0:mailto:roman.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260119T030439Z
+DESCRIPTION:If you are ready for cameras\, then they are ready to be picked
+  up at ADI
+LAST-MODIFIED:20260205T215519Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260521T204500Z
+DTEND:20260521T211500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:6oqnue18rig36bmnupihis6i2o@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=DECLINED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:duncan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=sa
+ les@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260518T013001Z
+DESCRIPTION:Needs  new CO2\nFront motion sensor low battery.
+LAST-MODIFIED:20260521T202852Z
+SEQUENCE:6
+STATUS:CONFIRMED
+SUMMARY:Alex
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260204T150000Z
+DTEND:20260204T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:ccq30dhpc5gm2b9i74r62b9k75i3ab9o6lij0b9pcgs30pho68ojid36ck@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260204T053610Z
+LAST-MODIFIED:20260204T053624Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Meet jonathan and give him product
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260528T160000Z
+DTEND:20260528T163000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:ckr3cp9o60r32b9m64pmab9k74om8b9o74rjcb9j6cq34cr3cos3gcb574@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:duncan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260527T224726Z
+DESCRIPTION:Completed: Port 2 on nvr wasn't working. Had to power cycle nvr
+ . Replaced 1000 3rd floor elevator cam with new speco dome. Reprogrammed nv
+ r to have all ports behind nvr in sequence(right port to right cable). Conf
+ igured all switch cams in order on nvr. Re-added nvr to DW. Labeled cams an
+ d confirmed to duplicates. \n\nStill need to return to update firmware on c
+ ams. Also need to return to wire Ac/battery lose of kt1s\, and also re-aim 
+ a cam for Jennifer (one of the main entrance cams)\nTook 2 hours
+LAST-MODIFIED:20260528T222213Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Bridleview
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260401T141500Z
+DTEND:20260401T144500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:5phm1l8g91ch9jpj5ggh1pnh99@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260401T132644Z
+LAST-MODIFIED:20260401T133830Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:First and park
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260424T160000Z
+DTEND:20260424T170000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:24gei3ap8gcakh42hb9sl1focp@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:director@securitydepot.ca
+CREATED:20260424T154214Z
+DESCRIPTION:<p><b>From:</b> Tristan Johnston &lt\;<a href="mailto:tjohnston
+ @bluejeanmanagement.com" target="_blank">tjohnston@bluejeanmanagement.com</
+ a>&gt\;<br><b>Sent:</b> Thursday\, April 23\, 2026 5:03 PM<br><b>To:</b> <a
+  href="mailto:admin@securitydepot.ca" target="_blank">admin@securitydepot.c
+ a</a><br><b>Subject:</b> Argyle -Rooftop Door </p><p>The rooftop door (door
+  leading onto roof) isn’t latching properly and blowing open in the wind.</
+ p><p>Can you please send someone out ASAP to fix the door.</p><p>3932 Unive
+ rsity Ave NW</p><p>-----------------------------</p><p><b>From:</b> directo
+ r@securitydepot.ca&lt\;director@securitydepot.ca&gt\; <br><b>Sent:</b> Frid
+ ay\, April 24\, 2026 11:45 AM<br><b>To:</b> Tristan Johnston &lt\;tjohnston
+ @bluejeanmanagement.com&gt\;<br><b>Cc:</b> Darrell Security Depot &lt\;darr
+ ell@securitydepot.ca&gt\;<br><b>Subject:</b> RE: Service Request | Argyle -
+  Rooftop Door | J23740</p><p> G’Day Tristan\,</p><p>We did not get the mess
+ age yesterday.  The doorhas blown off its hinges and needs a fair amount of
+  work to repair.  Weare not in a position to do that today unfortunately wi
+ th staff away andengaged.</p><p>It will need a new continuous hinge\, a new
+  doorcloser\, some weather stripping and a more robust fixing point on the 
+ non-activedoor for the push bar on the active door.  The anti-pry plate fit
+ tedshould be removed in favor on weather stripping between the doors.  It i
+ spossible that there was movement in the door and the wind got under the an
+ t1pry plate and pulled it open.   Removing it means that the wind hasnowher
+ e to apply leverage.  Unlikely spider man will climb up the buildingto pry 
+ this door open to break in.</p><p><br></p><p><br></p>
+LAST-MODIFIED:20260430T163410Z
+LOCATION:3932 University Ave NW
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:N/C Argyle
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260316T140000Z
+DTEND:20260316T143000Z
+DTSTAMP:20260531T230205Z
+UID:607bh54mg9fe5lcq9rf4352lcm@google.com
+CREATED:20260315T200647Z
+LAST-MODIFIED:20260315T200647Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Aspen 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260424T140000Z
+DTEND:20260424T143000Z
+DTSTAMP:20260531T230205Z
+UID:0p2v9ask92vl4vsl80fg3q9h2o@google.com
+CREATED:20260423T230938Z
+DESCRIPTION:Collect \n1 Alarm stopper for SAB\n2. Postal lock moutn for Cha
+ parall\n3.
+LAST-MODIFIED:20260423T230938Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Office
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260514T140000Z
+DTEND:20260514T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3qf2r475hv42l7c3p9kk7bv1bk@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260514T024948Z
+DESCRIPTION:Collect Voip module for Mantra and a door motor.\n\nThe former 
+ for Daniil\nThe latter for Roman
+LAST-MODIFIED:20260514T024948Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Iains house 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260209T150000Z
+DTEND:20260209T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:60r6adj16tgm6bb569gjab9k75j64b9ocksj4b9i64qjcp1ncdimae9g6g@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=roman.
+ secdep@gmail.com;X-NUM-GUESTS=0:mailto:roman.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+CREATED:20260209T034302Z
+LAST-MODIFIED:20260211T201423Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Hestia shawnee J20818
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260323T143000Z
+DTEND:20260323T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:6kro8rlnqciuu5jmoof7biimva@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+CREATED:20260316T230307Z
+DESCRIPTION:Get FOBs from Darrell in office.\nLeave two FOBS in envelopes i
+ n the mechanical room in the parkade.\nDisconnect the old clicker receiver.
+ \nDisable the button\nDisable any automatic opening.
+LAST-MODIFIED:20260323T174649Z
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:N/C Mount Pleasant 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260427T220000Z
+DTEND:20260427T223000Z
+DTSTAMP:20260531T230205Z
+UID:0f2hamulsa2uicd7condbrqgmd@google.com
+CREATED:20260423T223734Z
+DESCRIPTION:From: Desmond Ambrose <dambrose@simcomgt.com (mailto:dambrose@s
+ imcomgt.com)> On Behalf Of Stonecroft at Auburn Bay\nSent: Thursday\, April
+  23\, 2026 12:19 PM\nSubject: SAB - Building 28 - Alarm Beeping\nPlease see
+  the email below. Can we get someone to review this:\n"The exterior exit do
+ or that is alarmed in the fire escape stairwell in building 28 keeps having
+  the alarm beep periodically\, it’s been going on for a couple days. It’s t
+ he stairwell on the east end of building 28 "\n \nDrill out old top lock.  
+ Remove.  Fit new alarm stopper.\n\nI thought we had replaced all the old ty
+ pe of locks on these doors?\n\nSee Quote (Email) Mar 16 2026 from Duncan to
+  Desmond\nEmail Mon March 162026\nSIMCO | DesmondAmbrose\nSee Quote for Exi
+ tAlarm replacement that we can supply and install. \nService call is$85.00\
+ nRemove old andinstall new $80.00\nNew Alarm $245.00 \nAll Plus GST\n\n\n--
+ ------------------Ordered new STI 6400 from ADI>Roman is to pick up.  \n---
+ ----------------\n\nROMAN KUSHNER \n04/27\nRemoved and installed new exit s
+ topper alarm. east main door building 28.\n13:30-14:15
+LAST-MODIFIED:20260427T204743Z
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:SAB J23744
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260501T164500Z
+DTEND:20260501T171500Z
+DTSTAMP:20260531T230205Z
+UID:0u1ov76vm3vfo3kmtontg5pd0i@google.com
+CREATED:20260429T211851Z
+DESCRIPTION:1. Need to plug in laptop to PC on site and get get a list of c
+ ameras and serial numbers from both buildings.  Check with Iain.  There are
+  two buildings\,\n\n2. Also building 4000.  People complaining door not clo
+ sing and alarm goes off with door sticking open.  What is closer on door?  
+ how are hinges\, door swings correctly\, latching?  door square or maybe a 
+ hinge drop?  is there a thermometer in the vestibule?  Call me from there p
+ lease.\n3. Also it looks like someone has sprayed  Bld 2000parkade Ramp IN 
+ camera . it looks hazy . \n ------------\nMay 01 2026 / ADI Inv 303286729 -
+  new Speco Turret Camera \n.\n--------------\n\n\nHalf Completed:\n4000:\nC
+ hecked the doors \, didnt find any issues.\nAdjusted the closer\,greased\n\
+ nDownload list of cameras for Iain.\n\nTime 30min.
+LAST-MODIFIED:20260526T000228Z
+SEQUENCE:4
+STATUS:CONFIRMED
+SUMMARY:Panorama Pointe J23771
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260522T141500Z
+DTEND:20260522T144500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:2n46v84ikrpfpk45jpifdiot4b@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=sa
+ les@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260521T001546Z
+DESCRIPTION:THIS IS NOT CONFIRMED.   IF POSSIBLE DO TODAY.   JONATHAN TO CA
+ LL HER.\n\nFrom: Sandy Coelho \nSent: Tuesday\, 19 May\, 2026 07:18\nTo: du
+ ncan@securitydepot.ca\nSubject: Home\nOur garage doors are offline on the a
+ pp and door bell camera doesn’t record for days or work properly can you se
+ nd someone out ? \n\nCompleted: Issues with the lift master gateway. Need t
+ o return with new one\, and internet module thing so I can separate from he
+ r network. Not sure if something blocking the lift master\, but Sandy's did
+ nt want me disconnecting stuff from router. \nDoorbell good now. Took 1hr
+LAST-MODIFIED:20260522T161235Z
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Sandy J23824
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260428T140000Z
+DTEND:20260428T143000Z
+DTSTAMP:20260531T230205Z
+UID:6umqab3qkh769rm6s1u3idqplg@google.com
+CREATED:20260427T225557Z
+DESCRIPTION:System off line - camera and access.\n0813 - Lockbox on mechani
+ cal Door\n\nRoman Kushner \n08:20-09:45\nIssues: AC - DHCP server failed\nP
+ C : didn't boot after windows update.\n\nAfter few reset for AC and PC  -> 
+ booted up\, tested with the office.FIXED.
+LAST-MODIFIED:20260428T165318Z
+LOCATION:328 21st Ave SW
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Lebeau  J23751
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260513T153000Z
+DTEND:20260513T160000Z
+DTSTAMP:20260531T230205Z
+UID:19g1vmg770ci14264453aejuik@google.com
+CREATED:20260513T143238Z
+DESCRIPTION:From:Karen Prosser <karen@keystonegrey.com (mailto:karen@keysto
+ negrey.com)>\nSent: Friday\, May 8\, 2026 11:54 AM\nSubject: Copperwood 1 A
+ menities - No access to the gym\nThe fob reader on the gym door is no longe
+ r working andallowing access to the gym\, can you please send someone out A
+ SAP to have thisissue resolved.\n ----------------------\nneed reader - che
+ ck with Daniil.  Get from office.\n------------------------\n\n\nRoman Kush
+ ner \n12:40-13:05\nTested new reader\, didnt work.\n Terminal reader door o
+ n KT400 was part out the bottom part get power but the upper part didnt get
+  d1/0.
+LAST-MODIFIED:20260513T190813Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Copperwood Club J23811
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260501T143000Z
+DTEND:20260501T150000Z
+DTSTAMP:20260531T230205Z
+UID:1tak2h9g500ng2o1382g6eblie@google.com
+CREATED:20260429T192151Z
+DESCRIPTION:Do the alarm installation please.\nDid we test the reader on th
+ e garbage shed with the Tag we have?\n\n--------------\nGave Roman 2 Blanki
+ ng Plates May 01 2026\nNo Inv numbers on them\n-----------------
+LAST-MODIFIED:20260501T142627Z
+SEQUENCE:6
+STATUS:CONFIRMED
+SUMMARY:Bella Vista J23366
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260120T150000Z
+DTEND:20260120T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:35kboht5s5mk7p44lmvvbegaic@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ro
+ man.secdep@gmail.com;X-NUM-GUESTS=0:mailto:roman.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260119T231902Z
+DESCRIPTION:Carry on with the work needed and be available to direct/help S
+ imon make sure the front door doors are completed.   Remember we keep the d
+ oors working exactly the way they do now until we move the4 intercom outsid
+ e.
+LAST-MODIFIED:20260401T115728Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Argyle J22505
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260601T143000Z
+DTEND:20260601T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3r8vpetcnnl3recb6a9mtt7keo@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260529T173847Z
+DESCRIPTION:From: Marcel Dubois <u></u> \nSent: Thursday\, May 28\, 2026 7:
+ 29 AM\nSubject: Building 1000 orchard sky \nWould you be able to reset the 
+ south stairwell exit to outside inbuilding 1000. It has been beeping for se
+ veral days now and I can not get it toreset.\nFrom Darrell\nI can see that 
+ this door is open. There is no shunt\, But I do not seethe alarm animation 
+ with the door being open. \nIf the resident comes back stating the door is 
+ fully closed and is stillbuzzing a service call will be needed. But why are
+  we not getting the alarmanimation?\n-----------------------------\nControl
+ ler Trouble - Low Battery\nSN 18172135\n5000  KT400  2\n\n\nCompleted \nSwa
+ pped new battery on kt4000.\nBuilding 1000 south exit door need new strike 
+ (pic in slack channel). Door is latching good\, bottom spring on latch moni
+ tor not functional. Asked Gregory to shunt the foor.\nTime: 10m
+LAST-MODIFIED:20260529T214459Z
+LOCATION:302 Skyview Ranch Dr\, Calgary\, AB T3N 0P4
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Orchard Sky J23847
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260105T153000Z
+DTEND:20260105T160000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=jon.secdep@gmail.com:mailto:jon.secdep@gmail.com
+UID:52j8sm82l56jg22siu3get6n1e@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=sa
+ les@securitydepot.ca;X-NUM-GUESTS=0:mailto:sales@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=jon.se
+ cdep@gmail.com;X-NUM-GUESTS=0:mailto:jon.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ra
+ y.secdep@gmail.com;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/sjc-yqib-pbs
+CREATED:20260102T180232Z
+DESCRIPTION:Meet and go over site.\n\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-\nJoin with Google Meet: 
+ https://meet.google.com/sjc-yqib-pbs\n\nLearn more about Meet at: https://s
+ upport.google.com/a/users/answer/9282720\n\nPlease do not edit this section
+ .\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~::~:~::-
+LAST-MODIFIED:20260113T230619Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:N/C Argyle
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260601T144500Z
+DTEND:20260601T151500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3k4hdosij6pndpfh9rh36eep69@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260529T173955Z
+DESCRIPTION:Email Sarah 29 05<br><p>A 3rd line dedicated to the enterphone 
+ has been tagged andactivated at the demarcation. Can we please have Securit
+ y Depot complete theconnection to thr enterphone?</p>
+LAST-MODIFIED:20260529T214453Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Skymills
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260424T160000Z
+DTEND:20260424T163000Z
+DTSTAMP:20260531T230205Z
+UID:51cdamt4ilmsiat67bc2ossihk@google.com
+CREATED:20260422T205324Z
+DESCRIPTION:Controllers are offline for <b>Copperfield Park 2 B6000</b>.<br
+ >all cameras off line<br><br>Seems interent down.
+LAST-MODIFIED:20260424T190649Z
+SEQUENCE:4
+STATUS:CONFIRMED
+SUMMARY:CF2   J23734
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260514T163000Z
+DTEND:20260514T170000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:4auismtsu8m1su58s9mmvk6clr@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=sa
+ les@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260514T025917Z
+DESCRIPTION:Install new part to handicap door opener.    Will need hacksaw 
+ and the metal arm may need to be trimmed.
+LAST-MODIFIED:20260514T025918Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Lawrie Park Okotoks
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260126T150000Z
+DTEND:20260126T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:1ir9i7u1biu9peuv10aagg62ke@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ro
+ man.secdep@gmail.com;X-NUM-GUESTS=0:mailto:roman.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260126T015945Z
+DESCRIPTION:On Friday did you use the Forklift?  It is available for today?
+   If so do the points the ones that you need it for. If the point and the r
+ un back can be done from ladders\, leave those points to last.
+LAST-MODIFIED:20260126T163951Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Community J22935
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260410T140000Z
+DTEND:20260410T143000Z
+DTSTAMP:20260531T230205Z
+UID:4qjbl34cstdoo07plphr9uvfi7@google.com
+CREATED:20260410T133126Z
+DESCRIPTION:We will be there after 0800
+LAST-MODIFIED:20260410T134619Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260127T160000Z
+DTEND:20260127T163000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:42f42tod3jpqgc1nh5lhm81iuj@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:duncan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ n.secdep@gmail.com;X-NUM-GUESTS=0:mailto:jon.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:sales@securitydepot.ca
+CREATED:20260122T003011Z
+DESCRIPTION:Jonathan collect at <br>At Adi <b>ADI</b> 1 x EAP215-BRIDGE KIT
+   Order number: 13639927 Order Date: Jan 21 2026PO 23050<br>Meet Iain on si
+ te to go over work<br><br>ADi Inv 302230656
+LAST-MODIFIED:20260130T143833Z
+LOCATION:121 Copperpond Cmn S E\, Calgary\, AB T2Z 5B6
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Symmetry and Harmony J23050
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260428T133000Z
+DTEND:20260428T140000Z
+DTSTAMP:20260531T230205Z
+UID:41nq7g4ic61cctrdes3bc6bomb@google.com
+CREATED:20260428T141424Z
+DESCRIPTION:Collect product for Bella Vista - speak to Iain.\nWhen finished
+  Le Beau\, go to Bella vista and help there.
+LAST-MODIFIED:20260428T141501Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:ADI
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260513T141000Z
+DTEND:20260513T144000Z
+DTSTAMP:20260531T230205Z
+UID:6oi5d7dv6bsbasesta04bde52o@google.com
+CREATED:20260513T142417Z
+DESCRIPTION:Collect brushed chrome lever\, storeroom function for Skymills.
+   Check if there is one in the office first.
+LAST-MODIFIED:20260513T142942Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:C C Craig
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260514T143000Z
+DTEND:20260514T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:0e52cbeopd3k86fj6im9os1gpp@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=sa
+ les@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260514T025047Z
+DESCRIPTION:Go to office and drop Daniil.
+LAST-MODIFIED:20260514T025048Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Pick up Jonathan 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260121T150000Z
+DTEND:20260121T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:1ov68pn8cvf5s1gbllbcej4pct@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ro
+ man.secdep@gmail.com;X-NUM-GUESTS=0:mailto:roman.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260121T002852Z
+LAST-MODIFIED:20260126T173801Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260513T150000Z
+DTEND:20260513T153000Z
+DTSTAMP:20260531T230205Z
+UID:5ershd2c1qfg4rlgpabjv1drh2@google.com
+CREATED:20260513T143209Z
+DESCRIPTION:From: adminskymills Cate\nSent: Monday\, May 11\, 2026 7:36 PM\
+ nSubject: Skymills Bldg 2000\n\nWas originally requested via an in person c
+ onversation with Duncan and Ian while they were on site with Cate\n--------
+ ---------------------\nthe repair for the garage man door from the elevator
+  to the garage in 2000. The door handle is still sticking.\n---------------
+ -----------\nRoman kushner:\n10:30-10:50\nReplaced new door handle lock.\n\
+ nCC Craig Inv : INV-CCC-27974\nInstalled
+LAST-MODIFIED:20260528T195450Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:23809 Skymills
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260529T163000Z
+DTEND:20260529T173000Z
+DTSTAMP:20260531T230205Z
+UID:18fdgjchv1sl9id179r4pit13q@google.com
+CREATED:20260529T161729Z
+DESCRIPTION:From: Iman Ghounash <u></u> <br>Sent: Friday\, May 29\, 2026 9:
+ 50 AM<br>Subject: Sandgate - Building 10<br><br>I was informed that both st
+ airway doors from parkade can be entered without the fob. Is there currentl
+ y an issue?<br><br>Completed: Fire alarm must have went off. Reset mag lock
+ s and back too normal operation. I see many fire Banff trucks here\, so it 
+ may happen again. Not sure what they are doing. Took 5 mins
+LAST-MODIFIED:20260529T181057Z
+LOCATION:10 Mahogany Mews SE
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:23848 Sandgate - B10  
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260129T153000Z
+DTEND:20260129T160000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:5pcjdqup74kn411p4dts9kunm2@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ n.secdep@gmail.com;X-NUM-GUESTS=0:mailto:jon.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260128T220309Z
+DESCRIPTION:Make sure you see Ed.  \nGive him alarm keys and explain which 
+ key for which.\nWhen the door is opened it is not sending alerts.\nPlease r
+ esolve.
+LAST-MODIFIED:20260130T151223Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Auburn walk J21697
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260210T150000Z
+DTEND:20260210T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:2b1nspfdlg89btbbbj5fu418o4@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260210T041809Z
+DESCRIPTION:ray in at 1000
+LAST-MODIFIED:20260211T201344Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Shawnee J20818
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260413T140000Z
+DTEND:20260413T143000Z
+DTSTAMP:20260531T230205Z
+UID:5ogo40emge6pl452sgamq1vs96@google.com
+CREATED:20260410T214603Z
+DESCRIPTION:The keyless access code is 02012 and the code for the lockboxun
+ der the stairs is 5412.  \nCould we make the Password : ChanteC1534   and l
+ eave thepattern the same as before. \nWe added four cameras to the system i
+ n September 2024.  Our notesshow the president set the following password/a
+ ccess level which was written ona piece of cardboard.  There is no record o
+ f us having changed that.  \n\n\nROMAN KUSHNER \n8:20-8:50\nCreated new use
+ r on hikvision \nUser details on slack channel jobs
+LAST-MODIFIED:20260414T155535Z
+LOCATION:1534 15 Ave SW\, Calgary\, AB T3C 0X9\, Canada
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Chante Clair J23703
+TRANSP:OPAQUE
+ATTACH;FILENAME=Chante Clair.png;FMTTYPE=image/png:https://drive.google.com
+ /open?id=1v4ZJTWyHMmMT8NTkzIfkRDwq6KBj5-MJ
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260430T153000Z
+DTEND:20260430T160000Z
+DTSTAMP:20260531T230205Z
+UID:4gd6s84fhgpdmdtklvpgjf3u6d@google.com
+CREATED:20260430T160414Z
+DESCRIPTION:Off line - check with office which
+LAST-MODIFIED:20260430T160415Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Ken 301
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260520T160000Z
+DTEND:20260520T163000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:6difdfjrm5grdbl8052rvpvpa3@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260428T204406Z
+DESCRIPTION:Tell Felice you are coming.  \nTwo receivers installed\nCamera 
+ issue to be reviewed\n3000 lower KTES Low battery on controller\nController
+  Trouble - Low BatterySN 19150212\nCheck with office if any other issues.\n
+ \n\n=====Completed=====\nKTES: Swapped with new battery.\nInstalled 2 iosma
+ rt receiver( tested with new and old fobs)\nThe customer wants to install a
+  new camera in the parkade(Analog) no need to run new cable( only mech room
+  from L1 to L2)\nFixed their connection to cameras\, external IP got change
+ d. Power cycled nvr and confirmed they can connect again.\nAlso confirmed w
+ ith Felice no cameras are recording continously\, all good.\nTook 2.5hrs
+LAST-MODIFIED:20260520T232646Z
+SEQUENCE:10
+STATUS:CONFIRMED
+SUMMARY:Dreamview Village J23753
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260129T150000Z
+DTEND:20260129T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:5i56in9orp5a1mtqqv9u1bjreu@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ n.secdep@gmail.com;X-NUM-GUESTS=0:mailto:jon.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260128T220140Z
+DESCRIPTION:Finish off alarm and cameras
+LAST-MODIFIED:20260130T173508Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Hestia Head office J23360
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260109T150000Z
+DTEND:20260109T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=roman.secdep@gmail.com:mailto:roman.secdep@gmail.com
+UID:6gjette81gl1073bjef5k1rdmm@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=roman.
+ secdep@gmail.com;X-NUM-GUESTS=0:mailto:roman.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=ray.se
+ cdep@gmail.com;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/ysw-ccij-dyv
+CREATED:20260109T143320Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nJoin with Google Meet: https://meet.google.com/ys
+ w-ccij-dyv\n\nLearn more about Meet at: https://support.google.com/a/users/
+ answer/9282720\n\nPlease do not edit this section.\n-::~:~::~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20260205T203527Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260601T144500Z
+DTEND:20260601T151500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:7f18n8mst5vbm81ebs54gre3j3@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:duncan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260526T222747Z
+DESCRIPTION:Deliver FOBS to <br><p>The FOBs should be delivered to the buil
+ ding:</p><p>Unit #107</p><p>Nadine Fischer</p><p>(403) 990-6372</p><p> </p>
+ <p>Please contact her in advance to make sure she is at home.</p>
+LAST-MODIFIED:20260529T233305Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Gateway Garrison Woods
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260424T150000Z
+DTEND:20260424T153000Z
+DTSTAMP:20260531T230205Z
+UID:7r3bf91qpc45br8r320ckgsmsj@google.com
+CREATED:20260423T222225Z
+DESCRIPTION:<p><b>From:</b> director@securitydepot.ca &lt\;director@securit
+ ydepot.ca&gt\; <br><b>Sent:</b> Tuesday\, April 28\, 2026 11:00 AM<br><b>To
+ :</b> darrell@securitydepot.ca\; director@securitydepot.ca<br><b>Subject:</
+ b> RE: Service Request | Chaparral Pointe - Canada Post Key NotWorking | J2
+ 3739</p><p>We continue to not get it right so we charge for when Daniil wen
+ t tosecure\, when we went back to put on the lock and did not check the pos
+ tallock!!!!! And now when we go back to – hopefully – resolve it with Canad
+ a post –another.</p><br>---------------------------------------<br><br><br>
+ Service call Fri April 24 2026<br><br>Tech is to go back to replace the pos
+ tal lock as it was damaged likely from the break in attempt on Sun April 12
+ th.<br><br><br><br>Service Call Thurs April 23 2026<br>On Sunday 12th someo
+ ne broke open the intercom.  Daniil returned on 13th to put in new cam lock
+ .   He did not check the postal lock.   They are reporting that the postal 
+ service cannot get in.  Call Darrell and take tamper off.  Then open the in
+ tercom and check the postal lock.   The normal is to short across the wires
+  by the criminal to open the lock.   See if they works.  Check the postal l
+ ock part that it sits in.  Is that damaged?  See slack for image of the par
+ t.<br><br><br>15:00-15:15<br>Check the postal lock doesn't look damaged and
+   sit tight.<br>Added video in slack
+LAST-MODIFIED:20260428T171851Z
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:N/C Chaparral J23706
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260520T140000Z
+DTEND:20260520T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:5heugn40m3jeeeec39re2bidhe@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260519T214727Z
+DESCRIPTION:Tried to program number came up slot full \n*999 then *101\nthe
+  number is. Unit11 4032001850  \n\n\nEmail message Ken Shewan  4038701561 \
+ n \n\n\n\n\n\n\n\nTried to program number came up slot full\n*999 then *101
+ \nthe number is. Unit11 4032001850  \n\n=====Completed====\n09:33-09:36\nDe
+ leted the previous units 11.\nAdded new phone\,tested  Resident did not ans
+ wer\, left a message.
+LAST-MODIFIED:20260520T221702Z
+SEQUENCE:5
+STATUS:CONFIRMED
+SUMMARY:Medici
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260107T150000Z
+DTEND:20260107T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=daniil.secdep@gmail.com:mailto:daniil.secdep@gmail.com
+UID:19ktert0airuet5ib4sptd01m0@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ra
+ y.secdep@gmail.com;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=daniil
+ .secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/zvy-ydhv-heo
+CREATED:20260107T143111Z
+DESCRIPTION:-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~::~:~::-\nJoin with Google Meet: https://meet.google.com/zv
+ y-ydhv-heo\n\nLearn more about Meet at: https://support.google.com/a/users/
+ answer/9282720\n\nPlease do not edit this section.\n-::~:~::~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20260205T203350Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Argyle J22505
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260415T140000Z
+DTEND:20260415T143000Z
+DTSTAMP:20260531T230205Z
+UID:5ku2vctn29cjgjsi7dun32jlsm@google.com
+CREATED:20260414T135221Z
+DESCRIPTION:Have changed service providor from Shaw to Telus.  We need to t
+ ransfer cameras\, access/intercom to new service router and test.  Open por
+ ts for the cameras.\n\nRoman Kushner \n08:05-12:30\nConnected the new route
+ r.\nRan new cable Telus Router-Switch.\nOpen port (1025)for DVR on the telu
+ s router \nChanged IP to DVR 192.168.1.20\n\nNOTES: no IP/Ports fo cameras 
+ those are analog cameras.
+LAST-MODIFIED:20260420T181750Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Parkhill  J23707
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260520T153000Z
+DTEND:20260520T160000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:1ng4k3gql6dnfpt2frdvirjacr@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260520T011640Z
+DESCRIPTION:Camera off line\n\nCompleted: Went to site\, cams were online. 
+ UPS starting beep\, need to return with New battery. EN750LCD.\nTook 10 min
+ s (called Dex and confirmed everything online)
+LAST-MODIFIED:20260520T234618Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Ranchview Vistas
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260430T151500Z
+DTEND:20260430T154500Z
+DTSTAMP:20260531T230205Z
+UID:3pj425btcnjoklamjcpo5gpce4@google.com
+CREATED:20260430T160442Z
+DESCRIPTION:Site off line - check with office.
+LAST-MODIFIED:20260430T160449Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Elm
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260323T140000Z
+DTEND:20260323T143000Z
+DTSTAMP:20260531T230205Z
+UID:0acc9f7i9bqf5vpgfol937b6ok@google.com
+CREATED:20260322T202503Z
+DESCRIPTION:As per 51 Oak channel\, collect extended range antenna CV-SEA43
+ 3 - \nCollect intercom mount from ADI for Argyle\nCheck with Daniil if ther
+ e is anything that needs to be collected for Argyle please.   Going there t
+ oday to start to finish off.\nCollect Pedestal Pro MC-CS-12-E under PO Shaw
+ nee - pedestal.  May have to deliver this to Shawnee.\nCheck with Darrell w
+ hat has to be picked up.\n\nSee PO J23419 GS should be there.  This is for 
+ installation today.\n\nGo to 51 Oak with the extender nd help Daniil.
+LAST-MODIFIED:20260323T131515Z
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:ADI
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260409T140000Z
+DTEND:20260409T143000Z
+DTSTAMP:20260531T230205Z
+UID:4p2vl231ptb8mdi3r85967upu5@google.com
+CREATED:20260409T133502Z
+LAST-MODIFIED:20260409T142319Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260417T140000Z
+DTEND:20260417T143000Z
+DTSTAMP:20260531T230205Z
+UID:6b7n0hp7os392h3cvao464cf3j@google.com
+CREATED:20260416T135908Z
+DESCRIPTION:April 15 2026\nWhile security depot staff were doing some syste
+ m checks\, we noticed that the Wolseley Spyhill camera system was offline. 
+ \n\nFrom: tanya.sedgwick@wolseleyinc.ca \nSent: Thursday\, April 16\, 2026 
+ 7:32 AM\nSubject: RE: Wolseley Chinook and Spyhill\n\nYes please have them 
+ come out and service both locations.\n\n-------------------------\n\nOne ca
+ mera off line\n------------------------------\n\n\n\n\n8:20-9:10\nChecked c
+ able on both and did a reset to the camera\, Fixed.
+LAST-MODIFIED:20260417T151126Z
+LOCATION:5516 3rd Street SE\, Calgary\, AB\, Canada
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Wolseley Chinook J23717
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260515T140000Z
+DTEND:20260515T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:24e53rh53s6r5rfo1a5016l3s7@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=sa
+ les@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260514T232501Z
+DESCRIPTION:Collect standard door closer for walden
+LAST-MODIFIED:20260514T233838Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:C C Craig
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260527T140000Z
+DTEND:20260527T143000Z
+DTSTAMP:20260531T230205Z
+UID:cgs62pb26oq3gbb2ccs3ib9k74qm6b9p74qjcbb1ccr68e1i60q62eb36g@google.com
+CREATED:20260527T034826Z
+DESCRIPTION:Alarm not setting.  Zone list shows empty.
+LAST-MODIFIED:20260527T034847Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Office
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260529T150000Z
+DTEND:20260529T153000Z
+DTSTAMP:20260531T230205Z
+UID:7g7nf0mnm51vaqce1hc1sm3dik@google.com
+CREATED:20260529T133414Z
+DESCRIPTION:Still need to return to update firmware on cams. Also need to r
+ eturn to wire Ac/battery lose of kt1s\, and also re-aim a cam for Jennifer 
+ (one of the main entrance cams)
+LAST-MODIFIED:20260529T133414Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Bridleview
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260526T190000Z
+DTEND:20260526T200000Z
+DTSTAMP:20260531T230205Z
+UID:2n8k5c840luqhp04c348f0akm2@google.com
+CREATED:20260528T151906Z
+DESCRIPTION:Please check the intercom for B40\nReceived a called from Board
+  member ( Joe ) that intercom wasnt working. \n \n-------------------------
+ \n\nCompleted: Didn't do anything. Checked phone line\, worked no problem. 
+ Duncan asked us to wire in VOIP\, but when we went to mech room\, phone lin
+ e issuess with fire alarm too. So he told us to leave it and move on. Took 
+ 20 mins
+LAST-MODIFIED:20260528T213629Z
+LOCATION:10 Mahogany Mews SE
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:23842 SANDGATE B10 - Phone line J
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260122T160000Z
+DTEND:20260122T163000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:0moqa3r9elaets905d8n19b0qq@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=daniil
+ .secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260121T191221Z
+LAST-MODIFIED:20260126T165749Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Community J22935
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260417T151500Z
+DTEND:20260417T154500Z
+DTSTAMP:20260531T230205Z
+UID:01lh1q2vpbkdtgall1hnl0ajni@google.com
+CREATED:20260417T161635Z
+DESCRIPTION:From: Sonia Purkiss <Sonia.Purkiss@fsresidential.com (mailto:So
+ nia.Purkiss@fsresidential.com)>\nSent: Thursday\, April 16\, 2026 5:48 PM\n
+ Subject: Re: Centro 733 Device Audit and Intercom Registration Swap Over Ma
+ rch 24 2026 \nI do have a question on behalf of the Board. They have heard 
+ some push back to this new intercom system set up and have asked if we coul
+ d change the display on the intercom to showing last names instead of the u
+ nit number when the 4 last digits of the phone number are entered? \n\nRoma
+ n\, I need you to go check to see what is showing up on the display screen 
+ for the intercom. \nI have added you to the intercom\, you dial code is 246
+ 6. It will phone your phone.  We just need to know what shows on the screen
+  when you dial your dial code. \nDuncan has asked for a Video of you dialin
+ g your own dial code and what shows on the screen. Please update notes here
+  and in Slack. Add the video there please.\nCall me when you are at Centro.
+ \nDex 587-333-0300\n-------------------------\n\n\n11:20-11:25\nTested my n
+ umber \nShowing "Tech Test"\n\n\n 
+LAST-MODIFIED:20260423T232559Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:n/c Centro 733 Intercom 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260102T150000Z
+DTEND:20260102T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=daniil.secdep@gmail.com:mailto:daniil.secdep@gmail.com
+UID:1ta6ml4vkn73r1u1ljs9401umk@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=ray.se
+ cdep@gmail.com;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=daniil
+ .secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/kwv-dgyt-xsb
+CREATED:20260102T004116Z
+DESCRIPTION:Continued with installation\n\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-\nJoin with Google M
+ eet: https://meet.google.com/kwv-dgyt-xsb\n\nLearn more about Meet at: http
+ s://support.google.com/a/users/answer/9282720\n\nPlease do not edit this se
+ ction.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20260113T225953Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Argyle  J22505
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260326T140000Z
+DTEND:20260326T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=daniil.secdep@gmail.com:mailto:daniil.secdep@gmail.com
+UID:6fl4ggl37uddfpq1hltcp030h5@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=daniil
+ .secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=ray.se
+ cdep@gmail.com;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260324T233630Z
+DESCRIPTION:Work towards finishing this project urgently.
+LAST-MODIFIED:20260330T135506Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Argyle J22505
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260527T153000Z
+DTEND:20260527T160000Z
+DTSTAMP:20260531T230205Z
+UID:0i12h5omem1kv0perc6s31l9er@google.com
+CREATED:20260526T235347Z
+DESCRIPTION:They want the voip installed\n\nCompleted \nInstalled new voip 
+ \nTime :30m
+LAST-MODIFIED:20260528T200033Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:23844 Sandgate 40
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260407T140000Z
+DTEND:20260407T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:7spqo1vrbl7gdht3hs7kdcin4f@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260407T134555Z
+DESCRIPTION:Need to get the changes in the access done.\nAlso need Simon on
+  site to show him what needs to be done
+LAST-MODIFIED:20260410T134925Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260514T220000Z
+DTEND:20260514T223000Z
+DTSTAMP:20260531T230205Z
+UID:2679ulf1rhc9jpmft8t7j6ouqa@google.com
+CREATED:20260513T151119Z
+DESCRIPTION:At end of the day when taking Jonathan home. go via this locati
+ onadn collect new sim card for his phone.
+LAST-MODIFIED:20260514T140929Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Bell 130th
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260430T140000Z
+DTEND:20260430T143000Z
+DTSTAMP:20260531T230205Z
+UID:0lluk6j4bdfm00an8m6dedur9n@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260429T190401Z
+DESCRIPTION:From: Erika Sage <erika@karenking.ca (mailto:erika@karenking.ca
+ )>\nSent: Monday\, April 27\, 2026 2:52 PM\nTo: darrell@securitydepot.ca (m
+ ailto:darrell@securitydepot.ca)\nCc: Samuel Wiredu <samuel@karenking.ca (ma
+ ilto:samuel@karenking.ca)>\nSubject: Re: Service Request | APWD Applewood P
+ ointe - Main Entrancedoor | J23736\n The noise is coming from the main door
+ -reported today\n-------\nThere is a Buzzing sound that can be heard at bot
+ h buildings main entrances\nDaniil has been here before and did not remembe
+ r hearing anything. \nIf you do not hear anything please take a recording o
+ f the main entrances of both buildings and place in Slack. And Call Duncan.
+  \nIf you do hear something\, please try to determine what is buzzing and i
+ f possible correct if it is our equipment. \nThey had Telus out there today
+  and do not know why.  It is not a telephone line issue.  It is the reader 
+ buzzing but that is becuase the door is not closing.  Adjust door so that i
+ t slams a bit.   Both buildings.   If you meet Gloria - Board lady - hold d
+ oor open until reader goes into alarm and ask if that is the noise they are
+  hearing.\n\n8:10_10:20
+LAST-MODIFIED:20260430T163323Z
+LOCATION:1620 70 St SE\, Calgary\, AB T2A 7Z5\, Canada
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Applewood Main Entrance doors | J23736
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260515T150000Z
+DTEND:20260515T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:2iou6gfro3v8sen098sm0hmmna@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260514T233150Z
+DESCRIPTION:Jonathan please advise where the lock boxes are kept and add in
+  slack please.\nCheck all entrances as think there is one that we disabled.
+ \nCould you please arrange for service to the following areas at WaldenPlac
+ e?  Door closer from C C Craig\nBuilding 40 – main door not closing on its 
+ own (bottom platelifting)\nBuilding 20 - stairwell door\, at the garage doo
+ r end of thebuilding (northeast end) - it's the door inside the parking lev
+ el stairwellvestibule\, and it's on a fob/alarm. The door closer isn't func
+ tioning\, and thedoor slams shut really hard.\nWalden 40 KT 400 1 Controlle
+ r Trouble - Low Battery\nSN 21123125\n\n======Completed======\n13:50-15:30\
+ nNew Battery  replaced.\nBuilding 40 main door was greased.\nBuilding 20 ne
+ w closer was installed.\n(See videos in slack).
+LAST-MODIFIED:20260515T221115Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Walden  J23813
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260420T143000Z
+DTEND:20260420T150000Z
+DTSTAMP:20260531T230205Z
+UID:0v9bua9fu44gqf1jiobr4u7j5m@google.com
+CREATED:20260420T144755Z
+DESCRIPTION:TEXT Message from Girish on Sat night. (To Duncan or Iain's pho
+ ne).\n\nThe client reported on Saturday night that the door to the 1000/200
+ 0 garbage shed would not unlock.    WE have unlocked BOTH garbage sheds.   
+ Please check and advise.\n\n-------------------\n\nROMA KUSHNER \n10:55-11:
+ 10\nChecked both garbage doors after enable  readers\, both doors work and 
+ open.
+LAST-MODIFIED:20260420T211154Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Panorama Pointe J23726
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260521T200000Z
+DTEND:20260521T210000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:68r3gd1l6li36b9n60p32b9k6ssj6bb175i38b9l6krm8dr564ojgd1hcg@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=du
+ ncan@securitydepot.ca;X-NUM-GUESTS=0:mailto:director@securitydepot.ca
+X-GOOGLE-CONFERENCE:https://meet.google.com/fjw-xhzw-cqj
+CREATED:20260521T195316Z
+DESCRIPTION:Completed: Installed new UPS battery\n\n-::~:~::~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-\nJoin with
+  Google Meet: https://meet.google.com/fjw-xhzw-cqj\n\nLearn more about Meet
+  at: https://support.google.com/a/users/answer/9282720\n\nPlease do not edi
+ t this section.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20260521T195318Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Ranchview
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260330T140000Z
+DTEND:20260330T223000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:6vnbfiuj39rs7br5edo7egsnoc@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260330T030359Z
+DESCRIPTION:NVR\, cabinet\, computer in.  Show Roman which does to change o
+ ver.   Show Simon which doors need hardware. Please visit and check with th
+ e original order as to what door work needs to be done.  Compile list\, ord
+ er product and then arrange Simon to go to site and complete.<br><br>Jonath
+ an speak to Darrell about 23433 about the handicap button.  See slack for 2
+ 5th Feb and today from Daniil.  What is the answer?  Do we need CX12&#39\;s
+ <br><br><p><br></p>
+LAST-MODIFIED:20260330T141659Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260421T140000Z
+DTEND:20260421T143000Z
+DTSTAMP:20260531T230205Z
+UID:3gsdgjaum34tpskc0d5tps4778@google.com
+CREATED:20260420T140626Z
+DESCRIPTION:From: Edmond Richard <edrichard@telus.net (mailto:edrichard@tel
+ us.net)> \nSent: Monday\, April 20\, 2026 7:53 AM\nSubject: Buildings 110 1
+ 30 alarms\nMorning\,\nCould youplease disconnect the interior door alarms o
+ f both buildings immediately\nuntilfurther notice..\nThey havebeen ringing 
+ all weekend.\nThanks Ed\n---------\n\nGo and check the latch monitors on bo
+ th doors at both buildings.  They say they go off when the door is closed. 
+  Are they damaged?   Is the door loose? They may be bypassed so liaise with
+  the office.\n---------------------\n\n\n\n=========\nRoman Kushner \n08:50
+ -09:10\nUnshunted exterior and interior doors on both  buildings.\nTested t
+ he doors \,latch monitors.\nNo alarm was sound \, only buz from the reader 
+ when trex didn't recognize any motions on the exit.\n\nAdjusted the trex. T
+ est again everything worked.
+LAST-MODIFIED:20260421T151518Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Auburn Walk J23727
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260529T143000Z
+DTEND:20260529T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:4osbt0aiehmckvgvdh9ehi3h7f@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260529T133250Z
+DESCRIPTION:From: Marcel Dubois <mdubois911@gmail.com (mailto:mdubois911@gm
+ ail.com)> \nSent: Thursday\, May 28\, 2026 7:29 AM\nSubject: Building 1000 
+ orchard sky \nWould you be able to reset the south stairwell exit to outsid
+ e inbuilding 1000. It has been beeping for several days now and I can not g
+ et it toreset.\nFrom Darrell\nI can see that this door is open. There is no
+  shunt\, But I do not seethe alarm animation with the door being open. \nIf
+  the resident comes back stating the door is fully closed and is stillbuzzi
+ ng a service call will be needed. But why are we not getting the alarmanima
+ tion?\n-----------------------------\nController Trouble - Low Battery\nSN 
+ 18172135\n5000  KT400  2\n\n\nCompleted \nSwapped new battery on kt4000.\nB
+ uilding 1000 south exit door need new strike (pic in slack channel). Door i
+ s latching good\, bottom spring on latch monitor not functional. Asked Greg
+ ory to shunt the foor.\nTime: 10m
+LAST-MODIFIED:20260529T160152Z
+LOCATION:302 Skyview Ranch Dr\, Calgary\, AB T3N 0P4
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Orchard Sky J23847
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260323T141500Z
+DTEND:20260323T144500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:2e2undpbhu5g9pvhgf4mokgnoe@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260322T222057Z
+DESCRIPTION:See channel.  Call Iain.\n\nUpdate:\n\n@Duncan @Iain \nOH opens
+  perfectly now.\n\nWe used the original WRW on the new cable.\n\nThe new on
+ e from Wesco and a spare one are in my van.
+LAST-MODIFIED:20260330T215134Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:N/C 51 Oak
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260424T143000Z
+DTEND:20260424T150000Z
+DTSTAMP:20260531T230205Z
+UID:3d7cogtudcs9favur0tk1pmhql@google.com
+CREATED:20260424T190806Z
+DESCRIPTION:From: Sharon Prevost <Sharon.legacygatepm@outlook.com (mailto:S
+ haron.legacygatepm@outlook.com)>\nSent: Friday\, April 24\, 2026 12:47 PM\n
+ Subject: South man door building 2000\n\n\nEmail Sharon\nSouth man door bui
+ lding 2000\nfix the door today with the wind  the way it is it just blows \
+ , open and stays open\n\n--------------------\nA-Line Inv 0699016\nLCN Shoe
+  and Screw -$12.50\n--------------------\n\n\n13:45-14:00 - checked what ne
+ ed to be done\n15:45-16:20- came back with replacement parts (Automatic doo
+ r closer upper part that sitting on the door frame). Removed the old one an
+ d installed new.
+LAST-MODIFIED:20260428T165750Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Legacy J23746
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260520T133000Z
+DTEND:20260520T140000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:1kqqfci47i7vt6uv1qipbphrau@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260520T011338Z
+DESCRIPTION:Equipment for Dreamview
+LAST-MODIFIED:20260520T234814Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Collect from Office if Darrell has
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260527T140000Z
+DTEND:20260527T143000Z
+DTSTAMP:20260531T230205Z
+UID:6b0c88s7thg0jm28uhmg5lastv@google.com
+CREATED:20260527T000842Z
+DESCRIPTION:Add CDVI reader for Darrell.
+LAST-MODIFIED:20260527T180942Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Office
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260522T163000Z
+DTEND:20260522T170000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:corm4cpj6cr3eb9o6lh3cb9kckr68b9o60r32b9ncpim8cpichijicj26g@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260522T185659Z
+DESCRIPTION:Half the cameras down.  Replaced office ups.  Pick up ups from 
+ ADI before proceeding here.\n\nGave to Jon and Roman May 22 2026 - ADI - 30
+ 1749951\nPlease advise in your notes if you used this Product or not. thank
+  you\n\nCompleted: Didn't require UPS. Will return to Dex next in office.\n
+ .11 NVR couldn't connect too. Had to power cycle. Checked logs and didnt se
+ e any network issues????? If happens again probably best to see if we can u
+ pdate\, but I know we have issues with updated dahua with DW. Back online a
+ nd recording. Took 20 mins. Needed dex to unlock office door as keypad code
+  provided didnt work. (Dex was busy with something when we first called)
+LAST-MODIFIED:20260527T175548Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:23835 Landmark gardens
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260427T140000Z
+DTEND:20260427T223000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:6phm4d9o64qj0b9pcdijcb9k64q3gbb270o6cb9h61i6apj574sjichkcc@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=daniil
+ .secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=kushne
+ roman@gmail.com;X-NUM-GUESTS=0:mailto:kushneroman@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=mike@s
+ ecuritydepot.ca;X-NUM-GUESTS=0:mailto:mike@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260312T155503Z
+DESCRIPTION:The Board has ordered the replacement Recorder\, Server\, and V
+ ideo Management software with configuration. There are 3 different brands o
+ f cameras from multiple “generations” of installation.<br>Currently there a
+ re:<br>3 x Original Wide-Angle Cameras - 2 within the elevator and 1 within
+  the Parkade Elevator Lobby<br>6 x Original 3MP Cameras<br>3 x Older 3MP (2
+ nd Generation)<br>3 x Newer 4MP (Most recent)<br>No need to change out the 
+ 3 newer cameras. Change the 6 Original cameras and 3 Wide Angles. The 3 Old
+ er 3MP cameras have to be repalced.<br>6 new additional cameras identified 
+ with Yoshimi during a walkthrough.<br><br>1.<br>Exterior Main Entrance Inst
+ all one camera at the exterior of the main entrance\, positioned to capture
+  the intercom and exterior main entrance\, stairs\, and a portion of the dr
+ iveway approaching the entrance<br>2.<br>Interior Main Lobby Install one ca
+ mera inside the main entrance lobby at the mailbox bench\, positioned to ca
+ pture the mailbox area and a view back toward the main entrance interior do
+ ors<br>3.<br>T2 South Storage Locker Area Install one camera in the South T
+ 2 Storage Locker area with coverage of Entry through the access-controlled 
+ door to the storage locker door\, Movement through to Stairwell door\, and 
+ Corridor movement<br>4.<br>T2 South Storage Locker Area add one camera in t
+ he T2 North elevator lobby positioned to View the secondary door leading in
+ to the T2 storage area\, door into the garbage<br>5.<br>T1 East Hallway – S
+ torage Room Entrance add one camera in this area to monitor the storage roo
+ m entrance and hallway traffic to North T1 Exit<br>6.<br>T1 West Storage Ro
+ om Entrance Area add one camera in this area to view entry from the hallway
+ \, entry to the parkade\, and entry into the storage room. <br>Note: There 
+ is a camera in the T1 Hallway viewing the door near the elevators\, and ano
+ ther camera within the T1 parking area – these two cameras may suffice in p
+ roviding review of people entering the area with the storage lobby and this
+  camera could be utilized elsewhere<br><br>We also discussed the need for c
+ orrect coverage within the Parkade Level:<br>Specifically\, adding four new
+  cameras and relocating 3 of the existing positions to greatly improve cove
+ rage of the whole parkade level.<br><br>9 x 4 Megapixel Indoor/Outdoor IR D
+ ome/Turret Style Camera<br>9 x Wall or Conduit Mounts\, as needed<br>1 x 9-
+ Port PoE Switch with Gigabit Links<br>2 x Recorder Camera Device License wi
+ th Lifetime Updates\, 4 Pack<br><br>There are currently Sixteen old 2-door 
+ controllers and one old 4-door controller.<br>28 x Smart Ready Prox Reader 
+ without Keypad\, replacement<br>1 x Smart Ready Prox Reader with Keypad gar
+ bage room<br>Also<br>Replacement Installation and configuration <br>2 Eleva
+ tor Wide Angle Cameras<br>2 Elevator Adapters<br>TKelevator- you can contac
+ t:<p>Moseley\,Derek &lt\;<a href="mailto:derek.moseley@tkelevator.com" targ
+ et="_blank">derek.moseley@tkelevator.com</a>  403-371-7315.  Be sure totell
+  them this is for 14635 Shawnee Gate SW </p>
+LAST-MODIFIED:20260429T140243Z
+LOCATION:10 Shawnee Hill SW\, Calgary\, AB T2Y 0K4
+SEQUENCE:10
+STATUS:CONFIRMED
+SUMMARY:Highbury  J22112
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260515T153000Z
+DTEND:20260515T160000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3m65qh00011r4uioiibh5om343@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=mi
+ keac01@gmail.com;X-NUM-GUESTS=0:mailto:mikeac01@gmail.com
+CREATED:20260515T152343Z
+DESCRIPTION:1000  6000 and 7000 off line\nShow Michael the site so that he 
+ is familiar with it.\n\n========Completed ======\n11:30-12:00\nPowered cycl
+ e the links.\nChecked with office cameras and AC came back online.
+LAST-MODIFIED:20260515T221200Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Orchard Sky
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260513T140000Z
+DTEND:20260513T143000Z
+DTSTAMP:20260531T230205Z
+UID:7bv6ifodca9d416d4aqtminium@google.com
+CREATED:20260512T220918Z
+LAST-MODIFIED:20260513T133930Z
+LOCATION:3029 Dover Road SE Calgary\, AB T2B 1V5
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Pick up then proceed to office.
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260505T140000Z
+DTEND:20260505T143000Z
+DTSTAMP:20260531T230205Z
+UID:1dqs9mhb2u7jbkuq4m8jj8p4tp@google.com
+CREATED:20260504T233546Z
+DESCRIPTION:Intall the cameras
+LAST-MODIFIED:20260525T171654Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:HIghbury J22112
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260521T143000Z
+DTEND:20260521T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:4mk251mf1ho35kk66idcqsd8eu@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260520T202400Z
+DESCRIPTION:Returning to resolve this issue.
+LAST-MODIFIED:20260520T205309Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Rocky Ridge Landing
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260303T153000Z
+DTEND:20260303T160000Z
+DTSTAMP:20260531T230205Z
+UID:3tmmic7s1cv7i46ght4tdpcidq@google.com
+CREATED:20260303T141146Z
+DESCRIPTION:Meet Jonathan\, Derrick\, Dennis and Charlez on site to do safe
+ ty orientation.  Iain will then join you and go over what we have to do on 
+ this site urgently.
+LAST-MODIFIED:20260303T141147Z
+LOCATION:8566 Spring Creek Manor SW Calgary AB
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Hestia Aspen
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260331T140000Z
+DTEND:20260331T143000Z
+DTSTAMP:20260531T230205Z
+UID:2l982ql3km3rk2gu0udlk7ip3l@google.com
+CREATED:20260330T223027Z
+DESCRIPTION:Intercom entry\n\nUnit 202 \nJenny Luong \nPhone –403-861-9529\
+ nDone\nTime: 15min\nAdded 6202 and Test with the resident \n 
+LAST-MODIFIED:20260401T235448Z
+LOCATION:620 15 Avenue SW
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:23511 Villa Royale
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260402T140000Z
+DTEND:20260402T143000Z
+DTSTAMP:20260531T230205Z
+UID:0lpf2map865bs5ktr0d2ijuk7s@google.com
+CREATED:20260402T134625Z
+LAST-MODIFIED:20260402T134626Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and Park
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260603T140000Z
+DTEND:20260603T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:534j3d0vd62rcna7ndrghimod8@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260529T233731Z
+DESCRIPTION:  Did all stairwells except garbages and maybe stairwell next t
+ o 1000 stairwell not done.\nZ3 - Ac Loss\nZ4 - Battery
+LAST-MODIFIED:20260529T233731Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Bridleview
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260427T141500Z
+DTEND:20260427T144500Z
+DTSTAMP:20260531T230205Z
+UID:3a7001i9h8kiairbd7dduhjnur@google.com
+CREATED:20260420T195229Z
+DESCRIPTION:Replace two outside cameras.  Move and replace inside overhead 
+ door camera\n\nYou couldhave the other company go to the site and go to the
+  camera video recorder. Theycan login and then change the settings to unbin
+ d / unlink the existing HikConnect account we made.\n \nWe think thepasswor
+ d for the recorder itself is Vista1234\nOur oldnotes said we also set the v
+ erification code: Vista1234\n \nJust forreference I told the previous manag
+ ement before there is a Hik connect account\nYou couldgive the details to t
+ he other company. And that way\, they can login into theaccount.\n \nForref
+ erence\nhttps://www.hik-connect.com/views/terms/newHelp/helpIos/GUID-F99ECC
+ 1B-E529-416A-9093-46A33500D60C.html\nThis linksaid if you want to unbind vi
+ a the hik connect account\, Make sure thedevice and the phone running the M
+ obile Client are in the same local areanetwork. (Meaning the person doing i
+ t has to be there in person).\n \nWe sentthis to the previous management:\n
+ Notesfor account on the Hik Connect app.The Bella Vista camera recorder vie
+ wing was shared tothis account. \nIt can begiven to the board\, and they ca
+ n sharethe account information with the intended people. \nThey can useit t
+ o view the camera system. \nThis isfaster than setting up sharing for multi
+ ple accounts for multiple people.\n \nThis information was used to make an 
+ account onthe Hik Connect app.\nemail: bellavistacameraapp@gmail.com (mailt
+ o:bellavistacameraapp@gmail.com)\npassword: Be7563@!C\nThe information is a
+ lso used fora Gmail account. It uses the same password.\nReceived this\, as
+ well.\n \nThe technicianmentioned to me that while he is onsite today\, he 
+ should be able to unbind theHik connect account.\n \nFor reference\,we didn
+ 't put that on our technician's account login\, we made the one newaccount\
+ , which the management and the board could use for remote viewing. \n \nPle
+ ase note\,when that account is disconnected it won't have remote viewing ac
+ cess\, unlesssomeone sets it up to have remote viewing again. \n\nRoman Kus
+ hner:\nWill not be able to complete it\, must have little gaint.
+LAST-MODIFIED:20260521T155549Z
+SEQUENCE:4
+STATUS:CONFIRMED
+SUMMARY:Bella vista J23366
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260427T143000Z
+DTEND:20260427T150000Z
+DTSTAMP:20260531T230205Z
+UID:34lrbugqk0ipfjaanfva9m6u13@google.com
+CREATED:20260423T231146Z
+DESCRIPTION:Install the last camera in the server room in the parkade.\nDoe
+  sthis one or the one in teh main server room has SD cards in them?
+LAST-MODIFIED:20260424T190407Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:First and Park
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260519T153000Z
+DTEND:20260519T160000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:6lh3co9oc5hmabb6cko62b9k61h6ab9p6spj2b9mcgs36ob368r64e1g6s@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260519T142640Z
+DESCRIPTION:Cameras off line\n====Completed =====\n\nCameras back online.
+LAST-MODIFIED:20260520T235022Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:n/c Legacy
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260204T153000Z
+DTEND:20260204T233000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3mbgrtsdvig1gj3visn5qmokbo@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:duncan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:sales@securitydepot.ca
+CREATED:20260204T002415Z
+DESCRIPTION:Contact Michael.<br>We are trying to finish off work on this si
+ te urgently so that we can move across to Shawnee next week.  Things like p
+ utting up Wireless access points\, fitting  straps and face plates.   Must 
+ have safety equipment\, sign in and out of site.    Be carefull on site as 
+ they are finishing the site so no damage.<br>Q = quad or wing.   There are 
+ 14 or 15 rooms per wing per floor.  Tomorrow will send you back there to ca
+ rry on.   Please push as I have to free the three of you to move to Shawnee
+ .<br><p>1<sup>st</sup>Floor</p><p>Q1- TestAps cables</p><p>Q1- InstallAps</
+ p><p>Q3- TestAps cables</p><p>Q3- InstallAps</p><p>Q4- TestAps cables</p><p
+ >Q4- Installdecora straps</p><p>Q4- Installface plates</p><p>Q4- labelfield
+  locations</p><p>Q4- InstallAps</p><p>Q5- TestAps cables</p><p>Q5- Installd
+ ecora straps</p><p>Q5-Identify field cable scheme</p><p>Q5- Installface pla
+ tes</p><p>Q5- labelfield locations</p><p>Q5- InstallAps</p><p>Q2- TestAps c
+ ables</p><p>Q2- Installreplacement TV cable (damaged)</p><p>Q2- Installdeco
+ ra straps</p><p>Q2-Identify field cable scheme</p><p>Q2- Installface plates
+ </p><p>Q2-Identify label scheme in comm room</p><p>Q2-identify label scheme
+  field locations  </p><p>Q2- labelpanels in comm room</p><p>Q2- labelfield 
+ locations</p><p>Q2- InstallAps</p><p>Q2- Installshelf in Rack</p><p>Q2- Mov
+ ecardboard boxes and trash to bin</p><p> </p><p>Parkade</p><p>2 Apsrequire 
+ some piping to mount</p><p>Install Apsx13</p><p>Remove 2xvoice cables from 
+ dmarc to Elevator control</p><p>Install 2xvoice &amp\; 2 Data from dmarc to
+  Elevator control</p><p>Test 2xvoice &amp\; 2 Data     </p><p>Install 3xvoi
+ ce &amp\; 3x Data from level 1 comm to parkade maintenance room</p><p>Test 
+ 3xvoice &amp\; 3x Data </p><p>Installdecora straps</p><p>Installfaceplates<
+ /p><p>Installstraps</p><p>Label.</p><p> </p>
+LAST-MODIFIED:20260204T200326Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Hestia Dawson
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260409T143000Z
+DTEND:20260409T150000Z
+DTSTAMP:20260531T230205Z
+UID:0k309taq8qjhk46gdvvv4thhas@google.com
+CREATED:20260409T205050Z
+DESCRIPTION:Test FOB
+LAST-MODIFIED:20260410T134739Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:N/C Gateway
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260408T140000Z
+DTEND:20260408T143000Z
+DTSTAMP:20260531T230205Z
+UID:605n0dgkmif2qk4kjv565jenjs@google.com
+CREATED:20260408T135403Z
+LAST-MODIFIED:20260410T134823Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260501T181500Z
+DTEND:20260501T184500Z
+DTSTAMP:20260531T230205Z
+UID:54tbe5s8ulh570c30kjukaiuaq@google.com
+CREATED:20260420T232744Z
+DESCRIPTION:**This is still clean up for J23375. No charge for this service
+ . Apr 20 2026. Per Duncan. See Slack chat. \n\n\nAsk Simon what you need.  
+  Pick that up from C C Craig.  Sounds like a shim needed.  If necessary go 
+ to Metal superstore\, look in their scraps and purchase when you need.  How
+ ever 12 mm sounds like a lot.   That means the door is very loose.   Clarif
+ y that with Simon please.\n\nHowever\, there is some play between the compo
+ nents. To correct this\, a 12 mm spacer should be installed beneath the box
+  that houses the electrical strike.    Check if that is 12mm thick spacer\n
+ -----------\nWent to see the door\, talked to Simon and took all the measur
+ ements. Will get a metal plate needed and come back to install it. The door
+  is pretty loose\, but nothing critical. The door remains locked even if pu
+ ll hard\, the interlocking system doesn&#39\;t expose. \n\n10 minutes spent
+LAST-MODIFIED:20260430T223811Z
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:Rocky Ridge Landing J23375
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260331T143000Z
+DTEND:20260331T150000Z
+DTSTAMP:20260531T230205Z
+UID:65h62cho6hh34b9h6gr3ab9k6orm8b9ocphjgbb264r3gc9m6cr36pj46s@google.com
+CREATED:20260331T134848Z
+LAST-MODIFIED:20260331T134849Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and park
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260407T140000Z
+DTEND:20260407T143000Z
+DTSTAMP:20260531T230205Z
+UID:5uaj7cnhdch5v8guknhjt4sbgb@google.com
+CREATED:20260407T133947Z
+DESCRIPTION:07 04.\nAfter visit Thursday\, collect new strike (not sure if 
+ Darrell has one in the office) and keys and fit.\n\nFrom: Petwin Service Ma
+ intenanceTechnician <maintenance@petwin.com (mailto:maintenance@petwin.com)
+ >\nSent: Thursday\, April 2\, 2026 2:01 PM\nSubject: Metropole 901 4 Ave NW
+  FOB tapping device\nMay I askfor your assistance in accessing the reader a
+ t the back. The reader has no powerlocated at the back entrance of the buil
+ ding. Hoping you can attend to thismatter the soonest. \nI have added pictu
+ res to slack.\n-----------------------\nApr 07 2026 -Provided Roman a new R
+ eader (From and RMA return\, so no invoice #).\nAlso gave him the Petwin ma
+ ster keys\n-----------------------\nROMAN KUSHNER \nTIME 8:45-8:50\nWhen ar
+ rived the reader worked fine tested it with my fob led light responsed to g
+ reen door opened. \nVideo attached  is the slack channel
+LAST-MODIFIED:20260408T202442Z
+LOCATION:901 4th Ave NW
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:23690 Metropole
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260203T150000Z
+DTEND:20260203T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:04iptkt6lgmlnfgf6roqgcpco7@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260202T213826Z
+DESCRIPTION:Find out route for cables.
+LAST-MODIFIED:20260204T224900Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Argyle J22505
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260514T154500Z
+DTEND:20260514T161500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:575hfi3bcbbngc5rb1kfkumins@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=sa
+ les@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260513T200409Z
+DESCRIPTION:Do over the site and problems. Resolve.  Review the others and 
+ see what has to be done.<br><br>Ex Sharon<br><p>I have two doors that are n
+ ot closing properly.  They willnot shut tight unless you push hard on them.
+ </p><p> </p><p>It is door # 2 in building 2000 and door # 14 in building300
+ 0.  The alarm on both doors&#39\; rings constantly.</p><p> </p><p>Can someo
+ ne please come out and fix these.</p>
+LAST-MODIFIED:20260514T024956Z
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Legacy
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260202T150000Z
+DTEND:20260202T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3ron501pst4m8eohi1nc7hem5b@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260202T045224Z
+DESCRIPTION:Install cameras.   Collect from the office.  Darrell has them.
+LAST-MODIFIED:20260204T221527Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Argyle J22505
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260129T160000Z
+DTEND:20260129T163000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3hjkpbqf3elthrvmktqgphvdl1@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ n.secdep@gmail.com;X-NUM-GUESTS=0:mailto:jon.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260128T220337Z
+DESCRIPTION:Carry on
+LAST-MODIFIED:20260130T144447Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Summetry and Harmony J23050
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260213T150000Z
+DTEND:20260213T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:6dj3eohk68smabb6chi30b9k64r6ab9p68oj4b9j68s3cp1p65h3ge1k6c@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260213T044347Z
+DESCRIPTION:Collect one pallet white cat 6.  Take to office.
+LAST-MODIFIED:20260213T044347Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Adi
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260522T160000Z
+DTEND:20260522T163000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:4enam5de3qbbplghu52m4ve2b1@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260522T034301Z
+DESCRIPTION:Collect prod uct in from Vancouver for PO Camore <br><p>1 x N16
+ NRX</p><p>Drop off with Iain.   Tell Daniil it is with Iain so taht he can 
+ collect over the weekend or Monday.  They are going out to Canmore on Monda
+ y and need it</p>
+LAST-MODIFIED:20260522T210352Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:ADI
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260423T141500Z
+DTEND:20260423T144500Z
+DTSTAMP:20260531T230205Z
+UID:0me89jl5ls9vjtuj3skphvomjf@google.com
+CREATED:20260422T222603Z
+DESCRIPTION:Intercoms not able to be connected to from office.  Check with 
+ Darrell.  Also need you to check the same thing here that you checked at Wa
+ terford.\n\n\n\n09:00-10:30\nPower cycle Intercom.\nAdded ports for Interco
+ m kt3.
+LAST-MODIFIED:20260423T230251Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:n/c Kensington 301
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260127T150000Z
+DTEND:20260127T153000Z
+DTSTAMP:20260531T230205Z
+UID:0f4pq0iba69ihg19mm4mr9dn4h@google.com
+CREATED:20260126T222333Z
+LAST-MODIFIED:20260126T222333Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Ray at home doing safety course
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260325T213000Z
+DTEND:20260325T220000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=duncan@securitydepot.ca:mailto:duncan@securitydepot.ca
+UID:58uoavl6ufmlrb4h9uaf4o0o5n@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=ray.se
+ cdep@gmail.com;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=du
+ ncan@securitydepot.ca;X-NUM-GUESTS=0:mailto:duncan@securitydepot.ca
+CREATED:20260316T223913Z
+DESCRIPTION:<b>Fit new type of receiver for overhead.</b>  <br>Ensure you t
+ ake a new FOB with you to test it please.  Darrell should have that.  Roman
+  will be there with you so that you can show him.   We have other places to
+  do so important he gets training.<br>Receiver at ADI<br><b><b>ORDER #: 145
+ 54214 </b></b><br><b><b>DATE: 2026-03-16</b></b><br><b><b>PO J23419 GS New 
+ Receiv</b></b><br>1 x KW-KTWLSWIE Receiver (New IoSmart Receiver)<br><b><b>
+ ETA Unknown</b></b><br>Verified via phone\, they have 1 on hold for us\, re
+ ady for pick up (edited) <br><br><b>Also Please change battery </b><br>GS K
+ T400 1 Parkade Mechanical (0001)<br>Controller Trouble - Low Battery<br><b>
+ SN17082143</b><br>-------------------<br><br><br><br><br><br><br><br><br><p
+  dir="ltr"><br></p>
+LAST-MODIFIED:20260327T141928Z
+SEQUENCE:6
+STATUS:CONFIRMED
+SUMMARY:23419 Greystones 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260508T213000Z
+DTEND:20260508T220000Z
+DTSTAMP:20260531T230205Z
+UID:6ptvpmcpig7kub2ham5fktluca@google.com
+CREATED:20260508T182328Z
+DESCRIPTION:Email Tristan<br><p>I received a few complaints that the main d
+ oor ofBuilding 1000 Lawrie Park is not closing properly. It sounds as thoug
+ h it willrequire an adjustment and is not under warranty. </p><p>Can you pl
+ ease send someone out to complete this. </p>
+LAST-MODIFIED:20260508T182536Z
+LOCATION:100 Banister Dr\, Okotoks\, AB T1S 5Y2\, Canada
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Lawrie Park
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260513T144500Z
+DTEND:20260513T151500Z
+DTSTAMP:20260531T230205Z
+UID:4kdfgr93e30h1qjqlqc96cflec@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260513T134326Z
+DESCRIPTION:From: Legends Of Cornerstone <legendsofcornerstone@gmail.com (m
+ ailto:legendsofcornerstone@gmail.com)> Lindsey\nSent: Tuesday\, May 12\, 20
+ 26 10:14 PM\nSubject: Exterior Community Room Door\nLegends of Cornerstone 
+ - Door - building 1000\nThe front door does not secure because there is a s
+ crew missing on the latch. I’ve attached a picture as I’m not sure if my te
+ rminology is correct.\nIs there anyway that we could also have someone out 
+ to have a look at the exterior community room door as well? It is not latch
+ ing and probably needs to be adjusted. I’ve also attached pictures of the c
+ ommunity room door.  (Check closer.  Make it slam a little.  Also do not th
+ ink that the strike is working properly.\nScrew needed for lock on 100 entr
+ ance.  Also check this entrance and see that everything is working correctl
+ y.   Also adjust community room exterior door.  It is not closing.  Make th
+ e door slam.  It will not be used often now.  Check lock\, door contact\, R
+ EX\n--------------------------\nROMAN KUSHNER\n9:30-10:15\n\nBuilding 1000 
+ main door interior door fixed added spacers (video in slack)\nCommunity doo
+ r did not fixed\, grease doesn't work\, adjusted the arm of the door didn't
+  work.\n\nDoor need mechanical motor adjustment.
+LAST-MODIFIED:20260513T191120Z
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Legends J23810
+TRANSP:OPAQUE
+ATTACH;FILENAME=LGND B1000 Main Entrance door May13_2026.jpeg;FMTTYPE=image
+ /jpeg:https://drive.google.com/open?id=1CLWqeQMDMxTfg8JnupvoaQZfGhGXJsju
+ATTACH;FILENAME=LGND Exterior Community Rm Door pic1 May13_2026.jpeg;FMTTYP
+ E=image/jpeg:https://drive.google.com/open?id=10KkPHp1yDoovaj9PgdZlcQS6OQr-
+ EALd
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260325T204500Z
+DTEND:20260325T211500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:1ll0lgeamaf10a7vo18pa5t8u1@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+CREATED:20260317T173641Z
+DESCRIPTION:It is a microm.   Do you have a key to open?  Installer code on
+  inside of intercom.  Program then call customer to test.   If no answer\, 
+ just leave message to say the intercom has been programmed.  Not too sure w
+ hat they use as the dial codes but check other units and see if it is the u
+ nit number or last four digits of their number.\nEmail Kate 16 03\nUnit Num
+ ber: Villa Royale unit 403\nResident Name: Chris Wood\nEmail Address: cwood
+ let@gmail.com (mailto:cwoodlet@gmail.com)\nPhone number: 5875833053\nName o
+ n Display: Chris\n\n\nDone.(Roman Kushner)\nEntered new resident into the i
+ ntercom \nTested and Left voice message from the intercome unit 6403 \nTota
+ l Time: 25m
+LAST-MODIFIED:20260330T163142Z
+LOCATION:620 15 Ave SW\, Calgary\, AB T2R 0R5\, Canada
+SEQUENCE:8
+STATUS:CONFIRMED
+SUMMARY:23476 Villa Royale 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260527T144500Z
+DTEND:20260527T151500Z
+DTSTAMP:20260531T230205Z
+UID:7s0s9lc4q1meggl66qdt5srak4@google.com
+CREATED:20260526T235256Z
+DESCRIPTION:Building 3000 reader\n\nCOMPLETED \nINSTALLED BACK THE PREVIOUS
+  KT400\nIAIN DID SOME MAGIC PROGRAMING AND IT WORK.\nWORK FOR  DOOR SAPERAT
+ ION WAS COMPLETED.\nTIME:1H
+LAST-MODIFIED:20260528T141734Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Legacy
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260519T140000Z
+DTEND:20260519T143000Z
+DTSTAMP:20260531T230205Z
+UID:1lkttkrpvvgncu5k75ekb99fed@google.com
+CREATED:20260519T133635Z
+DESCRIPTION:Calls studio owner and find out if you can go there tomorrow mo
+ nring first thing.  Let me know.
+LAST-MODIFIED:20260521T155358Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Bella Vista J23366
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260508T143000Z
+DTEND:20260508T150000Z
+DTSTAMP:20260531T230205Z
+UID:2nhi559s9105mmf6u81gd3ou77@google.com
+CREATED:20260508T144042Z
+DESCRIPTION:<p dir="ltr">1000 KT400 1 Controller Trouble - Controller Modul
+ e Communication Failure SN 24334145</p><p>1000 KTES Controller AC not super
+ vised in alarm SN 20303209</p><p>3000 KT400 2 Controller Trouble Controller
+  Module Communication Failure SN 18167110</p>
+LAST-MODIFIED:20260508T144043Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Legacy
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260515T153000Z
+DTEND:20260515T160000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:2p78gvpjd64c0j8ub0fhtij0gd@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=sa
+ les@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260514T233826Z
+LAST-MODIFIED:20260514T233826Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Legacy
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260507T140000Z
+DTEND:20260507T143000Z
+DTSTAMP:20260531T230205Z
+UID:7fdqhp2ppbra1foqpq0hbvk7be@google.com
+CREATED:20260507T003603Z
+DESCRIPTION:Cameras and front door closer 1000 building.
+LAST-MODIFIED:20260525T174214Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Skymills (asked Duncan)
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260417T143000Z
+DTEND:20260417T150000Z
+DTSTAMP:20260531T230205Z
+UID:3qj00deibfq5isf0r0uoaj0ik9@google.com
+CREATED:20260416T204357Z
+DESCRIPTION:Collect envelope for Security Depot.  Deliver to office please.
+LAST-MODIFIED:20260417T132844Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Karen King offices
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260521T140000Z
+DTEND:20260521T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:1c8q83pmgm009kaledtp7grce2@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260519T211021Z
+DESCRIPTION:From: Rorie Jones \nSent: Monday\, 18 May\, 2026 20:19\nTo: Dun
+ can Scoular \; Admin Security Depot \nSubject: Video Cameras are down in Bu
+ ilding C130\n\nWe had a garage door mishap this afternoon and we went to ha
+ ve a look for the video footage so we could determine what happened\, but a
+ ll the cameras are down except for the front lobby.  Can you have a look at
+  this and fix the issue so that they are live again.\n \nCompleted: Faulty 
+ power supply. Went to office to grab new one that Dex had in the back. Inst
+ alled and back online now. \nTook 20 mins
+LAST-MODIFIED:20260525T202735Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Panorama West J23832
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260501T140000Z
+DTEND:20260501T143000Z
+DTSTAMP:20260531T230205Z
+UID:0faagl4eepms3g6e0m38d19r0g@google.com
+CREATED:20260430T233818Z
+DESCRIPTION:Hand over antenna for 51 Oak to Darrell for Mike\nCollect heavy
+  duty closer from Mike for Panorama Pointe 4000.\nCollect Speco camera for 
+ Panorama Pointe\nCheck in office for something for lock at rocky ridge.  Pi
+ ece(s) of aluminium.
+LAST-MODIFIED:20260501T035411Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Office
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260327T140000Z
+DTEND:20260327T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:5ms2h714heu3ihtf4akur2nrcv@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+CREATED:20260317T135452Z
+DESCRIPTION:NVR\, cabinet\, computer in.  Show Roman which does to change o
+ ver.   Show Simon which doors need hardware. Please visit and check with th
+ e original order as to what door work needs to be done.  Compile list\, ord
+ er product and then arrange Simon to go to site and complete.<br><br>Jonath
+ an speak to Darrell about 23433 about the handicap button.  See slack for 2
+ 5th Feb and today from Daniil.  What is the answer?  Do we need CX12's<br><
+ br><p><br></p>
+LAST-MODIFIED:20260330T142527Z
+SEQUENCE:4
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260514T151500Z
+DTEND:20260514T154500Z
+DTSTAMP:20260531T230205Z
+UID:2s9se52uduv6r34eesbrok39bb@google.com
+CREATED:20260513T135334Z
+DESCRIPTION:From: Brenda Watson <brenda@arhvacinc.com (mailto:brenda@arhvac
+ inc.com)>\nSent: Tuesday\, 12 May\, 2026 13:31\nTo: Duncan Scoular <duncan@
+ securitydepot.ca (mailto:duncan@securitydepot.ca)>\nSubject: ServiceOur sys
+ tem is not working well. We are getting beeps - 3fast beeps and 2 slow beep
+ s every 5 mins. \n Our computer guys says it is the alarm hard drive thatre
+ cords the video.   \nAlarm has issue as well.  We currently have a malfunct
+ ion Lock ID:6. Wealso had several issues with the sensor at the front door 
+ the past few months.We had to bypass it 2-3 times to stop it from going off
+ .\nTake new hard drive with you.  Update firmware on NVR and cameras\n=====
+ =======\nCompleted \n=====\n10:20 -11:15\nSwapped faulty hard drive from 2T
+ B to 4TB confirmed that cameras  recording and work on their phone.\n\nSwap
+ ped front door from sline to powerG (got from Dani\, who got from Dex innof
+ fice and wasnt labbeled). Tested and good.\n\nBack door Swapped batteries a
+ nd greased the latch.
+LAST-MODIFIED:20260514T174820Z
+LOCATION:240057 Frontier Cres\, Calgary\, AB T1X 0W3\, Canada
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Advanced Refrigeration J23812
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260515T141000Z
+DTEND:20260515T144000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:0de06fv8d6md2la02mec2hakc2@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=sa
+ les@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=mi
+ keac01@gmail.com;X-NUM-GUESTS=0:mailto:mikeac01@gmail.com
+CREATED:20260514T165947Z
+DESCRIPTION:Has camera issues\nWants to add TV at counter\nWhat do we need 
+ for cameras and alarm components for new side.  Check if we have at the off
+ icde and/or order.\nInstall the griill.  Make sure that you have the screws
+  with you!!\nJonathan show Michael what is needed as want him to returm nex
+ t week and complete please.\n\nCompleted: Installed the grill. Installed th
+ e new Door sensor on the North Entrance (was already on site\,they changed 
+ to sliding door so couldn't do it yet during initial install).\nPut new bat
+ teries in bakery grocery.\n\nIains thinking of doing a hybrid dvr for his n
+ ew recorder\, he has a 16ch at the moment\, but had more than 16 now.\nSo i
+ f we do hybrid\, need to come with a 16 ch switch (10 cams are plugged into
+  exiting nvr)\n\nRamin would like us to relocate his tv/dw module\, so some
+ one should be with Mike when here next week.\n\nAlso he wants 2 cameras rel
+ ocated\, one of them we can't access easily\, he will be on site when we go
+ \, and Mike will explain the issue.
+LAST-MODIFIED:20260515T164004Z
+LOCATION:105 4655 54th Ave NE\, Calgary\, AB T3J 3Z4\, Canada
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Shaheen grocery
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260416T140000Z
+DTEND:20260416T143000Z
+DTSTAMP:20260531T230205Z
+UID:1r3t8tocvjq101e45o2b22ik0a@google.com
+CREATED:20260415T022503Z
+DESCRIPTION:See the faults and missing information in First and Park from I
+ ain.   Suggest do the outside camera first.  Someone is needed to hold the 
+ ladder for safety.
+LAST-MODIFIED:20260416T135450Z
+SEQUENCE:3
+STATUS:CONFIRMED
+SUMMARY:First and Park
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260429T220000Z
+DTEND:20260429T223000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:65lv7m42ae4de55ms3605b7dmq@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:director@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260429T214347Z
+DESCRIPTION:Per Phone call from Emmanuel today at 03:40PM \n\nB2000 the ove
+ rhead is not opening. People are unable to get in or out\n\nplease go right
+  away\n\nRoman Kushner \n16:30-16:45\n\nChecked the receiver\, tested the m
+ anuals buttons for the overhead and didn't work.\nThe motor make sounds lik
+ e trying to pull the gate (side chain works fine) the main chain that conne
+ cted to the overhead gate doesn't work.
+LAST-MODIFIED:20260430T162004Z
+LOCATION:240 Skyview Ranch Rd\, Calgary\, AB T3N 1B6
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:SKYMILLS - B2000 Overhead | J23760
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260922T154000Z
+DTEND:20260922T161000Z
+DTSTAMP:20260531T230205Z
+UID:cop66dhgcdhjabb26gs3eb9kcph3abb26gojcbb569h34c34coqj4c1h6g@google.com
+CREATED:20260519T163855Z
+LAST-MODIFIED:20260519T163855Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Dr Kuzel
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260508T140000Z
+DTEND:20260508T143000Z
+DTSTAMP:20260531T230205Z
+UID:72jg5cs6vvglgoph1vj4u66fh6@google.com
+CREATED:20260507T200336Z
+DESCRIPTION:<p>Legacy 1000 KTES shows AC not supervised in alarm.  Will the
+  below resolve this?</p><p>Need to check and let me know what planning we n
+ eed to do.</p><p>Currently\, both doors unlock at the same time for a defin
+ ed set of time and then relock together at the end of the time cycle.</p><p
+ >We will functionally separate the doors into Exterior and Interior which w
+ ill allow for:</p><ul> <li>The exterior door will unlock     for up to 10 s
+ econds\, and it will relock once the door closes – so those     moving quic
+ kly will have a secure door behind them.</li> <li>The interior door will un
+ lock     for 15 seconds\, allowing time to get to the interior door and mov
+ e     through. This door will stay unlocked for the full 15 seconds rather 
+ than     lock when closed (to avoid issues with someone leaving at the time
+  and the     door locking prematurely). </li></ul><p>If someone doesn’t get
+  to the second door in time\, they can use a new reader in the vestibule to
+  open the interior door.</p><p>If someone uses the reader in the vestibule\
+ , it will ONLY unlock the interior door. This enhances safety of someone wh
+ o is waiting in or entered the vestibule and there is a threat outside the 
+ main doors\, they can safely move back into the building without unlocking 
+ the exterior door.</p><p>We will continue the convenience function of swipi
+ ng at the exterior to unlock both doors to travel through. The same will oc
+ cur with the Intercom – as it does now.</p><p> </p><p>Since 5 elevator cab 
+ controls were planned for and never added\, there are sufficient free door 
+ slots on the controller’s available onsite to facilitate this work. </p><p>
+ We will rewire and relocate one single door controller from the Parkade up 
+ to the 2000 Office to facilitate 2000’s separation.</p><p>In 1000 and 3000\
+ , additional cabling will be required to be run from the main entrance to t
+ he parkade mechanical rooms below. </p><p>I believe that the existing cable
+  tracking is full\, so a new route needs to be run alongside\, tracking is 
+ used to help conceal cabling and keep it neat and is mounted on the surface
+  of the wall in the lobbies and vestibule already.</p><p> </p><table> <tbod
+ y><tr>  <td>  <p><b><u>Building 1000\, 2000\, 3000 - Separation of Interior
+  and Exterior  Main Entrance Doors</u></b></p>  </td> </tr> <tr>  <td>  <p>
+ 3</p>  </td>  <td>  <p>Smart Prox Reader without Keypad</p>  </td>  <td>  <
+ p>                  </p>  </td>  <td>  <p><br></p>  </td> </tr> <tr>  <td> 
+  <p>3</p>  </td>  <td>  <p>Standard Installation\; at-the-door wiring\, ins
+ tallation\, and  configuration</p></td><td></td><td>  </td> </tr> <tr>  <td
+ >  <p>2</p>  </td>  <td>  <p>Conduit and Tracking Allowance</p></td><td></t
+ d><td>  </td> </tr> <tr>  <td>  <p>1</p>  </td>  <td>  <p>Rewire and Reloca
+ te Single-Door Controller\, Tracking for 2000</p></td><td></td><td>  </td> 
+ </tr> <tr>  <td>  <p><br></p></td><td></td></tr></tbody></table>
+LAST-MODIFIED:20260525T181648Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Legacy Gate J23358
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260204T144500Z
+DTEND:20260204T151500Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:5cjjieltp6frf8455tv9u84c0k@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260204T000615Z
+DESCRIPTION:Daniil arrange to collect/meet Ray at a central point.  Ray to 
+ travel with Daniil.
+LAST-MODIFIED:20260204T002655Z
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Travel together tomorrow
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260422T140000Z
+DTEND:20260422T143000Z
+DTSTAMP:20260531T230205Z
+UID:2es07jk51n2qe0sv1seah41sqb@google.com
+CREATED:20260420T030215Z
+DESCRIPTION:What is left to be done excluding the elevator cameras.   Outsi
+ de camera at overhead\, two cameras in the server rooms\,
+LAST-MODIFIED:20260422T030256Z
+SEQUENCE:4
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260525T143000Z
+DTEND:20260525T150000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=sales@securitydepot.ca:mailto:sales@securitydepot.ca
+UID:7r6j4u53glnqdh3s47ssrfvs1k@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:sales@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ra
+ y.secdep@gmail.com;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260525T023719Z
+DESCRIPTION:Fit the build out for the lock\nCompleted:\nAdded metal spacer 
+ to strike house.\n\nNeed Plate for octopod: 1.9X3X0.2\n1X1.3X0.2\nTime: 1.5
+ h\n\nCompleted:\nInstalled 2 new plates on  octopod.\nLM connected.\nTracki
+ ng.\nUse cable loop from the office.\nRan cat5 for future Rex\nTime:3H
+LAST-MODIFIED:20260527T154830Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Rocky Ridge Landing J23375
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260430T150000Z
+DTEND:20260430T153000Z
+DTSTAMP:20260531T230205Z
+UID:34pkq2vb7r2it6ljhn9hggslsj@google.com
+CREATED:20260430T155028Z
+DESCRIPTION:Site off line - liasie with office
+LAST-MODIFIED:20260430T160228Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:August
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260511T140000Z
+DTEND:20260511T143000Z
+DTSTAMP:20260531T230205Z
+UID:60rjidhk6sq6cb9m70qm2b9kchh64b9o68om8b9g6so3iphjc9hjed9g60@google.com
+CREATED:20260511T130834Z
+LAST-MODIFIED:20260511T130835Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Legacy
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260205T153000Z
+DTEND:20260205T233000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:0q454g40lq6g6ojd0pr5vnsnm7@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=da
+ niil.secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260204T225245Z
+LAST-MODIFIED:20260205T145736Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Hestia Shawnee J20818
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260324T140000Z
+DTEND:20260324T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:21958jb99r3pv3oblvb7c5jb46@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=daniil
+ .secdep@gmail.com;X-NUM-GUESTS=0:mailto:daniil.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+X-GOOGLE-CONFERENCE:https://meet.google.com/pne-wygt-hfo
+CREATED:20260322T203935Z
+DESCRIPTION:Work towards finishing this project urgently.\n\n-::~:~::~:~:~:
+ ~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-\n
+ Join with Google Meet: https://meet.google.com/pne-wygt-hfo\n\nLearn more a
+ bout Meet at: https://support.google.com/a/users/answer/9282720\n\nPlease d
+ o not edit this section.\n-::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~
+ :~:~:~:~:~:~:~:~:~:~:~:~:~:~:~::~:~::-
+LAST-MODIFIED:20260330T142842Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Argyle J22505
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260115T150000Z
+DTEND:20260115T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:6dijie9kchgjcb9n6ooj4b9k6ss3gbb169ij2b9n6ph3aob3cph6ce3174@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ro
+ man.secdep@gmail.com;X-NUM-GUESTS=0:mailto:roman.secdep@gmail.com
+CREATED:20260115T015152Z
+LAST-MODIFIED:20260205T205938Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260311T140000Z
+DTEND:20260311T143000Z
+DTSTAMP:20260531T230205Z
+UID:60p36cj4c4p34b9l6sr3eb9kcpi62b9o65i30b9g6pgjephn69h30e9nc8@google.com
+CREATED:20260311T130405Z
+LAST-MODIFIED:20260311T130405Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Shawnee
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260112T150000Z
+DTEND:20260112T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:6c2n51tcbcjpoaqg0g2mvhol3e@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=ro
+ man.secdep@gmail.com;X-NUM-GUESTS=0:mailto:roman.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260112T150511Z
+LAST-MODIFIED:20260205T205608Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:First and Park J22951
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260506T140000Z
+DTEND:20260506T143000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:645gos6n43bdo5o86ribmha1rj@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=mi
+ keac01@gmail.com;X-NUM-GUESTS=0:mailto:mikeac01@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260504T163829Z
+DESCRIPTION:Do alarm on door to stairwell.  Bear in mind the hours that the
+  exercise studio is open.  See if they will leave you with the key.\nMike c
+ ollect conduit and parts needed. In particular is what type of switch to be
+  used.  Discuss with Iain please.\nAround noonish\, remove existing door ha
+ ndle on the garbage room and replace with the storeroom fucntion that you h
+ ave.  Will let you know where the two keys are to go.\nPlease check the int
+ ernet speed on their service.  They want monitoring of two cameras but they
+  are so slow that it will not be of any use.
+LAST-MODIFIED:20260521T155522Z
+SEQUENCE:2
+STATUS:CONFIRMED
+SUMMARY:Bella Vista J23366
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260526T150000Z
+DTEND:20260526T153000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3ahji82sqshui6dtr25jatfepe@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+CREATED:20260526T023517Z
+DESCRIPTION:<p>The RBH Integra32 software can be accessed with user name &q
+ uot\;rbh&quot\; and password &quot\;password&quot\;. The Provision CCTVNVR 
+ (192.168.16.200) can be accessed with user &quot\;admin&quot\; and password
+ &quot\;123456&quot\;. I reset the password for the &quot\;Copperfield&quot\
+ ; user to &quot\;Winter2026!&quot\; on the second floor PC and gave the use
+ r admin rights. If there is a separate Hikvision NVR installed somewhere\, 
+ I don&#39\;t have any access to it and most likely it wasn&#39\;t installed
+  by us. The front door intercom panels would be programmed directly and you
+  can try the password&quot\;1999&quot\; for access.  Intercom 9999 then 019
+ 2 to access\, </p><p>With the login for the buildings network video recorde
+ r (NVR) I can know test to confirm if that can be added as is to the new re
+ cording software or requires replacement.</p><p>The Garbage NVR we will nee
+ d to get the password and can do that through Hikvision for you\, no worrie
+ s.</p><p>For the intercoms\; we can test that code for you to ensure it is 
+ correct. Who has been adding entries to the intercom for residents until no
+ w? Whomever that is\, would absolutely know the code since it is required f
+ or programming. If not PCS\, please ask that person as well?</p><p>When ons
+ ite we will confirm the logins for the PC\, RBH\, and Camera as well.</p>
+LAST-MODIFIED:20260526T023518Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Symmetry and Harmony (asked Duncan)
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260528T133000Z
+DTEND:20260528T140000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:68o66dhp6ko68b9hcco6ab9kcgp3gb9o6kq34b9o6lh32d1p6pij4cr2c4@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=duncan
+ @securitydepot.ca;X-NUM-GUESTS=0:mailto:duncan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=jo
+ nathan@securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Ra
+ y;X-NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260527T224640Z
+DESCRIPTION:Fix bottom hole for octopod\n\nCompleted: Got to site (we let A
+ ustin know as soon as we arrived to Sandy's\, no response) Needed octopod k
+ eys.\nTried calling Austin again\, sent a text saying he's in meetings and 
+ can't help. Provided 2 other board members. Tried calling\, no response. Wa
+ ited 20 mins. Called Duncan\, told us to move on. Still need to return to c
+ omplete bottom octopod
+LAST-MODIFIED:20260528T223325Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Rocky
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260519T153000Z
+DTEND:20260519T160000Z
+DTSTAMP:20260531T230205Z
+ORGANIZER;CN=Ray:mailto:ray.secdep@gmail.com
+UID:3dt7c3c39ol02t9f68ktbb1pdm@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=sales@
+ securitydepot.ca;X-NUM-GUESTS=0:mailto:jonathan@securitydepot.ca
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;CN=Ray;X-
+ NUM-GUESTS=0:mailto:ray.secdep@gmail.com
+CREATED:20260519T133842Z
+DESCRIPTION:Can we finish today?\n\n\n=====Completed =====\nRoman Kushner \
+ n11:15-16:00\nBuilding 2000:\nMoved KT1 to office\, separated the exterior 
+ and interior door. IoSmart reader was added.\n\nBuilding 1000:\nJohnathan F
+ ixed the LED and Access Denied issue \nLED terminal on KT400 is bad.\n\nBui
+ lding 3000:\nDoor 14 - strike should be replaced.\nPulled the latch monitor
+  out\, but it temporarily and the issue will be return.
+LAST-MODIFIED:20260520T235018Z
+SEQUENCE:1
+STATUS:CONFIRMED
+SUMMARY:Legacy 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260529T140000Z
+DTEND:20260529T143000Z
+DTSTAMP:20260531T230205Z
+UID:coq62dj564pjab9gc5j32b9kckrm6b9pcgqjabb164qj8dj56kr6ae9l64@google.com
+CREATED:20260527T224657Z
+DESCRIPTION:Check  if it is cleared before going.\n\nCompleted: Checked wit
+ h Dex before going to site\, still showed open.\nGot to site\, had to exten
+ d the tamper out a little more to make contact with front panel. Pushed on 
+ cover when closed\, no more tamper triggers. All good. Took 5 mins
+LAST-MODIFIED:20260529T173815Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Centro tamper
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20260312T140000Z
+DTEND:20260312T143000Z
+DTSTAMP:20260531T230205Z
+UID:0of4ktvet87tpburjd28b1ev45@google.com
+CREATED:20260312T134228Z
+LAST-MODIFIED:20260312T134228Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Shawnee
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
