@@ -88,6 +88,8 @@ class JobOut(BaseModel):
     needs_return_visit: bool
     needs_manager_review: bool
     confidence: str
+    category: str
+    source_email_id: str | None
     calendar_details: list[CalendarDetailOut] = []
 
 
@@ -135,6 +137,9 @@ class VisitOut(BaseModel):
     work_summary: str
     parts_status: str
     needs_manual_review: bool
+    materials_used: str
+    follow_up_notes: str
+    calendar_event_id: str
 
 
 class VisitUpdate(BaseModel):
@@ -166,3 +171,50 @@ class DashboardSummary(BaseModel):
     waiting_parts: int
     completed: int
     needs_manager_review: int
+
+
+class DispatchCreate(BaseModel):
+    email_id: str
+    site_id: str
+    title: str
+    category: str
+    priority: str
+    technician_id: str
+    scheduled_start: datetime
+    scheduled_end: datetime
+    instructions: str
+
+
+class TechnicianReportCreate(BaseModel):
+    status: str
+    duration_minutes: int
+    work_performed: str
+    materials_used: str = ""
+    follow_up_notes: str = ""
+
+
+class EmailMessageOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: str
+    thread_id: str
+    sender: str
+    recipients: str
+    subject: str
+    body: str
+    received_at: datetime
+    labels: str
+    is_read: bool
+    attachment_names: str
+    linked_job_id: str | None
+
+
+class NotificationOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: int
+    job_id: str | None
+    visit_id: str | None
+    kind: str
+    title: str
+    message: str
+    is_read: bool
+    created_at: datetime

@@ -9,9 +9,10 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
 
 from app.database import create_schema, get_session
-from app.models import Job, Site, Technician, Visit
-from app.schemas import DashboardSummary, JobCreate, JobOut, JobUpdate, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
+from app.models import EmailMessage, Job, Notification, Site, Technician, Visit
+from app.schemas import DashboardSummary, DispatchCreate, EmailMessageOut, JobCreate, JobOut, JobUpdate, NotificationOut, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianReportCreate, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
 from app.seed_loader import load_seed_file, reset_and_load_seed
+from app.workflows import WorkflowConflict, WorkflowValidationError, convert_email_to_service_call, submit_technician_report
 
 app = FastAPI(title="Security Depot FSM Mock API", version="0.1.0")
 
@@ -36,6 +37,58 @@ def web_root() -> RedirectResponse:
 @app.post("/admin/load-seed")
 def load_seed(session: Session = Depends(get_session)) -> dict[str, int]:
     return reset_and_load_seed(session, load_seed_file())
+
+
+@app.post("/admin/reset-demo")
+def reset_demo(session: Session = Depends(get_session)) -> dict[str, int]:
+    return reset_and_load_seed(session, load_seed_file())
+
+
+@app.get("/emails", response_model=list[EmailMessageOut])
+def list_emails(session: Session = Depends(get_session)) -> list[EmailMessage]:
+    return list(session.scalars(select(EmailMessage).order_by(EmailMessage.received_at.desc())))
+
+
+@app.get("/emails/{email_id}", response_model=EmailMessageOut)
+def get_email(email_id: str, session: Session = Depends(get_session)) -> EmailMessage:
+    message = session.get(EmailMessage, email_id)
+    if message is None:
+        raise HTTPException(status_code=404, detail="Email not found")
+    return message
+
+
+@app.post("/dispatch/from-email", response_model=JobOut)
+def dispatch_from_email(payload: DispatchCreate, session: Session = Depends(get_session)) -> Job:
+    try:
+        return convert_email_to_service_call(session, payload)
+    except WorkflowConflict as error:
+        raise HTTPException(status_code=409, detail=str(error)) from error
+    except WorkflowValidationError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+
+
+@app.get("/notifications", response_model=list[NotificationOut])
+def list_notifications(session: Session = Depends(get_session)) -> list[Notification]:
+    return list(session.scalars(select(Notification).order_by(Notification.created_at.desc())))
+
+
+@app.patch("/notifications/{notification_id}/read", response_model=NotificationOut)
+def read_notification(notification_id: int, session: Session = Depends(get_session)) -> Notification:
+    notification = session.get(Notification, notification_id)
+    if notification is None:
+        raise HTTPException(status_code=404, detail="Notification not found")
+    notification.is_read = True
+    session.commit()
+    session.refresh(notification)
+    return notification
+
+
+@app.post("/visits/{visit_id}/report", response_model=VisitOut)
+def technician_report(visit_id: str, payload: TechnicianReportCreate, session: Session = Depends(get_session)) -> Visit:
+    try:
+        return submit_technician_report(session, visit_id, payload)
+    except WorkflowValidationError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
 
 
 @app.get("/dashboard/summary", response_model=DashboardSummary)

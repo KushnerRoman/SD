@@ -19,9 +19,12 @@ def load_seed_file(path: Path = DEFAULT_SEED_PATH) -> dict[str, Any]:
 
 
 def reset_and_load_seed(session: Session, seed: dict[str, Any]) -> dict[str, int]:
+    session.execute(delete(models.Notification))
+    session.execute(delete(models.ActivityEntry))
     session.execute(delete(models.CalendarDetail))
     session.execute(delete(models.Visit))
     session.execute(delete(models.Job))
+    session.execute(delete(models.EmailMessage))
     session.execute(delete(models.Site))
     session.execute(delete(models.Technician))
     session.flush()
@@ -43,6 +46,33 @@ def reset_and_load_seed(session: Session, seed: dict[str, Any]) -> dict[str, int
             name=str(technician.get("name", "")),
             email=str(technician.get("email", "")),
             initials=str(technician.get("initials", "")),
+        ))
+
+    for technician in [
+        {"id": "tech_sam", "name": "Sam", "email": "sam@securitydepot.ca", "initials": "SM", "skills": "Cameras/CCTV, Cable Management", "color": "#8B5CF6"},
+        {"id": "tech_alex", "name": "Alex", "email": "alex@securitydepot.ca", "initials": "AX", "skills": "Intercom, Access Control", "color": "#0F9D8A"},
+    ]:
+        session.add(models.Technician(
+            id=technician["id"], name=technician["name"], email=technician["email"], initials=technician["initials"],
+            skills=technician["skills"], calendar_color=technician["color"], active=True,
+        ))
+
+    messages = [
+        ("mail_intercom", "Property Manager <manager@northtower.ca>", "Lobby intercom not calling concierge", "The lobby intercom stopped calling the concierge desk this morning. Please arrange a technician.", "Service,Inbox"),
+        ("mail_access", "Cedar Plaza <ops@cedarplaza.ca>", "Urgent: loading dock card reader", "Staff cards are being rejected at the loading dock reader.", "Service,Urgent,Inbox"),
+        ("mail_camera", "Lakeshore Condo <board@lakeshore.ca>", "Parking camera image flickering", "Camera P2-14 has a flickering image after last night's storm.", "Service,Inbox"),
+        ("mail_cable", "Project Team <projects@client.ca>", "Cable cleanup request - server room", "Please schedule cable dressing and labeling in the second floor server room.", "Service,Inbox"),
+        ("mail_hours", "Distributor <news@supplier.ca>", "Updated holiday hours", "Our warehouse holiday hours have changed. See the attached schedule.", "Inbox,Newsletter"),
+        ("mail_invoice", "Accounting <billing@supplier.ca>", "June statement available", "Your June statement is ready for review.", "Inbox,Finance"),
+        ("mail_training", "Training <events@manufacturer.ca>", "Access control certification webinar", "Registration is open for next month's product webinar.", "Inbox,Training"),
+        ("mail_delivery", "Courier <tracking@courier.ca>", "Package delivered", "Your package was delivered at 14:23.", "Inbox"),
+    ]
+    anchor = datetime(2026, 7, 11, 8, 0)
+    for index, (message_id, sender, subject, body, labels) in enumerate(messages):
+        session.add(models.EmailMessage(
+            id=message_id, thread_id=f"thread_{index + 1}", sender=sender, recipients="service@securitydepot.ca",
+            subject=subject, body=body, received_at=anchor.replace(hour=min(17, 8 + index)), labels=labels,
+            is_read=index > 3, attachment_names="holiday-hours.pdf" if message_id == "mail_hours" else "",
         ))
 
     session.flush()
@@ -127,6 +157,8 @@ def reset_and_load_seed(session: Session, seed: dict[str, Any]) -> dict[str, int
         "jobs": session.query(models.Job).count(),
         "visits": session.query(models.Visit).count(),
         "calendar_details": session.query(models.CalendarDetail).count(),
+        "emails": session.query(models.EmailMessage).count(),
+        "notifications": session.query(models.Notification).count(),
     }
 
 

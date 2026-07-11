@@ -18,6 +18,12 @@ class Site(Base):
     slack_channel: Mapped[str] = mapped_column(String(255), default="")
     source: Mapped[str] = mapped_column(String(255), default="")
     needs_manual_review: Mapped[bool] = mapped_column(Boolean, default=False)
+    customer: Mapped[str] = mapped_column(String(255), default="")
+    contact_name: Mapped[str] = mapped_column(String(255), default="")
+    contact_phone: Mapped[str] = mapped_column(String(64), default="")
+    contact_email: Mapped[str] = mapped_column(String(255), default="")
+    access_notes: Mapped[str] = mapped_column(Text, default="")
+    systems_notes: Mapped[str] = mapped_column(Text, default="")
 
     jobs: Mapped[list["Job"]] = relationship(back_populates="site")
     visits: Mapped[list["Visit"]] = relationship(back_populates="site")
@@ -30,6 +36,11 @@ class Technician(Base):
     name: Mapped[str] = mapped_column(String(255), index=True)
     email: Mapped[str] = mapped_column(String(255), default="")
     initials: Mapped[str] = mapped_column(String(16), default="")
+    phone: Mapped[str] = mapped_column(String(64), default="")
+    skills: Mapped[str] = mapped_column(Text, default="")
+    working_hours: Mapped[str] = mapped_column(String(255), default="Mon-Fri 08:00-17:00")
+    calendar_color: Mapped[str] = mapped_column(String(32), default="#2F74C0")
+    active: Mapped[bool] = mapped_column(Boolean, default=True)
 
     jobs: Mapped[list["Job"]] = relationship(back_populates="assigned_technician")
     visits: Mapped[list["Visit"]] = relationship(back_populates="technician")
@@ -55,11 +66,14 @@ class Job(Base):
     needs_return_visit: Mapped[bool] = mapped_column(Boolean, default=False)
     needs_manager_review: Mapped[bool] = mapped_column(Boolean, default=False)
     confidence: Mapped[str] = mapped_column(String(64), default="")
+    category: Mapped[str] = mapped_column(String(64), default="Other")
+    source_email_id: Mapped[str | None] = mapped_column(String(64), ForeignKey("email_messages.id"), nullable=True)
 
     site: Mapped[Site | None] = relationship(back_populates="jobs")
     assigned_technician: Mapped[Technician | None] = relationship(back_populates="jobs")
     visits: Mapped[list["Visit"]] = relationship(back_populates="job")
     calendar_details: Mapped[list["CalendarDetail"]] = relationship(back_populates="job", cascade="all, delete-orphan")
+    activities: Mapped[list["ActivityEntry"]] = relationship(back_populates="job", cascade="all, delete-orphan", order_by="ActivityEntry.created_at")
 
 
 class Visit(Base):
@@ -77,6 +91,9 @@ class Visit(Base):
     work_summary: Mapped[str] = mapped_column(Text, default="")
     parts_status: Mapped[str] = mapped_column(String(64), default="No Parts Mentioned")
     needs_manual_review: Mapped[bool] = mapped_column(Boolean, default=False)
+    materials_used: Mapped[str] = mapped_column(Text, default="")
+    follow_up_notes: Mapped[str] = mapped_column(Text, default="")
+    calendar_event_id: Mapped[str] = mapped_column(String(64), default="")
 
     job: Mapped[Job | None] = relationship(back_populates="visits")
     site: Mapped[Site | None] = relationship(back_populates="visits")
@@ -97,3 +114,45 @@ class CalendarDetail(Base):
     description: Mapped[str] = mapped_column(Text, default="")
 
     job: Mapped[Job] = relationship(back_populates="calendar_details")
+
+
+class EmailMessage(Base):
+    __tablename__ = "email_messages"
+
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    thread_id: Mapped[str] = mapped_column(String(64), default="")
+    sender: Mapped[str] = mapped_column(String(255), index=True)
+    recipients: Mapped[str] = mapped_column(Text, default="")
+    subject: Mapped[str] = mapped_column(String(500), index=True)
+    body: Mapped[str] = mapped_column(Text, default="")
+    received_at: Mapped[datetime] = mapped_column(DateTime, index=True)
+    labels: Mapped[str] = mapped_column(Text, default="Inbox")
+    is_read: Mapped[bool] = mapped_column(Boolean, default=False)
+    attachment_names: Mapped[str] = mapped_column(Text, default="")
+    linked_job_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+
+
+class ActivityEntry(Base):
+    __tablename__ = "activity_entries"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    job_id: Mapped[str] = mapped_column(String(64), ForeignKey("jobs.id"), index=True)
+    event_type: Mapped[str] = mapped_column(String(64), index=True)
+    message: Mapped[str] = mapped_column(Text)
+    actor: Mapped[str] = mapped_column(String(255), default="Manager")
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, index=True)
+
+    job: Mapped[Job] = relationship(back_populates="activities")
+
+
+class Notification(Base):
+    __tablename__ = "notifications"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    job_id: Mapped[str | None] = mapped_column(String(64), ForeignKey("jobs.id"), nullable=True, index=True)
+    visit_id: Mapped[str | None] = mapped_column(String(64), ForeignKey("visits.id"), nullable=True)
+    kind: Mapped[str] = mapped_column(String(64), index=True)
+    title: Mapped[str] = mapped_column(String(500))
+    message: Mapped[str] = mapped_column(Text, default="")
+    is_read: Mapped[bool] = mapped_column(Boolean, default=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, index=True)
