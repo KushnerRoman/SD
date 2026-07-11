@@ -1,7 +1,7 @@
 import 'field_service_repository.dart';
 import '../domain/models.dart';
 
-class MockFieldServiceRepository implements FieldServiceRepository {
+class MockFieldServiceRepository extends FieldServiceRepository {
   MockFieldServiceRepository()
       : _jobs = List<Job>.from(_seedJobs),
         _visits = List<Visit>.from(_seedVisits),

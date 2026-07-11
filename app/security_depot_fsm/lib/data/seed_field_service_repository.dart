@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'field_service_repository.dart';
 import '../domain/models.dart';
 
-class SeedFieldServiceRepository implements FieldServiceRepository {
+class SeedFieldServiceRepository extends FieldServiceRepository {
   SeedFieldServiceRepository._({
     required List<Site> sites,
     required List<Job> jobs,

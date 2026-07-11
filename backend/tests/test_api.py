@@ -8,8 +8,14 @@ from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import StaticPool
 
 from app.database import Base, get_session
+from app.database import database_url
 from app.main import app
 from app.seed_loader import load_seed_file, reset_and_load_seed
+
+
+def test_default_database_is_persistent_sqlite(monkeypatch):
+    monkeypatch.delenv("DATABASE_URL", raising=False)
+    assert database_url().startswith("sqlite+pysqlite:///")
 
 
 def test_api_lists_and_updates_jobs():

@@ -8,6 +8,7 @@ backend/.venv/
 backend/.pytest_cache/
 backend/app/__pycache__/
 backend/tests/__pycache__/
+backend/*.db
 
 *.pyc
 *.log

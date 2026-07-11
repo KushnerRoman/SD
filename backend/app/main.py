@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
 
-from app.database import create_schema, get_session
+from app.database import SessionLocal, create_schema, get_session
 from app.models import EmailMessage, Job, Notification, Site, Technician, Visit
 from app.schemas import DashboardSummary, DispatchCreate, EmailMessageOut, JobCreate, JobOut, JobUpdate, NotificationOut, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianReportCreate, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
 from app.seed_loader import load_seed_file, reset_and_load_seed
@@ -22,6 +22,9 @@ WEB_BUILD_DIR = Path(__file__).resolve().parents[2] / "app" / "security_depot_fs
 @app.on_event("startup")
 def startup() -> None:
     create_schema()
+    with SessionLocal() as session:
+        if (session.scalar(select(func.count()).select_from(Job)) or 0) == 0:
+            reset_and_load_seed(session, load_seed_file())
 
 
 @app.get("/health")

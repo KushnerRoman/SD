@@ -6,6 +6,92 @@ enum JobType {
   inspection,
 }
 
+enum ServiceCategory {
+  intercom,
+  accessControl,
+  cameras,
+  cableManagement,
+  other
+}
+
+extension ServiceCategoryLabel on ServiceCategory {
+  String get label => switch (this) {
+        ServiceCategory.intercom => 'Intercom',
+        ServiceCategory.accessControl => 'Access Control',
+        ServiceCategory.cameras => 'Cameras/CCTV',
+        ServiceCategory.cableManagement => 'Cable Management',
+        ServiceCategory.other => 'Other',
+      };
+}
+
+class EmailMessage {
+  const EmailMessage({
+    required this.id,
+    required this.sender,
+    required this.subject,
+    required this.body,
+    required this.receivedAt,
+    required this.isRead,
+    required this.labels,
+    this.recipients = '',
+    this.attachmentNames = const [],
+    this.linkedJobId,
+  });
+
+  final String id;
+  final String sender;
+  final String recipients;
+  final String subject;
+  final String body;
+  final DateTime receivedAt;
+  final bool isRead;
+  final List<String> labels;
+  final List<String> attachmentNames;
+  final String? linkedJobId;
+
+  bool get isLinked => linkedJobId != null && linkedJobId!.isNotEmpty;
+}
+
+class ManagerNotification {
+  const ManagerNotification(
+      {required this.id,
+      required this.kind,
+      required this.title,
+      required this.message,
+      required this.createdAt,
+      required this.isRead,
+      this.jobId});
+  final int id;
+  final String kind;
+  final String title;
+  final String message;
+  final DateTime createdAt;
+  final bool isRead;
+  final String? jobId;
+}
+
+class DispatchRequest {
+  const DispatchRequest(
+      {required this.emailId,
+      required this.siteId,
+      required this.title,
+      required this.category,
+      required this.priority,
+      required this.technicianId,
+      required this.start,
+      required this.end,
+      required this.instructions});
+  final String emailId;
+  final String siteId;
+  final String title;
+  final ServiceCategory category;
+  final JobPriority priority;
+  final String technicianId;
+  final DateTime start;
+  final DateTime end;
+  final String instructions;
+}
+
 extension JobTypeLabel on JobType {
   String get label => switch (this) {
         JobType.serviceCall => 'Service Call',

@@ -26,6 +26,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Future.wait([
       widget.repository.getDashboardSummary(),
       widget.repository.getJobs(),
+      widget.repository.getEmails(),
+      widget.repository.getNotifications(),
     ]);
   }
 
@@ -51,13 +53,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
         final summary = snapshot.data![0] as DashboardSummary;
         final jobs = snapshot.data![1] as List<Job>;
+        final emails = snapshot.data![2] as List<EmailMessage>;
+        final notifications = snapshot.data![3] as List<ManagerNotification>;
         final scheduleJobs = [...jobs]
           ..sort((a, b) => a.scheduledStart.compareTo(b.scheduledStart));
         final visibleSchedule = scheduleJobs.take(10).toList();
 
         return _Page(
-          title: 'Manager Dashboard',
-          subtitle: 'Real-time overview using temporary local data',
+          title: 'Operations Command Center',
+          subtitle: 'Dispatch, workload, and service completion at a glance',
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -81,6 +85,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       label: 'Completed',
                       value: summary.completed,
                       color: const Color(0xFF16A34A)),
+                  _MetricTile(
+                      label: 'Inbox',
+                      value: emails
+                          .where((email) => !email.isRead && !email.isLinked)
+                          .length,
+                      color: const Color(0xFFE31B23)),
+                  _MetricTile(
+                      label: 'Updates',
+                      value: notifications.where((item) => !item.isRead).length,
+                      color: const Color(0xFF7C3AED)),
                 ],
               ),
               const SizedBox(height: 20),

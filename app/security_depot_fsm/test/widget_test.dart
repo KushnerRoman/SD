@@ -10,7 +10,7 @@ void main() {
     await tester.pumpWidget(SecurityDepotApp());
     await tester.pumpAndSettle();
 
-    expect(find.text('Manager Dashboard'), findsOneWidget);
+    expect(find.text('Operations Command Center'), findsOneWidget);
     expect(find.textContaining('Could not load local seed data'), findsNothing);
   });
 
@@ -20,9 +20,23 @@ void main() {
     ));
     await tester.pumpAndSettle();
 
-    expect(find.text('Manager Dashboard'), findsOneWidget);
+    expect(find.text('Operations Command Center'), findsOneWidget);
     expect(find.text('New Jobs'), findsOneWidget);
     expect(find.text('Schedule Preview'), findsOneWidget);
+  });
+
+  testWidgets('operations shell exposes manager and calendar demo navigation',
+      (WidgetTester tester) async {
+    await tester.binding.setSurfaceSize(const Size(1440, 900));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(SecurityDepotApp(
+      repositoryLoader: Future.value(MockFieldServiceRepository()),
+    ));
+    await tester.pumpAndSettle();
+    expect(find.text('Operations'), findsOneWidget);
+    expect(find.text('Inbox'), findsWidgets);
+    expect(find.text('History'), findsOneWidget);
+    expect(find.text('Calendar Demo'), findsOneWidget);
   });
 
   testWidgets('technicians screen supports workforce overview',

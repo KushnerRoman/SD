@@ -6,7 +6,11 @@ import 'data/field_service_repository.dart';
 import 'data/mock_field_service_repository.dart';
 import 'data/seed_field_service_repository.dart';
 import 'features/dashboard/dashboard_screen.dart';
+import 'features/inbox/inbox_screen.dart';
 import 'features/jobs/jobs_screen.dart';
+import 'features/history/history_screen.dart';
+import 'features/calendar_demo/calendar_demo_screen.dart';
+import 'features/settings/settings_screen.dart';
 import 'features/schedule/schedule_screen.dart';
 import 'features/sites/sites_screen.dart';
 import 'features/technicians/technicians_screen.dart';
@@ -53,10 +57,22 @@ class SecurityDepotApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF0B5ED7),
+          seedColor: const Color(0xFFE31B23),
           brightness: Brightness.light,
         ),
-        scaffoldBackgroundColor: const Color(0xFFF6F8FB),
+        scaffoldBackgroundColor: const Color(0xFFF4F6F8),
+        fontFamily: 'Arial',
+        inputDecorationTheme: const InputDecorationTheme(
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)))),
+        filledButtonTheme: FilledButtonThemeData(
+            style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFFE31B23),
+                foregroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 16))),
         cardTheme: const CardTheme(
           color: Colors.white,
           elevation: 0,
@@ -108,25 +124,30 @@ class _AppShellState extends State<AppShell> {
   Widget build(BuildContext context) {
     final screens = [
       DashboardScreen(repository: widget.repository),
+      InboxScreen(repository: widget.repository),
       ScheduleScreen(repository: widget.repository),
       JobsScreen(repository: widget.repository),
       SitesScreen(repository: widget.repository),
       TechniciansScreen(repository: widget.repository),
       VisitUpdateScreen(repository: widget.repository),
+      HistoryScreen(repository: widget.repository),
+      CalendarDemoScreen(repository: widget.repository),
+      SettingsScreen(repository: widget.repository),
     ];
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final wide = constraints.maxWidth >= 900;
+        final wide =
+            constraints.maxWidth >= 760 && constraints.maxHeight >= 700;
         return Scaffold(
           body: Row(
             children: [
               if (wide)
                 NavigationRail(
                   selectedIndex: _selectedIndex,
-                  minWidth: 96,
-                  backgroundColor: const Color(0xFF06244A),
-                  indicatorColor: const Color(0xFF0B5ED7),
+                  minWidth: 112,
+                  backgroundColor: const Color(0xFF101B2D),
+                  indicatorColor: const Color(0xFFE31B23),
                   selectedIconTheme: const IconThemeData(color: Colors.white),
                   unselectedIconTheme:
                       const IconThemeData(color: Color(0xFFB7C6D9)),
@@ -144,6 +165,8 @@ class _AppShellState extends State<AppShell> {
                         icon: Icon(Icons.dashboard_outlined),
                         label: Text('Dashboard')),
                     NavigationRailDestination(
+                        icon: Icon(Icons.mail_outline), label: Text('Inbox')),
+                    NavigationRailDestination(
                         icon: Icon(Icons.calendar_month_outlined),
                         label: Text('Schedule')),
                     NavigationRailDestination(
@@ -157,6 +180,14 @@ class _AppShellState extends State<AppShell> {
                     NavigationRailDestination(
                         icon: Icon(Icons.fact_check_outlined),
                         label: Text('Visit')),
+                    NavigationRailDestination(
+                        icon: Icon(Icons.history), label: Text('History')),
+                    NavigationRailDestination(
+                        icon: Icon(Icons.event_available_outlined),
+                        label: Text('Calendar Demo')),
+                    NavigationRailDestination(
+                        icon: Icon(Icons.settings_outlined),
+                        label: Text('Settings')),
                   ],
                   onDestinationSelected: (index) =>
                       setState(() => _selectedIndex = index),
@@ -175,6 +206,8 @@ class _AppShellState extends State<AppShell> {
                         icon: Icon(Icons.dashboard_outlined),
                         label: 'Dashboard'),
                     NavigationDestination(
+                        icon: Icon(Icons.mail_outline), label: 'Inbox'),
+                    NavigationDestination(
                         icon: Icon(Icons.calendar_month_outlined),
                         label: 'Schedule'),
                     NavigationDestination(
@@ -185,6 +218,13 @@ class _AppShellState extends State<AppShell> {
                         icon: Icon(Icons.engineering_outlined), label: 'Techs'),
                     NavigationDestination(
                         icon: Icon(Icons.fact_check_outlined), label: 'Visit'),
+                    NavigationDestination(
+                        icon: Icon(Icons.history), label: 'History'),
+                    NavigationDestination(
+                        icon: Icon(Icons.event_available_outlined),
+                        label: 'Calendar Demo'),
+                    NavigationDestination(
+                        icon: Icon(Icons.settings_outlined), label: 'Settings'),
                   ],
                 ),
         );
@@ -211,7 +251,7 @@ class _BrandMark extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         const Text(
-          'SECDEP',
+          'Operations',
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.w800, fontSize: 12),
         ),

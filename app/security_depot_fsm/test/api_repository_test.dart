@@ -181,4 +181,34 @@ void main() {
     expect(requests.single.body, contains('visit_job_manual'));
     expect(requests.single.body, contains('tech_dex'));
   });
+
+  test('API repository maps mixed inbox and dispatches from email', () async {
+    final requests = <http.Request>[];
+    final client = MockClient((request) async {
+      requests.add(request);
+      if (request.url.path == '/emails') {
+        return http.Response(
+            '[{"id":"mail-1","sender":"client@example.com","recipients":"service@example.com","subject":"Camera offline","body":"Lobby camera is down","received_at":"2026-07-11T08:00:00","labels":"Inbox,Service","is_read":false,"attachment_names":"","linked_job_id":null}]',
+            200);
+      }
+      return http.Response('{}', 200);
+    });
+    final repository = ApiFieldServiceRepository(
+        baseUrl: Uri.parse('http://127.0.0.1:8000'), client: client);
+    final emails = await repository.getEmails();
+    await repository.dispatchFromEmail(DispatchRequest(
+      emailId: 'mail-1',
+      siteId: 'site-1',
+      title: 'Camera offline',
+      category: ServiceCategory.cameras,
+      priority: JobPriority.urgent,
+      technicianId: 'tech-1',
+      start: DateTime(2026, 7, 13, 9),
+      end: DateTime(2026, 7, 13, 10),
+      instructions: 'Restore camera',
+    ));
+    expect(emails.single.labels, contains('Service'));
+    expect(requests.last.url.path, '/dispatch/from-email');
+    expect(requests.last.body, contains('Cameras/CCTV'));
+  });
 }

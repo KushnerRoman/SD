@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 from collections.abc import Generator
+from pathlib import Path
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
@@ -12,9 +13,10 @@ class Base(DeclarativeBase):
 
 
 def database_url() -> str:
+    default_path = (Path(__file__).resolve().parents[1] / "security_depot.db").as_posix()
     return os.getenv(
         "DATABASE_URL",
-        "mysql+pymysql://sd_user:sd_password@127.0.0.1:3307/security_depot_fsm",
+        f"sqlite+pysqlite:///{default_path}",
     )
 
 

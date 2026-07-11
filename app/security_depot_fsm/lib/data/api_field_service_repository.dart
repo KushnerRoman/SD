@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'field_service_repository.dart';
 import '../domain/models.dart';
 
-class ApiFieldServiceRepository implements FieldServiceRepository {
+class ApiFieldServiceRepository extends FieldServiceRepository {
   ApiFieldServiceRepository({
     required this.baseUrl,
     http.Client? client,
@@ -13,6 +13,54 @@ class ApiFieldServiceRepository implements FieldServiceRepository {
 
   final Uri baseUrl;
   final http.Client _client;
+
+  @override
+  Future<List<EmailMessage>> getEmails() async =>
+      (await _getList('/emails')).map(_emailFromJson).toList();
+
+  @override
+  Future<void> dispatchFromEmail(DispatchRequest request) async {
+    await _post('/dispatch/from-email', {
+      'email_id': request.emailId,
+      'site_id': request.siteId,
+      'title': request.title,
+      'category': request.category.label,
+      'priority': request.priority.label,
+      'technician_id': request.technicianId,
+      'scheduled_start': request.start.toIso8601String(),
+      'scheduled_end': request.end.toIso8601String(),
+      'instructions': request.instructions,
+    });
+  }
+
+  @override
+  Future<List<ManagerNotification>> getNotifications() async =>
+      (await _getList('/notifications')).map(_notificationFromJson).toList();
+
+  @override
+  Future<void> submitTechnicianReport(
+      {required String visitId,
+      required VisitStatus status,
+      required int durationMinutes,
+      required String workPerformed,
+      String materialsUsed = '',
+      String followUpNotes = ''}) async {
+    final reportStatus = switch (status) {
+      VisitStatus.completed => 'Completed',
+      VisitStatus.needReturnVisit => 'Return Required',
+      _ => 'Incomplete',
+    };
+    await _post('/visits/$visitId/report', {
+      'status': reportStatus,
+      'duration_minutes': durationMinutes,
+      'work_performed': workPerformed,
+      'materials_used': materialsUsed,
+      'follow_up_notes': followUpNotes,
+    });
+  }
+
+  @override
+  Future<void> resetDemoData() async => _post('/admin/reset-demo', const {});
 
   @override
   Future<DashboardSummary> getDashboardSummary() async {
@@ -198,7 +246,52 @@ class ApiFieldServiceRepository implements FieldServiceRepository {
     }
     return (jsonDecode(response.body) as Map<String, dynamic>);
   }
+
+  Future<void> _post(String path, Map<String, dynamic> body) async {
+    final response = await _client.post(baseUrl.resolve(path),
+        headers: {'content-type': 'application/json'}, body: jsonEncode(body));
+    if (response.statusCode < 200 || response.statusCode >= 300) {
+      final decoded = jsonDecode(response.body);
+      final detail =
+          decoded is Map<String, dynamic> ? decoded['detail'] : response.body;
+      throw StateError(detail?.toString() ?? 'Request failed');
+    }
+  }
 }
+
+EmailMessage _emailFromJson(Map<String, dynamic> json) => EmailMessage(
+      id: _readString(json, 'id'),
+      sender: _readString(json, 'sender'),
+      recipients: _readString(json, 'recipients'),
+      subject: _readString(json, 'subject'),
+      body: _readString(json, 'body'),
+      receivedAt: _dateTimeFromText(_readString(json, 'received_at')),
+      isRead: _readBool(json, 'is_read'),
+      labels: _readString(json, 'labels')
+          .split(',')
+          .where((value) => value.isNotEmpty)
+          .toList(),
+      attachmentNames: _readString(json, 'attachment_names')
+          .split(',')
+          .where((value) => value.isNotEmpty)
+          .toList(),
+      linkedJobId: _readString(json, 'linked_job_id').isEmpty
+          ? null
+          : _readString(json, 'linked_job_id'),
+    );
+
+ManagerNotification _notificationFromJson(Map<String, dynamic> json) =>
+    ManagerNotification(
+      id: _readInt(json, 'id'),
+      kind: _readString(json, 'kind'),
+      title: _readString(json, 'title'),
+      message: _readString(json, 'message'),
+      createdAt: _dateTimeFromText(_readString(json, 'created_at')),
+      isRead: _readBool(json, 'is_read'),
+      jobId: _readString(json, 'job_id').isEmpty
+          ? null
+          : _readString(json, 'job_id'),
+    );
 
 Site _siteFromJson(Map<String, dynamic> json) {
   return Site(

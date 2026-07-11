@@ -15,6 +15,24 @@ class DashboardSummary {
 }
 
 abstract class FieldServiceRepository {
+  Future<List<EmailMessage>> getEmails() async => const [];
+
+  Future<void> dispatchFromEmail(DispatchRequest request) async =>
+      throw UnsupportedError('Email dispatch is unavailable');
+
+  Future<List<ManagerNotification>> getNotifications() async => const [];
+
+  Future<void> submitTechnicianReport(
+          {required String visitId,
+          required VisitStatus status,
+          required int durationMinutes,
+          required String workPerformed,
+          String materialsUsed = '',
+          String followUpNotes = ''}) async =>
+      throw UnsupportedError('Technician reports are unavailable');
+
+  Future<void> resetDemoData() async {}
+
   Future<List<Job>> getJobs();
 
   Future<void> addJob(Job job);
