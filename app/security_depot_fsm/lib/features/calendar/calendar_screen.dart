@@ -6,8 +6,14 @@ import '../../data/field_service_repository.dart';
 import '../../domain/models.dart';
 
 class CalendarScreen extends StatefulWidget {
-  const CalendarScreen({super.key, required this.repository});
+  const CalendarScreen(
+      {super.key,
+      required this.repository,
+      this.copyReportLink,
+      this.openReportLink});
   final FieldServiceRepository repository;
+  final Future<void> Function(Uri)? copyReportLink;
+  final Future<bool> Function(Uri)? openReportLink;
   @override
   State<CalendarScreen> createState() => _CalendarScreenState();
 }
@@ -185,17 +191,24 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                                   IconButton(
                                                       tooltip:
                                                           'Copy report link',
-                                                      onPressed: () => Clipboard
-                                                          .setData(ClipboardData(
-                                                              text: visit
-                                                                  .reportUrl
-                                                                  .toString())),
+                                                      onPressed: () => widget
+                                                              .copyReportLink
+                                                              ?.call(visit
+                                                                  .reportUrl!) ??
+                                                          Clipboard.setData(
+                                                              ClipboardData(
+                                                                  text: visit
+                                                                      .reportUrl
+                                                                      .toString())),
                                                       icon: const Icon(
                                                           Icons.copy)),
                                                   IconButton(
                                                       tooltip:
                                                           'Open report link',
-                                                      onPressed: () =>
+                                                      onPressed: () => widget
+                                                              .openReportLink
+                                                              ?.call(visit
+                                                                  .reportUrl!) ??
                                                           launchUrl(
                                                               visit.reportUrl!),
                                                       icon: const Icon(

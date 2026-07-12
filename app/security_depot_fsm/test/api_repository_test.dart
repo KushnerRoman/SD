@@ -211,4 +211,20 @@ void main() {
     expect(requests.last.url.path, '/dispatch/from-email');
     expect(requests.last.body, contains('Cameras/CCTV'));
   });
+
+  test('API repository normalizes raw Calendar delivery statuses', () async {
+    var call = 0;
+    final client = MockClient((request) async {
+      final raw = call++ == 0 ? 'delivered' : 'reconnect';
+      return http.Response(
+          '[{"id":"visit-1","job_id":"job-1","site_id":"site-1","technician_id":"tech-1","start_datetime":"2026-07-13T09:00:00","end_datetime":"2026-07-13T10:00:00","status":"Not Completed","work_summary":"","parts_status":"No Parts Used","calendar_delivery_status":"$raw","report_url":"http://127.0.0.1:8765/report/token"}]',
+          200);
+    });
+    final repository = ApiFieldServiceRepository(
+        baseUrl: Uri.parse('http://127.0.0.1:8765'), client: client);
+    expect((await repository.getTodayVisits()).single.calendarDeliveryStatus,
+        'synced');
+    expect((await repository.getTodayVisits()).single.calendarDeliveryStatus,
+        'failed');
+  });
 }

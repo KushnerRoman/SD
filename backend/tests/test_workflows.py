@@ -11,7 +11,8 @@ from app.workflows import WorkflowConflict, WorkflowValidationError, convert_ema
 
 
 @pytest.fixture()
-def session():
+def session(monkeypatch):
+    monkeypatch.setenv("TOKEN_ENCRYPTION_KEY", "MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=")
     engine = create_engine("sqlite+pysqlite:///:memory:")
     Base.metadata.create_all(engine)
     factory = sessionmaker(bind=engine)

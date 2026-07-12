@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:security_depot_fsm/data/field_service_repository.dart';
 import 'package:security_depot_fsm/data/mock_field_service_repository.dart';
 import 'package:security_depot_fsm/domain/models.dart';
+import 'package:security_depot_fsm/features/calendar/calendar_screen.dart';
 import 'package:security_depot_fsm/main.dart';
 
 class _EmptyRepository extends MockFieldServiceRepository {
@@ -113,6 +114,27 @@ void main() {
     expect(find.text('Synced'), findsOneWidget);
     expect(find.byTooltip('Copy report link'), findsOneWidget);
     expect(find.byTooltip('Open report link'), findsOneWidget);
+  });
+
+  testWidgets('Calendar copy and open actions use the signed report URL',
+      (tester) async {
+    Uri? copied;
+    Uri? opened;
+    await tester.binding.setSurfaceSize(const Size(1200, 900));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(MaterialApp(
+        home: Scaffold(body: CalendarScreen(
+            repository: _CalendarRepository(),
+            copyReportLink: (uri) async => copied = uri,
+            openReportLink: (uri) async {
+              opened = uri;
+              return true;
+            }))));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Copy report link'));
+    await tester.tap(find.byTooltip('Open report link'));
+    expect(copied.toString(), 'http://127.0.0.1:8765/report/test-token');
+    expect(opened, copied);
   });
 
   testWidgets('technicians screen supports workforce overview',

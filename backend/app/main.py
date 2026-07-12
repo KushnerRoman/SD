@@ -471,18 +471,20 @@ def list_visits(session: Session = Depends(get_session)) -> list[dict]:
     result = []
     for visit in visits:
         latest = max(visit.outbox_items, key=lambda item: item.id, default=None)
-        delivery = latest.status if latest is not None else ("synced" if visit.calendar_event_id else "local")
+        raw_delivery = latest.status if latest is not None else ("delivered" if visit.calendar_event_id else "local")
+        delivery = {"delivered": "synced", "reconnect": "failed"}.get(raw_delivery, raw_delivery)
         report_url = None
         try:
             from app.google.outbox import REPORT_PUBLIC_BASE
-            from app.report_tokens import issue_report_token
-            report_url = f"{REPORT_PUBLIC_BASE}/report/{issue_report_token(session, visit)}"
+            from app.report_tokens import active_report_token
+            raw_token = active_report_token(session, visit)
+            if raw_token:
+                report_url = f"{REPORT_PUBLIC_BASE}/report/{raw_token}"
         except RuntimeError:
             pass
         data = VisitOut.model_validate(visit).model_dump()
         data.update(calendar_delivery_status=delivery, report_url=report_url)
         result.append(data)
-    session.commit()
     return result
 
 

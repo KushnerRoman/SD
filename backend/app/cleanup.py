@@ -40,3 +40,14 @@ def _counts(session: Session) -> dict[str, int]:
         "activities": session.query(models.ActivityEntry).count(),
         "notifications": session.query(models.Notification).count(),
     }
+
+
+def operational_snapshot(session: Session) -> dict:
+    site_ids = list(session.scalars(
+        session.query(models.Site.id).order_by(models.Site.id).statement
+    ))
+    return {
+        "site_count": len(site_ids),
+        "site_ids": site_ids,
+        "counts": _counts(session),
+    }

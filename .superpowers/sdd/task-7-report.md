@@ -36,3 +36,20 @@ The focused widget suite was first run with new assertions and failed on the old
 - Localhost report links work only on the FastAPI host, not a technician phone or remote computer; documentation makes this limitation explicit.
 - Backend tests retain pre-existing `datetime.utcnow()` and TestClient dependency warnings; no failures result.
 - Changing `TOKEN_ENCRYPTION_KEY` invalidates encrypted Google credentials and report links by design; the rotation sequence explicitly requires disconnect/reconnect.
+
+## Review follow-up
+
+Addressed all Task 7 review findings with focused red-green tests:
+
+- Backend now normalizes raw outbox `delivered` to `synced` and `reconnect` to `failed`, while preserving `pending` and `failed`; Flutter defensively performs the same normalization and repository tests use the real raw strings.
+- Added executable, read-only `backend/scripts/print_counts.py`, backed by an isolated-database test. Its JSON contains sorted Site IDs, Site count, and every operational count. Documentation captures before/after JSON and provides exact `Compare-Object` and count-inspection commands.
+- Calendar copy/open behavior is injected and widget-tested by tapping both controls and asserting the exact signed report URI passed to each callback.
+- Dispatch/enqueue now issues the report token. `GET /visits` only reconstructs an existing active token and performs no commit or mutation. Regression coverage compares the full token record across repeated GETs and verifies a dispatched token resolves, closes, and is then rejected.
+
+Fresh follow-up verification after the lifecycle assertion:
+
+- `backend\.venv\Scripts\pytest.exe backend\tests\test_operations_api.py backend\tests\test_cleanup.py -q` — PASS, 7 tests (36 warnings).
+- `backend\.venv\Scripts\pytest.exe backend\tests -q` — PASS, 80 tests (404 existing deprecation warnings).
+- `flutter analyze` — PASS, no issues.
+- `flutter test` — PASS, 43 tests.
+- `flutter build web --base-href /web/` — PASS, built `build\web`.

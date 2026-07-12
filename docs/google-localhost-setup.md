@@ -35,12 +35,16 @@ Cleanup preserves Sites but permanently removes other operational records. Stop 
 
 ```powershell
 Copy-Item backend\security_depot.db backend\security_depot.db.pre-google-backup
-backend\.venv\Scripts\python.exe backend\scripts\print_counts.py
+backend\.venv\Scripts\python.exe backend\scripts\print_counts.py | Tee-Object -FilePath backend\counts-before.json
 backend\.venv\Scripts\python.exe backend\scripts\clear_demo_data.py --confirm-delete-operational-data
-backend\.venv\Scripts\python.exe backend\scripts\print_counts.py
+backend\.venv\Scripts\python.exe backend\scripts\print_counts.py | Tee-Object -FilePath backend\counts-after.json
+$before = Get-Content -Raw backend\counts-before.json | ConvertFrom-Json
+$after = Get-Content -Raw backend\counts-after.json | ConvertFrom-Json
+Compare-Object $before.site_ids $after.site_ids
+$after.counts | ConvertTo-Json
 ```
 
-Compare Site IDs and the Site count before and after. Every other operational count must be zero. Restore the backup and investigate if that invariant fails. (If `print_counts.py` is not present, use a read-only SQLite query; do not improvise a deleting command.)
+`Compare-Object` must print no differences, and `site_count` must match before and after. Every other operational count must be zero. Restore the backup and investigate if any invariant fails.
 
 ## 4. Build and start
 

@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
 
-from app.cleanup import cleanup_operational_data
+from app.cleanup import cleanup_operational_data, operational_snapshot
 from app.database import Base
 from app.models import ActivityEntry, CalendarOutbox, GoogleCalendarSettings, Job, Notification, Site, Technician, Visit
 from app.seed_loader import load_seed_file, reset_and_load_seed
@@ -33,6 +33,36 @@ def _populated_session() -> Session:
     session.add(GoogleCalendarSettings(id=1, calendar_id="service"))
     session.commit()
     return session
+
+
+def test_operational_snapshot_is_read_only_and_includes_site_ids():
+    with _populated_session() as session:
+        before_new = set(session.new)
+        snapshot = operational_snapshot(session)
+        assert snapshot["site_count"] == len(snapshot["site_ids"])
+        assert snapshot["counts"]["jobs"] > 0
+        assert set(session.new) == before_new
+        assert not session.dirty and not session.deleted
+
+
+def test_print_counts_script_reads_isolated_database(tmp_path):
+    database = tmp_path / "counts.db"
+    engine = create_engine(f"sqlite+pysqlite:///{database}")
+    Base.metadata.create_all(engine)
+    with sessionmaker(bind=engine)() as session:
+        session.add_all([Site(id="site-b", name="B"), Site(id="site-a", name="A")])
+        session.commit()
+    env = {**os.environ, "DATABASE_URL": f"sqlite+pysqlite:///{database}"}
+    completed = subprocess.run(
+        [sys.executable, "scripts/print_counts.py"], cwd=Path(__file__).parents[1],
+        env=env, text=True, capture_output=True, check=True,
+    )
+    assert json.loads(completed.stdout) == {
+        "site_count": 2,
+        "site_ids": ["site-a", "site-b"],
+        "counts": {"sites": 2, "jobs": 0, "visits": 0, "emails": 0,
+                   "technicians": 0, "activities": 0, "notifications": 0},
+    }
 
 
 def test_cleanup_preserves_sites_and_deletes_everything_else():

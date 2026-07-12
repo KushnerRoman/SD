@@ -7,6 +7,7 @@ from sqlalchemy import select
 
 from app.google.calendar import CalendarAuthorizationError, CalendarConflictError
 from app.models import CalendarOutbox, GoogleCalendarSettings, Visit
+from app.report_tokens import issue_report_token
 
 REPORT_PUBLIC_BASE = "http://127.0.0.1:8765"
 
@@ -16,6 +17,7 @@ def stable_event_id(visit_id: str) -> str:
 
 
 def enqueue_calendar_operation(session, visit: Visit, operation: str) -> CalendarOutbox:
+    issue_report_token(session, visit)
     existing = session.scalar(select(CalendarOutbox).where(CalendarOutbox.visit_id == visit.id, CalendarOutbox.status == "pending"))
     if existing: return existing
     item = CalendarOutbox(visit=visit, operation=operation)
@@ -24,7 +26,6 @@ def enqueue_calendar_operation(session, visit: Visit, operation: str) -> Calenda
 
 
 def _event(session, visit):
-    from app.report_tokens import issue_report_token
     report_url = f"{REPORT_PUBLIC_BASE}/report/{issue_report_token(session, visit)}"
     return {"id": stable_event_id(visit.id), "summary": visit.job.title,
             "location": visit.site.address,

@@ -65,6 +65,21 @@ def issue_report_token(session: Session, visit: Visit) -> str:
     return raw
 
 
+def active_report_token(session: Session, visit: Visit) -> str | None:
+    """Return an existing usable raw token without writing database state."""
+    now = datetime.utcnow()
+    existing = session.scalar(select(ReportToken).where(
+        ReportToken.visit_id == visit.id,
+        ReportToken.closed_at.is_(None),
+        ReportToken.revoked_at.is_(None),
+        ReportToken.expires_at > now,
+    ).order_by(ReportToken.id.desc()))
+    if existing is None or not existing.nonce:
+        return None
+    raw = _derive(visit.id, existing.nonce)
+    return raw if hmac.compare_digest(existing.token_hash, _hash(raw)) else None
+
+
 def resolve_report_token(session: Session, raw_token: str) -> Visit:
     row = session.scalar(select(ReportToken).where(ReportToken.token_hash == _hash(raw_token)))
     now = datetime.utcnow()

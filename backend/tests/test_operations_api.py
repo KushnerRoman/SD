@@ -1,6 +1,7 @@
 from collections.abc import Generator
 from datetime import datetime
 
+import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
@@ -8,10 +9,12 @@ from sqlalchemy.pool import StaticPool
 
 from app.database import Base, get_session
 from app.main import app
-from app.models import EmailMessage, Site, Technician
+from app.models import CalendarOutbox, EmailMessage, ReportToken, Site, Technician
+from app.report_tokens import ReportTokenError, close_report_token, resolve_report_token
 
 
-def test_operations_api_dispatch_report_and_notifications():
+def test_operations_api_dispatch_report_and_notifications(monkeypatch):
+    monkeypatch.setenv("TOKEN_ENCRYPTION_KEY", "MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=")
     engine = create_engine("sqlite+pysqlite:///:memory:", connect_args={"check_same_thread": False}, poolclass=StaticPool)
     Base.metadata.create_all(engine)
     factory = sessionmaker(bind=engine)
@@ -36,12 +39,45 @@ def test_operations_api_dispatch_report_and_notifications():
             "instructions": "Restore camera",
         })
         assert dispatched.status_code == 200
+        with factory() as session:
+            assert session.query(ReportToken).count() == 1
+            outbox = session.query(CalendarOutbox).one()
+            assert client.get("/visits").json()[0]["calendar_delivery_status"] == "pending"
+            outbox.status = "delivered"
+            session.commit()
         visit = client.get("/visits").json()[0]
+        assert visit["calendar_delivery_status"] == "synced"
+        assert visit["report_url"].startswith("http://127.0.0.1:8765/report/")
+        with factory() as session:
+            token = session.query(ReportToken).one()
+            token_state = (token.id, token.token_hash, token.nonce, token.expires_at,
+                           token.closed_at, token.revoked_at)
+        client.get("/visits")
+        with factory() as session:
+            assert session.query(ReportToken).count() == 1
+            token = session.query(ReportToken).one()
+            assert (token.id, token.token_hash, token.nonce, token.expires_at,
+                    token.closed_at, token.revoked_at) == token_state
+            outbox = session.query(CalendarOutbox).one()
+            outbox.status = "failed"
+            session.commit()
+        assert client.get("/visits").json()[0]["calendar_delivery_status"] == "failed"
+        with factory() as session:
+            session.query(CalendarOutbox).one().status = "reconnect"
+            session.commit()
+        assert client.get("/visits").json()[0]["calendar_delivery_status"] == "failed"
         report = client.post(f"/visits/{visit['id']}/report", json={
             "status": "Completed", "duration_minutes": 45, "work_performed": "Replaced connector",
             "materials_used": "RJ45", "follow_up_notes": "",
         })
         assert report.status_code == 200
         assert client.get("/notifications").json()[0]["kind"] == "completed"
+        raw_token = visit["report_url"].rsplit("/", 1)[1]
+        with factory() as session:
+            assert resolve_report_token(session, raw_token).id == visit["id"]
+            close_report_token(session, raw_token)
+            session.commit()
+        with factory() as session, pytest.raises(ReportTokenError):
+            resolve_report_token(session, raw_token)
     finally:
         app.dependency_overrides.clear()
