@@ -10,6 +10,12 @@ class CleanupResult(BaseModel):
     after: dict[str, int]
 
 
+class GoogleConnectionOut(BaseModel):
+    status: str
+    account_email: str | None = None
+    expires_at: datetime | None = None
+
+
 class SiteOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

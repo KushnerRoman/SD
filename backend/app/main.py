@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+from datetime import datetime, timedelta
 from pathlib import Path
 
+import httpx
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -9,14 +11,26 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
 
 from app.database import create_schema, get_session
-from app.models import EmailMessage, Job, Notification, Site, Technician, Visit
-from app.schemas import DashboardSummary, DispatchCreate, EmailMessageOut, JobCreate, JobOut, JobUpdate, NotificationOut, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianReportCreate, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
+from app.google.config import GoogleSettings
+from app.google.oauth import CredentialCipher, GoogleOAuthService, OAuthStateError
+from app.models import EmailMessage, GoogleCredential, Job, Notification, Site, Technician, Visit
+from app.schemas import DashboardSummary, DispatchCreate, EmailMessageOut, GoogleConnectionOut, JobCreate, JobOut, JobUpdate, NotificationOut, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianReportCreate, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
 from app.seed_loader import load_seed_file, reset_and_load_seed
 from app.workflows import WorkflowConflict, WorkflowValidationError, convert_email_to_service_call, submit_technician_report
 
 app = FastAPI(title="Security Depot FSM Mock API", version="0.1.0")
 
 WEB_BUILD_DIR = Path(__file__).resolve().parents[2] / "app" / "security_depot_fsm" / "build" / "web"
+
+_google_oauth_service: GoogleOAuthService | None = None
+
+
+def get_google_oauth_service() -> GoogleOAuthService:
+    global _google_oauth_service
+    if _google_oauth_service is None:
+        settings = GoogleSettings.from_env()
+        _google_oauth_service = GoogleOAuthService(settings, CredentialCipher(settings.token_encryption_key))
+    return _google_oauth_service
 
 
 @app.on_event("startup")
@@ -27,6 +41,73 @@ def startup() -> None:
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.get("/auth/google/start", include_in_schema=False)
+def google_auth_start(
+    session: Session = Depends(get_session),
+    oauth: GoogleOAuthService = Depends(get_google_oauth_service),
+) -> RedirectResponse:
+    credential = session.query(GoogleCredential).first()
+    return RedirectResponse(oauth.authorization_url(has_refresh_token=credential is not None))
+
+
+@app.get("/auth/google/callback", include_in_schema=False)
+def google_auth_callback(
+    code: str,
+    state: str,
+    session: Session = Depends(get_session),
+    oauth: GoogleOAuthService = Depends(get_google_oauth_service),
+) -> RedirectResponse:
+    try:
+        tokens = oauth.exchange_code(code=code, state=state)
+        refresh_token = tokens.get("refresh_token")
+        access_token = tokens.get("access_token")
+        if not refresh_token or not access_token:
+            return RedirectResponse("/web/#/settings?google=error&code=incomplete_response")
+        account_email = oauth.account_email(access_token)
+        expires_at = datetime.utcnow() + timedelta(seconds=int(tokens.get("expires_in", 3600)))
+        oauth.store_tokens(
+            session,
+            account_email=account_email,
+            refresh_token=refresh_token,
+            expires_at=expires_at,
+        )
+        return RedirectResponse("/web/#/settings?google=connected")
+    except OAuthStateError:
+        return RedirectResponse("/web/#/settings?google=error&code=invalid_state")
+    except (httpx.HTTPError, ValueError):
+        return RedirectResponse("/web/#/settings?google=error&code=exchange_failed")
+
+
+@app.post("/auth/google/disconnect")
+def google_auth_disconnect(
+    session: Session = Depends(get_session),
+    oauth: GoogleOAuthService = Depends(get_google_oauth_service),
+) -> dict[str, str]:
+    credential = session.query(GoogleCredential).first()
+    if credential is not None:
+        token = oauth.load_refresh_token(credential)
+        try:
+            oauth.revoke(token)
+        except httpx.HTTPError:
+            pass
+        session.delete(credential)
+        session.commit()
+    return {"status": "disconnected"}
+
+
+@app.get("/google/connection", response_model=GoogleConnectionOut)
+def google_connection(session: Session = Depends(get_session)) -> GoogleConnectionOut:
+    credential = session.query(GoogleCredential).first()
+    if credential is None:
+        return GoogleConnectionOut(status="disconnected")
+    status = "expired" if credential.expires_at and credential.expires_at <= datetime.utcnow() else "connected"
+    return GoogleConnectionOut(
+        status=status,
+        account_email=credential.account_email,
+        expires_at=credential.expires_at,
+    )
 
 
 @app.get("/", include_in_schema=False)

@@ -9,6 +9,8 @@ backend/.pytest_cache/
 backend/app/__pycache__/
 backend/tests/__pycache__/
 backend/*.db
+backend/.env
+.env
 
 *.pyc
 *.log
