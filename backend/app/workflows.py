@@ -63,7 +63,7 @@ def convert_email_to_service_call(session: Session, payload: DispatchCreate) -> 
     return job
 
 
-def submit_technician_report(session: Session, visit_id: str, payload: TechnicianReportCreate) -> Visit:
+def submit_technician_report(session: Session, visit_id: str, payload: TechnicianReportCreate, *, commit: bool = True) -> Visit:
     visit = session.get(Visit, visit_id)
     if visit is None or visit.job is None:
         raise WorkflowValidationError("Visit not found")
@@ -93,6 +93,10 @@ def submit_technician_report(session: Session, visit_id: str, payload: Technicia
         title=f"{payload.status}: {visit.job.title}",
         message=f"{visit.technician_name} reported {payload.duration_minutes} minutes. {payload.work_performed.strip()}",
     ))
-    session.commit()
-    session.refresh(visit)
+    enqueue_calendar_operation(session, visit, "upsert")
+    if commit:
+        session.commit()
+        session.refresh(visit)
+    else:
+        session.flush()
     return visit

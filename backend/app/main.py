@@ -4,8 +4,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 import httpx
-from fastapi import Depends, FastAPI, HTTPException
-from fastapi.responses import RedirectResponse
+from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
@@ -21,6 +21,11 @@ from app.models import EmailMessage, GoogleCredential, GoogleSyncState, Job, Not
 from app.schemas import CalendarDeliveryOut, DashboardSummary, DispatchCreate, EmailMessageOut, GoogleConnectionOut, GoogleSyncCountsOut, GoogleSyncStatusOut, JobCreate, JobOut, JobUpdate, NotificationOut, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianReportCreate, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
 from app.seed_loader import load_seed_file, reset_and_load_seed
 from app.workflows import WorkflowConflict, WorkflowValidationError, convert_email_to_service_call, submit_technician_report
+from app.report_pages import report_form, success_page, unavailable_page
+from app.report_tokens import ReportTokenError, close_report_token, resolve_report_token, token_record
+import hashlib
+import secrets
+from urllib.parse import parse_qs
 
 app = FastAPI(title="Security Depot FSM Mock API", version="0.1.0")
 
@@ -496,3 +501,48 @@ def _normalize_name(value: str) -> str:
 
 if WEB_BUILD_DIR.exists():
     app.mount("/web", StaticFiles(directory=WEB_BUILD_DIR, html=True), name="web")
+@app.get("/report/{token}", response_class=HTMLResponse, include_in_schema=False)
+def get_report(token: str, session: Session = Depends(get_session)):
+    try:
+        visit = resolve_report_token(session, token)
+    except ReportTokenError:
+        return HTMLResponse(unavailable_page(), status_code=404)
+    csrf = secrets.token_urlsafe(32)
+    token_record(session, token).csrf_hash = hashlib.sha256(csrf.encode()).hexdigest()
+    session.commit()
+    response = HTMLResponse(report_form(visit, csrf))
+    response.set_cookie("report_csrf", csrf, httponly=True, samesite="strict", path=f"/report/{token}")
+    return response
+
+
+@app.post("/report/{token}", response_class=HTMLResponse, include_in_schema=False)
+async def post_report(token: str, request: Request, session: Session = Depends(get_session)):
+    try:
+        visit = resolve_report_token(session, token)
+        row = token_record(session, token)
+    except ReportTokenError:
+        return HTMLResponse(unavailable_page(), status_code=404)
+    values = {key: items[-1] for key, items in parse_qs((await request.body()).decode(), keep_blank_values=True).items()}
+    csrf = values.get("csrf_token", ""); cookie = request.cookies.get("report_csrf", "")
+    if not csrf or not secrets.compare_digest(csrf, cookie) or not secrets.compare_digest(hashlib.sha256(csrf.encode()).hexdigest(), row.csrf_hash):
+        return HTMLResponse(unavailable_page(), status_code=403)
+    try:
+        duration = int(values.get("duration_minutes", ""))
+    except ValueError:
+        duration = 0
+    payload = TechnicianReportCreate(status=values.get("status", ""), duration_minutes=duration,
+        work_performed=values.get("work_performed", ""), materials_used=values.get("materials_used", ""),
+        follow_up_notes=values.get("follow_up_notes", ""))
+    if not payload.follow_up_notes.strip():
+        return HTMLResponse(report_form(visit, csrf, "All required fields must be completed."), status_code=422)
+    try:
+        submit_technician_report(session, visit.id, payload, commit=False)
+        close_report_token(session, token)
+        session.commit()
+    except WorkflowValidationError as error:
+        session.rollback()
+        return HTMLResponse(report_form(visit, csrf, str(error)), status_code=422)
+    except Exception:
+        session.rollback()
+        raise
+    return HTMLResponse(success_page())

@@ -8,7 +8,7 @@ from sqlalchemy import select
 from app.google.calendar import CalendarAuthorizationError, CalendarConflictError, CalendarNetworkError
 from app.models import CalendarOutbox, GoogleCalendarSettings, Visit
 
-SIGNED_REPORT_URL_PLACEHOLDER = "{{SIGNED_REPORT_URL}}"
+REPORT_PUBLIC_BASE = "http://127.0.0.1:8765"
 
 
 def stable_event_id(visit_id: str) -> str:
@@ -23,10 +23,12 @@ def enqueue_calendar_operation(session, visit: Visit, operation: str) -> Calenda
     return item
 
 
-def _event(visit):
+def _event(session, visit):
+    from app.report_tokens import issue_report_token
+    report_url = f"{REPORT_PUBLIC_BASE}/report/{issue_report_token(session, visit)}"
     return {"id": stable_event_id(visit.id), "summary": visit.job.title,
             "location": visit.site.address,
-            "description": f"{visit.job.description}\n\nTechnician report: {SIGNED_REPORT_URL_PLACEHOLDER}",
+            "description": f"{visit.job.description}\n\nTechnician report: {report_url}",
             "start": {"dateTime": visit.start_datetime.isoformat()}, "end": {"dateTime": visit.end_datetime.isoformat()},
             "attendees": [{"email": visit.technician.email}]}
 
@@ -48,7 +50,7 @@ def process_calendar_outbox(session, provider) -> int:
     for item in items:
         if item.next_attempt_at and item.next_attempt_at > datetime.utcnow():
             continue
-        visit = item.visit; event = _event(visit)
+        visit = item.visit; event = _event(session, visit)
         try:
             calendar_id = _calendar_id(session, provider)
             if visit.calendar_event_id:

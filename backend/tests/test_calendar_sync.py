@@ -45,7 +45,8 @@ def test_provider_creates_service_calendar_and_event_with_invitation_fields():
     assert body["id"] == stable_event_id(visit.id)
     assert body["location"] == "1 King St"
     assert "Inspect camera" in body["description"]
-    assert "{{SIGNED_REPORT_URL}}" in body["description"]
+    assert "http://127.0.0.1:8765/report/" in body["description"]
+    assert "North Tower" not in body["description"].split("Technician report: ")[1]
     assert body["attendees"] == [{"email": "mike@example.com"}]
     assert event_request.url.params["sendUpdates"] == "all"
     assert visit.calendar_event_id == stable_event_id(visit.id) and visit.calendar_etag == '"v1"'

@@ -12,6 +12,7 @@ def cleanup_operational_data(
 ) -> CleanupResult:
     before = _counts(session)
 
+    session.execute(delete(models.ReportToken))
     session.execute(delete(models.CalendarOutbox))
     session.execute(delete(models.GoogleCalendarSettings))
     session.execute(delete(models.Notification))

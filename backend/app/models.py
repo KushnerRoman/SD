@@ -101,6 +101,20 @@ class Visit(Base):
     site: Mapped[Site | None] = relationship(back_populates="visits")
     technician: Mapped[Technician | None] = relationship(back_populates="visits")
     outbox_items: Mapped[list["CalendarOutbox"]] = relationship(back_populates="visit", cascade="all, delete-orphan")
+    report_tokens: Mapped[list["ReportToken"]] = relationship(back_populates="visit", cascade="all, delete-orphan")
+
+
+class ReportToken(Base):
+    __tablename__ = "report_tokens"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    visit_id: Mapped[str] = mapped_column(String(64), ForeignKey("visits.id"), index=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    csrf_hash: Mapped[str] = mapped_column(String(64), default="")
+    expires_at: Mapped[datetime] = mapped_column(DateTime)
+    closed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    visit: Mapped[Visit] = relationship(back_populates="report_tokens")
 
 
 class GoogleCalendarSettings(Base):
