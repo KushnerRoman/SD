@@ -13,8 +13,10 @@ from sqlalchemy.orm import Session, selectinload
 from app.database import create_schema, get_session
 from app.google.config import GoogleSettings
 from app.google.oauth import CredentialCipher, GoogleOAuthService, OAuthStateError
-from app.models import EmailMessage, GoogleCredential, Job, Notification, Site, Technician, Visit
-from app.schemas import DashboardSummary, DispatchCreate, EmailMessageOut, GoogleConnectionOut, JobCreate, JobOut, JobUpdate, NotificationOut, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianReportCreate, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
+from app.google.gmail import GmailProvider, GmailQuotaError, GmailRevokedError, GmailSyncError
+from app.google.sync import GoogleSyncCoordinator
+from app.models import EmailMessage, GoogleCredential, GoogleSyncState, Job, Notification, Site, Technician, Visit
+from app.schemas import DashboardSummary, DispatchCreate, EmailMessageOut, GoogleConnectionOut, GoogleSyncCountsOut, GoogleSyncStatusOut, JobCreate, JobOut, JobUpdate, NotificationOut, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianReportCreate, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
 from app.seed_loader import load_seed_file, reset_and_load_seed
 from app.workflows import WorkflowConflict, WorkflowValidationError, convert_email_to_service_call, submit_technician_report
 
@@ -31,6 +33,27 @@ def get_google_oauth_service() -> GoogleOAuthService:
         settings = GoogleSettings.from_env()
         _google_oauth_service = GoogleOAuthService(settings, CredentialCipher(settings.token_encryption_key))
     return _google_oauth_service
+
+
+def get_google_sync_coordinator(
+    session: Session = Depends(get_session),
+    oauth: GoogleOAuthService = Depends(get_google_oauth_service),
+) -> GoogleSyncCoordinator:
+    credential = session.query(GoogleCredential).first()
+    if credential is None:
+        raise HTTPException(status_code=409, detail="Google account is not connected")
+    try:
+        refresh_token = oauth.load_refresh_token(credential)
+        tokens = oauth.refresh_access_token(refresh_token)
+        access_token = tokens.get("access_token")
+        if not isinstance(access_token, str) or not access_token:
+            raise HTTPException(status_code=502, detail="Google token refresh failed")
+        return GoogleSyncCoordinator(GmailProvider(access_token))
+    except httpx.HTTPStatusError as error:
+        status = 401 if error.response.status_code in (400, 401, 403) else 503
+        raise HTTPException(status_code=status, detail="Google authorization refresh failed") from error
+    except ValueError as error:
+        raise HTTPException(status_code=401, detail="Google credential is unavailable") from error
 
 
 @app.on_event("startup")
@@ -116,6 +139,33 @@ def google_connection(session: Session = Depends(get_session)) -> GoogleConnecti
         status=status,
         account_email=credential.account_email,
         expires_at=credential.expires_at,
+    )
+
+
+@app.post("/google/sync", response_model=GoogleSyncCountsOut)
+def google_sync(
+    session: Session = Depends(get_session),
+    coordinator: GoogleSyncCoordinator = Depends(get_google_sync_coordinator),
+):
+    try:
+        return coordinator.sync_gmail(session)
+    except GmailRevokedError as error:
+        raise HTTPException(status_code=401, detail="Google authorization is no longer valid") from error
+    except GmailQuotaError as error:
+        raise HTTPException(status_code=429, detail="Google quota is temporarily exhausted") from error
+    except GmailSyncError as error:
+        raise HTTPException(status_code=503, detail="Google synchronization is temporarily unavailable") from error
+
+
+@app.get("/google/sync-status", response_model=GoogleSyncStatusOut)
+def google_sync_status(session: Session = Depends(get_session)) -> GoogleSyncStatusOut:
+    state = session.get(GoogleSyncState, 1)
+    if state is None:
+        return GoogleSyncStatusOut(status="never")
+    return GoogleSyncStatusOut(
+        status=state.status,
+        last_synced_at=state.last_synced_at,
+        error_code=state.last_error or None,
     )
 
 

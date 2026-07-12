@@ -120,6 +120,8 @@ class EmailMessage(Base):
     __tablename__ = "email_messages"
 
     id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    provider_id: Mapped[str | None] = mapped_column(String(255), unique=True, index=True, nullable=True)
+    history_id: Mapped[str] = mapped_column(String(255), default="")
     thread_id: Mapped[str] = mapped_column(String(64), default="")
     sender: Mapped[str] = mapped_column(String(255), index=True)
     recipients: Mapped[str] = mapped_column(Text, default="")
@@ -167,3 +169,13 @@ class GoogleCredential(Base):
     expires_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    gmail_history_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+
+
+class GoogleSyncState(Base):
+    __tablename__ = "google_sync_states"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    gmail_history_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    status: Mapped[str] = mapped_column(String(32), default="never")
+    last_synced_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    last_error: Mapped[str] = mapped_column(String(64), default="")

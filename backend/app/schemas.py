@@ -16,6 +16,18 @@ class GoogleConnectionOut(BaseModel):
     expires_at: datetime | None = None
 
 
+class GoogleSyncCountsOut(BaseModel):
+    added: int
+    updated: int
+    deleted: int
+
+
+class GoogleSyncStatusOut(BaseModel):
+    status: str
+    last_synced_at: datetime | None = None
+    error_code: str | None = None
+
+
 class SiteOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
