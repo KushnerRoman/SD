@@ -31,8 +31,6 @@ abstract class FieldServiceRepository {
           String followUpNotes = ''}) async =>
       throw UnsupportedError('Technician reports are unavailable');
 
-  Future<void> resetDemoData() async {}
-
   Future<List<Job>> getJobs();
 
   Future<void> addJob(Job job);

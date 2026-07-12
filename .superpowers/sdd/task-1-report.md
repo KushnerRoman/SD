@@ -95,3 +95,33 @@ The CLI rejects every argument list except the single exact confirmation flag an
 - The current model set has no outbox, Google connection, or sync-state tables. Therefore this task cannot yet issue deletes for those future tables; they must be added to the ordered cleanup when their models land.
 - Backend verification reports existing dependency/framework deprecation warnings (`httpx`/Starlette compatibility, FastAPI `on_event`, and `datetime.utcnow`). They do not fail tests and were outside this task's scope.
 - The linked worktree lacks its own `backend/.venv`, so verification used the sibling checkout's existing backend virtual environment.
+
+## Fix Review
+
+Review fixes completed in the next task commit:
+
+- Removed the native app's automatic `SeedFieldServiceRepository` fallback and its runtime seed/mock imports. `SecurityDepotApp` now requires an explicit repository future, and API startup failures render a local API connection error instead of operational demo data.
+- Standardized the native API URL, backend launch documentation, endpoint examples, Flutter documentation, and API repository test URLs on `http://127.0.0.1:8765`.
+- Made `cleanup_operational_data` caller-transaction-aware through `commit=False`. The guarded CLI explicitly commits, while `reset_and_load_seed` performs cleanup, insertion, and commit in one transaction and rolls back on every exception.
+- Added `test_failed_seed_reset_rolls_back_cleanup_and_preserves_operational_data`. Its red run failed with `PendingRollbackError` after the insertion error, proving the earlier cleanup commit broke atomicity. Its green run preserves the exact preexisting job and technician ID sets and leaves the session usable.
+- Removed the dead `resetDemoData` method from both `FieldServiceRepository` and `ApiFieldServiceRepository`.
+
+Exact final verification commands and results:
+
+```powershell
+& 'C:\Users\kushn\OneDrive\Documents\SD\backend\.venv\Scripts\pytest.exe' backend\tests -q
+```
+
+Result: `18 passed, 21 warnings in 4.55s`. Warnings are the preexisting Starlette/FastAPI/SQLAlchemy deprecations described above.
+
+```powershell
+Push-Location app\security_depot_fsm
+flutter test test/widget_test.dart
+flutter analyze
+flutter test
+Pop-Location
+```
+
+Results: targeted widget suite `7 passed`; analyzer `No issues found!`; full Flutter suite `33 passed`.
+
+Repository scans found no `resetDemoData`, port `8000`, runtime `SeedFieldServiceRepository.fromAsset`, or runtime seed repository import. The only remaining seed repository import is in its dedicated unit test file.

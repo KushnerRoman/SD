@@ -60,9 +60,6 @@ class ApiFieldServiceRepository extends FieldServiceRepository {
   }
 
   @override
-  Future<void> resetDemoData() async => _post('/admin/reset-demo', const {});
-
-  @override
   Future<DashboardSummary> getDashboardSummary() async {
     final json = await _getMap('/dashboard/summary');
     return DashboardSummary(

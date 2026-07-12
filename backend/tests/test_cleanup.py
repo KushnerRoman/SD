@@ -4,14 +4,17 @@ import json
 import os
 import subprocess
 import sys
+from copy import deepcopy
 from pathlib import Path
 
+import pytest
 from sqlalchemy import create_engine
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
 
 from app.cleanup import cleanup_operational_data
 from app.database import Base
-from app.models import ActivityEntry, Job, Notification, Site, Visit
+from app.models import ActivityEntry, Job, Notification, Site, Technician, Visit
 from app.seed_loader import load_seed_file, reset_and_load_seed
 
 
@@ -102,3 +105,20 @@ def test_cleanup_cli_prints_json_counts_for_isolated_database(tmp_path: Path):
         "notifications": 0,
     }
 
+
+def test_failed_seed_reset_rolls_back_cleanup_and_preserves_operational_data():
+    with _populated_session() as session:
+        original_job_ids = {row.id for row in session.query(Job).all()}
+        original_technician_ids = {
+            row.id for row in session.query(Technician).all()
+        }
+        invalid_seed = deepcopy(load_seed_file())
+        invalid_seed["technicians"].append(invalid_seed["technicians"][0])
+
+        with pytest.raises(IntegrityError):
+            reset_and_load_seed(session, invalid_seed)
+
+        assert {row.id for row in session.query(Job).all()} == original_job_ids
+        assert {
+            row.id for row in session.query(Technician).all()
+        } == original_technician_ids

@@ -7,7 +7,9 @@ from app import models
 from app.schemas import CleanupResult
 
 
-def cleanup_operational_data(session: Session) -> CleanupResult:
+def cleanup_operational_data(
+    session: Session, *, commit: bool = True
+) -> CleanupResult:
     before = _counts(session)
 
     session.execute(delete(models.Notification))
@@ -17,7 +19,10 @@ def cleanup_operational_data(session: Session) -> CleanupResult:
     session.execute(delete(models.Job))
     session.execute(delete(models.EmailMessage))
     session.execute(delete(models.Technician))
-    session.commit()
+    if commit:
+        session.commit()
+    else:
+        session.flush()
 
     return CleanupResult(before=before, after=_counts(session))
 

@@ -44,20 +44,20 @@ calendar_details: > 0
 From `backend/`:
 
 ```powershell
-uv run uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+uv run uvicorn app.main:app --reload --host 127.0.0.1 --port 8765
 ```
 
 Useful endpoints:
 
-- `GET http://127.0.0.1:8000/health`
-- `POST http://127.0.0.1:8000/admin/load-seed`
-- `GET http://127.0.0.1:8000/dashboard/summary`
-- `GET http://127.0.0.1:8000/jobs`
-- `GET http://127.0.0.1:8000/jobs/{job_id}`
-- `PATCH http://127.0.0.1:8000/jobs/{job_id}`
-- `GET http://127.0.0.1:8000/sites`
-- `GET http://127.0.0.1:8000/technicians`
-- `GET http://127.0.0.1:8000/visits`
+- `GET http://127.0.0.1:8765/health`
+- `POST http://127.0.0.1:8765/admin/load-seed`
+- `GET http://127.0.0.1:8765/dashboard/summary`
+- `GET http://127.0.0.1:8765/jobs`
+- `GET http://127.0.0.1:8765/jobs/{job_id}`
+- `PATCH http://127.0.0.1:8765/jobs/{job_id}`
+- `GET http://127.0.0.1:8765/sites`
+- `GET http://127.0.0.1:8765/technicians`
+- `GET http://127.0.0.1:8765/visits`
 
 ## Run Tests
 

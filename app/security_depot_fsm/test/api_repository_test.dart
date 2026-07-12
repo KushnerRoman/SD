@@ -40,7 +40,7 @@ void main() {
     });
 
     final repository = ApiFieldServiceRepository(
-        baseUrl: Uri.parse('http://127.0.0.1:8000'), client: client);
+        baseUrl: Uri.parse('http://127.0.0.1:8765'), client: client);
     final jobs = await repository.getJobs();
 
     expect(jobs.single.id, 'job_1');
@@ -60,7 +60,7 @@ void main() {
       );
     });
     final repository = ApiFieldServiceRepository(
-        baseUrl: Uri.parse('http://127.0.0.1:8000'), client: client);
+        baseUrl: Uri.parse('http://127.0.0.1:8765'), client: client);
 
     await repository.addTechnician(const Technician(
       id: 'tech_sam',
@@ -90,7 +90,7 @@ void main() {
           headers: {'content-type': 'application/json'});
     });
     final repository = ApiFieldServiceRepository(
-        baseUrl: Uri.parse('http://127.0.0.1:8000'), client: client);
+        baseUrl: Uri.parse('http://127.0.0.1:8765'), client: client);
 
     await repository.updateSite(const Site(
       id: 'site_1',
@@ -127,7 +127,7 @@ void main() {
           headers: {'content-type': 'application/json'});
     });
     final repository = ApiFieldServiceRepository(
-        baseUrl: Uri.parse('http://127.0.0.1:8000'), client: client);
+        baseUrl: Uri.parse('http://127.0.0.1:8765'), client: client);
 
     await repository.addSite(const Site(
         id: 'site_manual', name: 'Manual Site', address: '99 Manual Road'));
@@ -162,7 +162,7 @@ void main() {
           headers: {'content-type': 'application/json'});
     });
     final repository = ApiFieldServiceRepository(
-        baseUrl: Uri.parse('http://127.0.0.1:8000'), client: client);
+        baseUrl: Uri.parse('http://127.0.0.1:8765'), client: client);
 
     await repository.scheduleVisit(Visit(
       id: 'visit_job_manual',
@@ -194,7 +194,7 @@ void main() {
       return http.Response('{}', 200);
     });
     final repository = ApiFieldServiceRepository(
-        baseUrl: Uri.parse('http://127.0.0.1:8000'), client: client);
+        baseUrl: Uri.parse('http://127.0.0.1:8765'), client: client);
     final emails = await repository.getEmails();
     await repository.dispatchFromEmail(DispatchRequest(
       emailId: 'mail-1',

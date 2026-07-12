@@ -3,8 +3,6 @@ import 'package:flutter/foundation.dart';
 
 import 'data/api_field_service_repository.dart';
 import 'data/field_service_repository.dart';
-import 'data/mock_field_service_repository.dart';
-import 'data/seed_field_service_repository.dart';
 import 'features/dashboard/dashboard_screen.dart';
 import 'features/inbox/inbox_screen.dart';
 import 'features/jobs/jobs_screen.dart';
@@ -23,29 +21,24 @@ void main() {
 
 Future<FieldServiceRepository> _loadRepository() async {
   final apiRepository = ApiFieldServiceRepository(baseUrl: _apiBaseUrl());
-  try {
-    await apiRepository
-        .getDashboardSummary()
-        .timeout(const Duration(seconds: 2));
-    return apiRepository;
-  } catch (_) {
-    return SeedFieldServiceRepository.fromAsset();
-  }
+  await apiRepository
+      .getDashboardSummary()
+      .timeout(const Duration(seconds: 2));
+  return apiRepository;
 }
 
 Uri _apiBaseUrl() {
   if (kIsWeb) {
     return Uri.base;
   }
-  return Uri.parse('http://127.0.0.1:8000');
+  return Uri.parse('http://127.0.0.1:8765');
 }
 
 class SecurityDepotApp extends StatelessWidget {
-  SecurityDepotApp({
+  const SecurityDepotApp({
     super.key,
-    Future<FieldServiceRepository>? repositoryLoader,
-  }) : repositoryLoader = repositoryLoader ??
-            Future<FieldServiceRepository>.value(MockFieldServiceRepository());
+    required this.repositoryLoader,
+  });
 
   final Future<FieldServiceRepository> repositoryLoader;
 
@@ -92,7 +85,7 @@ class SecurityDepotApp extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(24),
                   child: Text(
-                      'Could not load local seed data:\n${snapshot.error}'),
+                      'Could not connect to the local API at http://127.0.0.1:8765.\n${snapshot.error}'),
                 ),
               ),
             );

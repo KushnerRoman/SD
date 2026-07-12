@@ -19,7 +19,15 @@ def load_seed_file(path: Path = DEFAULT_SEED_PATH) -> dict[str, Any]:
 
 
 def reset_and_load_seed(session: Session, seed: dict[str, Any]) -> dict[str, int]:
-    cleanup_operational_data(session)
+    try:
+        return _reset_and_load_seed(session, seed)
+    except Exception:
+        session.rollback()
+        raise
+
+
+def _reset_and_load_seed(session: Session, seed: dict[str, Any]) -> dict[str, int]:
+    cleanup_operational_data(session, commit=False)
 
     for site in seed.get("sites", []):
         site_id = str(site.get("id", ""))

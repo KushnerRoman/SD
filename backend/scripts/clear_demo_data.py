@@ -19,7 +19,7 @@ def main() -> int:
         return 2
 
     with SessionLocal() as session:
-        result = cleanup_operational_data(session)
+        result = cleanup_operational_data(session, commit=True)
     print(json.dumps(result.model_dump(), sort_keys=True))
     return 0
 

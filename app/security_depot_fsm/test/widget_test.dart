@@ -1,17 +1,25 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:security_depot_fsm/data/field_service_repository.dart';
 import 'package:security_depot_fsm/data/mock_field_service_repository.dart';
 import 'package:security_depot_fsm/main.dart';
 
 void main() {
-  testWidgets('default app loads bundled seed data',
+  testWidgets('failed API startup shows connection error instead of demo data',
       (WidgetTester tester) async {
-    await tester.pumpWidget(SecurityDepotApp());
+    final repositoryLoader = Completer<FieldServiceRepository>();
+    await tester.pumpWidget(SecurityDepotApp(
+      repositoryLoader: repositoryLoader.future,
+    ));
+    repositoryLoader.completeError(StateError('API unavailable'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Operations Command Center'), findsOneWidget);
-    expect(find.textContaining('Could not load local seed data'), findsNothing);
+    expect(find.textContaining('Could not connect to the local API'),
+        findsOneWidget);
+    expect(find.text('Operations Command Center'), findsNothing);
   });
 
   testWidgets('app shell shows manager dashboard', (WidgetTester tester) async {
