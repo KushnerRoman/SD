@@ -114,3 +114,52 @@ Results: focused OAuth suite `11 passed, 26 warnings in 3.10s`; full backend sui
 
 - The repository already emits Starlette/FastAPI and naive-UTC deprecation warnings. They do not fail tests and are not introduced as functional failures by this task.
 - OAuth pending state is process-local, appropriate for this specified single-process localhost phase; a multi-process/public deployment would require a shared short-lived state store.
+
+## Review Remediation
+
+Commit: `0bf298d fix: harden Google OAuth callback handling`.
+
+### Root Causes and Fixes
+
+- Repeat authorization assumed every successful token response included a refresh token. The callback now decrypts and retains the existing stored refresh token when Google omits a replacement; first connection still rejects a response without one.
+- Required callback arguments caused FastAPI to return a provider-facing 422 before application normalization. `code`, `state`, and provider `error` are optional at the HTTP boundary and denial, missing parameters, invalid state, incomplete response, and exchange failure map to fixed non-sensitive redirect codes.
+- Revocation sent the refresh token in the URL query. It now uses an `application/x-www-form-urlencoded` POST body.
+- `hmac.compare_digest` on arbitrary non-ASCII strings raised `TypeError`. State now passes an ASCII/length/allowed-character guard and constant-time comparison operates on bytes; malformed input raises `OAuthStateError`.
+
+### Review RED Evidence
+
+Command:
+
+```powershell
+.\backend\.venv\Scripts\pytest.exe backend\tests\test_google_oauth.py -q
+```
+
+Result: `7 failed, 10 passed, 37 warnings in 6.72s`. The failures reproduced all review findings: query-based revoke, reconnect `incomplete_response`, three callback 422 cases, non-ASCII service `TypeError`, and non-ASCII callback exception.
+
+### Review GREEN Evidence
+
+Focused command:
+
+```powershell
+.\backend\.venv\Scripts\pytest.exe backend\tests\test_google_oauth.py -q
+```
+
+Result: `17 passed, 39 warnings in 6.19s`.
+
+Full regression and diff commands:
+
+```powershell
+.\backend\.venv\Scripts\pytest.exe backend\tests -q
+git diff --check
+```
+
+Results: `35 passed, 57 warnings in 10.00s`; `git diff --check` exited 0 with no whitespace errors (only repository LF-to-CRLF notices).
+
+### Remediation Self-review
+
+- Verified first connect without a refresh token remains a fixed `incomplete_response` redirect.
+- Verified reconnect without a new refresh token preserves the decrypted original token while updating account email and expiry metadata.
+- Verified provider descriptions and malformed callback values are never reflected in redirect URLs.
+- Verified revoke requests have no token query and carry the token only in a form-encoded body.
+- Verified non-ASCII input cannot reach `compare_digest` as text and is normalized to the safe invalid-state redirect.
+- No access or refresh token was added to a response or log.
