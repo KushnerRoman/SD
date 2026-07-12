@@ -54,15 +54,24 @@ def google_auth_start(
 
 @app.get("/auth/google/callback", include_in_schema=False)
 def google_auth_callback(
-    code: str,
-    state: str,
+    code: str | None = None,
+    state: str | None = None,
+    error: str | None = None,
     session: Session = Depends(get_session),
     oauth: GoogleOAuthService = Depends(get_google_oauth_service),
 ) -> RedirectResponse:
+    if error is not None:
+        safe_code = "access_denied" if error == "access_denied" else "provider_error"
+        return RedirectResponse(f"/web/#/settings?google=error&code={safe_code}")
+    if not code or not state:
+        return RedirectResponse("/web/#/settings?google=error&code=missing_parameters")
     try:
         tokens = oauth.exchange_code(code=code, state=state)
         refresh_token = tokens.get("refresh_token")
         access_token = tokens.get("access_token")
+        existing_credential = session.query(GoogleCredential).first()
+        if not refresh_token and existing_credential is not None:
+            refresh_token = oauth.load_refresh_token(existing_credential)
         if not refresh_token or not access_token:
             return RedirectResponse("/web/#/settings?google=error&code=incomplete_response")
         account_email = oauth.account_email(access_token)

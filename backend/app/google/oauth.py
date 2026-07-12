@@ -112,7 +112,7 @@ class GoogleOAuthService:
         return response.json()
 
     def revoke(self, token: str) -> None:
-        response = self.http_client.post(self.settings.revoke_endpoint, params={"token": token})
+        response = self.http_client.post(self.settings.revoke_endpoint, data={"token": token})
         response.raise_for_status()
 
     def account_email(self, access_token: str) -> str:
@@ -151,8 +151,20 @@ class GoogleOAuthService:
 
     def _consume_state(self, supplied_state: str) -> PendingAuthorization:
         self._discard_expired_states()
+        try:
+            supplied_state_bytes = supplied_state.encode("ascii")
+        except UnicodeEncodeError as error:
+            raise OAuthStateError("Invalid or expired OAuth state") from error
+        if not supplied_state_bytes or len(supplied_state_bytes) > 256 or any(
+            byte not in b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_" for byte in supplied_state_bytes
+        ):
+            raise OAuthStateError("Invalid or expired OAuth state")
         matched = next(
-            (candidate for candidate in self.pending_authorizations if hmac.compare_digest(candidate, supplied_state)),
+            (
+                candidate
+                for candidate in self.pending_authorizations
+                if hmac.compare_digest(candidate.encode("ascii"), supplied_state_bytes)
+            ),
             None,
         )
         if matched is None:

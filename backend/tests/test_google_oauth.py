@@ -139,7 +139,9 @@ def test_refresh_and_revoke_use_mocked_http(settings):
     service.revoke("refresh-secret")
     assert len(requests) == 2
     assert b"refresh-secret" in requests[0].content
-    assert parse_qs(requests[1].url.query.decode())["token"] == ["refresh-secret"]
+    assert requests[1].url.query == b""
+    assert requests[1].headers["content-type"].startswith("application/x-www-form-urlencoded")
+    assert parse_qs(requests[1].content.decode())["token"] == ["refresh-secret"]
 
 
 def test_account_email_comes_from_userinfo_without_exposing_access_token(settings):
@@ -235,5 +237,76 @@ def test_callback_wrong_state_redirects_with_safe_error(settings):
         response = TestClient(app, follow_redirects=False).get("/auth/google/callback?code=abc&state=wrong")
         assert response.headers["location"] == "/web/#/settings?google=error&code=invalid_state"
         assert "abc" not in response.headers["location"]
+    finally:
+        app.dependency_overrides.clear()
+
+
+def test_repeat_callback_keeps_existing_refresh_token(session_factory, settings):
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path.endswith("/userinfo"):
+            return httpx.Response(200, json={"email": "updated@gmail.com"})
+        return httpx.Response(200, json={"access_token": "new-access", "expires_in": 1800})
+
+    service = GoogleOAuthService(
+        settings,
+        CredentialCipher(settings.token_encryption_key),
+        http_client=httpx.Client(transport=httpx.MockTransport(handler)),
+    )
+    with session_factory() as db:
+        service.store_tokens(db, account_email="old@gmail.com", refresh_token="existing-refresh")
+
+    def override_session():
+        with session_factory() as value:
+            yield value
+
+    app.dependency_overrides[get_session] = override_session
+    app.dependency_overrides[get_google_oauth_service] = lambda: service
+    try:
+        client = TestClient(app, follow_redirects=False)
+        state = parse_qs(urlparse(client.get("/auth/google/start").headers["location"]).query)["state"][0]
+        response = client.get(f"/auth/google/callback?code=repeat&state={state}")
+        assert response.headers["location"] == "/web/#/settings?google=connected"
+        with session_factory() as db:
+            record = db.query(GoogleCredential).one()
+            assert record.account_email == "updated@gmail.com"
+            assert service.load_refresh_token(record) == "existing-refresh"
+    finally:
+        app.dependency_overrides.clear()
+
+
+@pytest.mark.parametrize(
+    ("query", "safe_code"),
+    [
+        ("error=access_denied&error_description=sensitive-provider-text", "access_denied"),
+        ("", "missing_parameters"),
+        ("code=abc", "missing_parameters"),
+    ],
+)
+def test_callback_denial_and_missing_parameters_use_safe_redirect(settings, query, safe_code):
+    service = GoogleOAuthService(settings, CredentialCipher(settings.token_encryption_key))
+    app.dependency_overrides[get_google_oauth_service] = lambda: service
+    try:
+        response = TestClient(app, follow_redirects=False).get(f"/auth/google/callback?{query}")
+        assert response.status_code in (302, 307)
+        assert response.headers["location"] == f"/web/#/settings?google=error&code={safe_code}"
+        assert "sensitive-provider-text" not in response.headers["location"]
+    finally:
+        app.dependency_overrides.clear()
+
+
+def test_non_ascii_state_is_rejected_as_oauth_state_error(settings):
+    service = GoogleOAuthService(settings, CredentialCipher(settings.token_encryption_key))
+    service.authorization_url(has_refresh_token=False)
+    with pytest.raises(OAuthStateError):
+        service.exchange_code(code="abc", state="café")
+
+
+def test_non_ascii_callback_state_uses_safe_redirect(settings):
+    service = GoogleOAuthService(settings, CredentialCipher(settings.token_encryption_key))
+    service.authorization_url(has_refresh_token=False)
+    app.dependency_overrides[get_google_oauth_service] = lambda: service
+    try:
+        response = TestClient(app, follow_redirects=False).get("/auth/google/callback?code=abc&state=caf%C3%A9")
+        assert response.headers["location"] == "/web/#/settings?google=error&code=invalid_state"
     finally:
         app.dependency_overrides.clear()
