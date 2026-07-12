@@ -127,6 +127,24 @@ def test_empty_initial_sync_uses_mailbox_history_checkpoint(session):
     coordinator.sync_gmail(session); coordinator.sync_gmail(session)
 
 
+def test_initial_checkpoint_precedes_listing_and_replays_arrival_during_import(session):
+    calls = []
+    class Provider:
+        def current_history_id(self): calls.append("profile"); return "100"
+        def list_recent(self): calls.append("list"); return ["msg-1"]
+        def get_message(self, message_id):
+            calls.append(("get", message_id))
+            return {**PLAIN, "id": message_id, "historyId": "100" if message_id == "msg-1" else "101"}
+        def list_history(self, history_id):
+            calls.append(("history", history_id))
+            return HistoryResult([("add", "msg-arrived")], "101")
+    coordinator = GoogleSyncCoordinator(Provider())
+    coordinator.sync_gmail(session)
+    coordinator.sync_gmail(session)
+    assert calls == ["profile", "list", ("get", "msg-1"), ("history", "100"), ("get", "msg-arrived")]
+    assert session.query(EmailMessage).filter_by(provider_id="msg-arrived").count() == 1
+
+
 def test_incremental_final_state_and_404_race(session):
     existing = EmailMessage(id="gmail:a", provider_id="a", sender="", subject="", received_at=datetime.utcnow())
     session.add(existing); session.commit()

@@ -48,3 +48,12 @@ All Gmail HTTP behavior in tests uses `httpx.MockTransport`; attachment bodies a
 - `git diff --check` -> exit 0 (line-ending advisory only).
 
 Review concern resolved: existing SQLite installations are now upgraded additively at startup without dropping or rebuilding operational tables. Remaining output consists of pre-existing datetime/FastAPI/httpx deprecation warnings.
+
+## Initial-sync race remediation
+
+- RED: `backend\.venv\Scripts\pytest.exe backend\tests\test_gmail_sync.py::test_initial_checkpoint_precedes_listing_and_replays_arrival_during_import -q` -> failed because calls began `list, profile` instead of `profile, list`.
+- The initial path now captures the mailbox profile history ID before `messages.list` or any message fetch, keeps that exact pre-list checkpoint throughout the import, and persists it only with the successful import commit.
+- A deterministic fixture injects a message after checkpoint capture and proves the immediately following incremental history sync imports it.
+- GREEN focused: `backend\.venv\Scripts\pytest.exe backend\tests\test_gmail_sync.py -q` -> `18 passed`.
+- GREEN full: `backend\.venv\Scripts\pytest.exe backend\tests -q` -> `53 passed`.
+- `git diff --check` -> exit 0 (line-ending advisory only).

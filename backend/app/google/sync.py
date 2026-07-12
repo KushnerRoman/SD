@@ -40,8 +40,8 @@ class GoogleSyncCoordinator:
                 deleted_ids = [message_id for message_id, action in final_operations.items() if action == "delete"]
                 next_cursor = history.history_id
             else:
-                message_ids, deleted_ids = self.gmail.list_recent(), []
                 next_cursor = self.gmail.current_history_id()
+                message_ids, deleted_ids = self.gmail.list_recent(), []
             added = updated = 0
             for message_id in dict.fromkeys(message_ids):
                 try:
@@ -51,10 +51,6 @@ class GoogleSyncCoordinator:
                     if record is not None:
                         session.delete(record)
                     continue
-                if normalized.history_id and (
-                    not next_cursor or int(normalized.history_id) > int(next_cursor)
-                ):
-                    next_cursor = normalized.history_id
                 record = session.scalar(select(EmailMessage).where(EmailMessage.provider_id == normalized.provider_id))
                 if record is None:
                     record = EmailMessage(id=f"gmail:{normalized.provider_id}", provider_id=normalized.provider_id)
