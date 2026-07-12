@@ -5,68 +5,32 @@ class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key, required this.repository});
   final FieldServiceRepository repository;
   @override
-  Widget build(BuildContext context) => Padding(
-      padding: const EdgeInsets.all(24),
+  Widget build(BuildContext context) => const Padding(
+      padding: EdgeInsets.all(24),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const Text('Settings',
+        Text('Settings',
             style: TextStyle(fontSize: 28, fontWeight: FontWeight.w800)),
-        const Text('Demo connections and data controls'),
-        const SizedBox(height: 24),
-        const Card(
+        Text('Google connections'),
+        SizedBox(height: 24),
+        Card(
             child: Column(children: [
           ListTile(
               leading: CircleAvatar(child: Icon(Icons.mail)),
-              title: Text('Gmail Demo'),
-              subtitle: Text('Mixed mailbox simulation'),
+              title: Text('Gmail'),
+              subtitle: Text('Connect a Google account to sync service email'),
               trailing: Chip(
-                  avatar:
-                      Icon(Icons.check_circle, color: Colors.green, size: 17),
-                  label: Text('Connected'))),
+                  avatar: Icon(Icons.info_outline, size: 17),
+                  label: Text('Not connected'))),
           Divider(height: 1),
           ListTile(
               leading: CircleAvatar(child: Icon(Icons.calendar_month)),
-              title: Text('Google Calendar Demo'),
-              subtitle: Text('Technician calendar simulation'),
+              title: Text('Google Calendar'),
+              subtitle: Text('Connect a Google account to sync field visits'),
               trailing: Chip(
-                  avatar:
-                      Icon(Icons.check_circle, color: Colors.green, size: 17),
-                  label: Text('Connected')))
+                  avatar: Icon(Icons.info_outline, size: 17),
+                  label: Text('Not connected')))
         ])),
-        const SizedBox(height: 24),
-        Card(
-            child: ListTile(
-                leading: const CircleAvatar(
-                    backgroundColor: Color(0xFFFFE5E6),
-                    child: Icon(Icons.restart_alt, color: Color(0xFFE31B23))),
-                title: const Text('Reset demo data',
-                    style: TextStyle(fontWeight: FontWeight.w700)),
-                subtitle: const Text(
-                    'Restore the original emails, service calls, technicians, and history.'),
-                trailing: OutlinedButton(
-                    onPressed: () => _reset(context),
-                    child: const Text('Reset'))))
+        SizedBox(height: 16),
+        Text('Google connection setup will be available here.')
       ]));
-  Future<void> _reset(BuildContext context) async {
-    final ok = await showDialog<bool>(
-        context: context,
-        builder: (_) => AlertDialog(
-                title: const Text('Reset all demo data?'),
-                content: const Text(
-                    'Every change made during this demo will be replaced with the original sample data.'),
-                actions: [
-                  TextButton(
-                      onPressed: () => Navigator.pop(context, false),
-                      child: const Text('Cancel')),
-                  FilledButton(
-                      onPressed: () => Navigator.pop(context, true),
-                      child: const Text('Reset demo'))
-                ]));
-    if (ok == true) {
-      await repository.resetDemoData();
-      if (context.mounted) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('Demo data restored.')));
-      }
-    }
-  }
 }

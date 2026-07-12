@@ -5,10 +5,10 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from sqlalchemy import delete
 from sqlalchemy.orm import Session
 
 from app import models
+from app.cleanup import cleanup_operational_data
 
 
 DEFAULT_SEED_PATH = Path(__file__).resolve().parents[2] / "app" / "security_depot_fsm" / "assets" / "data" / "seed_data.json"
@@ -19,26 +19,21 @@ def load_seed_file(path: Path = DEFAULT_SEED_PATH) -> dict[str, Any]:
 
 
 def reset_and_load_seed(session: Session, seed: dict[str, Any]) -> dict[str, int]:
-    session.execute(delete(models.Notification))
-    session.execute(delete(models.ActivityEntry))
-    session.execute(delete(models.CalendarDetail))
-    session.execute(delete(models.Visit))
-    session.execute(delete(models.Job))
-    session.execute(delete(models.EmailMessage))
-    session.execute(delete(models.Site))
-    session.execute(delete(models.Technician))
-    session.flush()
+    cleanup_operational_data(session)
 
     for site in seed.get("sites", []):
-        session.add(models.Site(
-            id=str(site.get("id", "")),
-            name=str(site.get("name", "")),
-            normalized_name=str(site.get("normalizedName", "")),
-            address=str(site.get("address", "")),
-            slack_channel=str(site.get("slackChannel", "")),
-            source=str(site.get("source", "")),
-            needs_manual_review=bool(site.get("needsManualReview", False)),
-        ))
+        site_id = str(site.get("id", ""))
+        existing = session.get(models.Site, site_id)
+        if existing is None:
+            session.add(models.Site(
+                id=site_id,
+                name=str(site.get("name", "")),
+                normalized_name=str(site.get("normalizedName", "")),
+                address=str(site.get("address", "")),
+                slack_channel=str(site.get("slackChannel", "")),
+                source=str(site.get("source", "")),
+                needs_manual_review=bool(site.get("needsManualReview", False)),
+            ))
 
     for technician in seed.get("technicians", []):
         session.add(models.Technician(
