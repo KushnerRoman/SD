@@ -88,6 +88,12 @@ def test_provider_maps_safe_typed_errors(status, error):
     assert "provider secret" not in str(raised.value)
 
 
+def test_gmail_403_rate_limit_is_retryable_quota():
+    provider = GmailProvider("secret", http_client=httpx.Client(transport=httpx.MockTransport(
+        lambda r: httpx.Response(403, json={"error": {"errors": [{"reason": "rateLimitExceeded"}]}}))))
+    with pytest.raises(GmailQuotaError): provider.list_recent()
+
+
 def test_initial_sync_is_idempotent(session):
     class Provider:
         def list_recent(self): return ["msg-1"]

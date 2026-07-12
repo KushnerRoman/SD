@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -24,3 +26,10 @@ def test_startup_creates_schema_without_seeding_operational_data(monkeypatch):
 
 def test_reset_demo_endpoint_is_removed():
     assert not any(route.path == "/admin/reset-demo" for route in main.app.routes)
+    assert not any(route.path == "/admin/load-seed" for route in main.app.routes)
+
+
+def test_legacy_init_script_is_schema_only():
+    source = (Path(__file__).parents[1] / "scripts" / "init_db.py").read_text()
+    assert "seed_loader" not in source
+    assert "reset_and_load_seed" not in source

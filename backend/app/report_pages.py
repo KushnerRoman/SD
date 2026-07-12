@@ -17,7 +17,7 @@ def report_form(visit, csrf_token: str, error: str = "") -> str:
 <label>Duration (minutes)<input name="duration_minutes" type="number" min="1" required></label>
 <label>Work performed<textarea name="work_performed" required></textarea></label>
 <label>Materials used<textarea name="materials_used"></textarea></label>
-<label>Follow-up notes<textarea name="follow_up_notes" required></textarea></label>
+<label>Follow-up notes (required for Incomplete or Return Required)<textarea name="follow_up_notes"></textarea></label>
 <button type="submit">Submit report</button></form>'''
     return _shell("Technician report", body)
 

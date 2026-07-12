@@ -63,3 +63,17 @@ Fresh follow-up verification after the lifecycle assertion:
 - Final focused command `backend\.venv\Scripts\pytest.exe backend\tests\test_cleanup.py -q` — PASS, 6 tests (24 warnings).
 - Final full command `backend\.venv\Scripts\pytest.exe backend\tests -q` — PASS, 80 tests (413 existing deprecation warnings).
 - Flutter was not rerun for this final follow-up because no Flutter source or tests changed after the prior clean 43-test/analyze/build verification.
+
+## Whole-branch integration review
+
+- Removed `/admin/load-seed`, seed-loader imports from the API, and operational loading from `scripts/init_db.py`; startup and the legacy script are schema-only.
+- Manual and scheduled composite synchronization share one nonblocking process lock, so a manual request returns a safe conflict instead of overlapping an automatic run.
+- Replaced broad Calendar event scope with least-privilege `calendar.app.created` plus readonly calendar-list access; documentation and OAuth tests assert the exact scope set.
+- Reconnect outbox rows retry after authorization returns using the same stable event ID, preventing duplicates.
+- Composite status records safe operation codes (`calendar.authorization`, `calendar.quota`, `calendar.sync`, or `calendar.delivery`) and no longer reports success when Calendar delivery fails.
+- Gmail and Calendar inspect structured 403 reasons to distinguish retryable quota/rate limits from authorization/scope failures without exposing provider bodies.
+- Completed reports accept empty follow-up notes; Incomplete and Return Required continue to require them.
+- Composite synchronization now polls changed events for the app-created service calendar, persists initial/incremental sync tokens, handles pagination and expired cursors, and applies changes only to events whose stable app-managed ID matches a known visit.
+- Removed an unused generic outbox exception binding.
+
+Verification: focused integration suites 70 passed; full backend suite 88 passed (429 existing deprecation warnings). No Flutter files changed.

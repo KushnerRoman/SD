@@ -5,7 +5,7 @@ from hashlib import sha256
 
 from sqlalchemy import select
 
-from app.google.calendar import CalendarAuthorizationError, CalendarConflictError
+from app.google.calendar import CalendarAuthorizationError, CalendarConflictError, CalendarSyncTokenExpired
 from app.models import CalendarOutbox, GoogleCalendarSettings, Visit
 from app.report_tokens import issue_report_token
 
@@ -47,7 +47,7 @@ def _calendar_id(session, provider):
 
 def process_calendar_outbox(session, provider) -> int:
     delivered = 0
-    items = session.scalars(select(CalendarOutbox).where(CalendarOutbox.status == "pending").order_by(CalendarOutbox.id)).all()
+    items = session.scalars(select(CalendarOutbox).where(CalendarOutbox.status.in_(("pending", "reconnect"))).order_by(CalendarOutbox.id)).all()
     for item in items:
         if item.next_attempt_at and item.next_attempt_at > datetime.utcnow():
             continue
@@ -71,7 +71,7 @@ def process_calendar_outbox(session, provider) -> int:
             item.status = "delivered"; item.last_error = ""; delivered += 1
         except CalendarAuthorizationError:
             item.status = "reconnect"; item.last_error = "Google authorization is no longer valid"
-        except Exception as error:
+        except Exception:
             item.attempts += 1
             item.next_attempt_at = datetime.utcnow() + timedelta(seconds=min(300, 2 ** item.attempts))
             item.last_error = "Calendar delivery failed"
@@ -80,3 +80,38 @@ def process_calendar_outbox(session, provider) -> int:
         item.updated_at = datetime.utcnow()
         session.commit()
     return delivered
+
+
+def sync_calendar_changes(session, provider) -> int:
+    settings = session.get(GoogleCalendarSettings, 1)
+    if settings is None or not settings.calendar_id:
+        return 0
+    changed = 0
+    page_token = None
+    while True:
+        try:
+            page = provider.get_changed_events(settings.calendar_id, settings.sync_token or None, page_token)
+        except CalendarSyncTokenExpired:
+            settings.sync_token = ""
+            session.commit()
+            page_token = None
+            page = provider.get_changed_events(settings.calendar_id, None, None)
+        for event in page.get("items", []):
+            event_id = event.get("id")
+            visit = session.scalar(select(Visit).where(Visit.calendar_event_id == event_id))
+            if visit is None or event_id != stable_event_id(visit.id):
+                continue
+            visit.calendar_etag = str(event.get("etag") or visit.calendar_etag)
+            for field, attribute in (("start", "start_datetime"), ("end", "end_datetime")):
+                text = (event.get(field) or {}).get("dateTime")
+                if text:
+                    setattr(visit, attribute, datetime.fromisoformat(text.replace("Z", "+00:00")).replace(tzinfo=None))
+            if event.get("status") == "cancelled":
+                visit.status = "Not Completed"
+                visit.work_summary = "Calendar event cancelled"
+            changed += 1
+        page_token = page.get("nextPageToken")
+        if not page_token:
+            settings.sync_token = str(page.get("nextSyncToken") or settings.sync_token)
+            session.commit()
+            return changed

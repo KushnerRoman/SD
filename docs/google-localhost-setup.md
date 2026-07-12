@@ -7,7 +7,7 @@ Use placeholder values below. Never commit a client secret, token key, account a
 1. Create or select a Google Cloud project.
 2. Enable **Gmail API** and **Google Calendar API**.
 3. Configure the OAuth consent screen with **External** audience. While the app remains in Testing, add only the intended personal account as a test user. Google may show an unverified-app warning; this localhost configuration is for personal/testing use, not public production use.
-4. Request exactly these scopes: `openid`, `email`, `https://www.googleapis.com/auth/gmail.readonly`, `https://www.googleapis.com/auth/calendar.events`, and `https://www.googleapis.com/auth/calendar.calendarlist.readonly`.
+4. Request exactly these scopes: `openid`, `email`, `https://www.googleapis.com/auth/gmail.readonly`, `https://www.googleapis.com/auth/calendar.app.created`, and `https://www.googleapis.com/auth/calendar.calendarlist.readonly`. The app-created scope permits creating and managing only calendars created by this application.
 5. Create an OAuth 2.0 **Web application** client and add the exact authorized redirect URI `http://127.0.0.1:8765/auth/google/callback`. `localhost`, another port, and a trailing slash are different redirect URIs.
 
 ## 2. Set the local environment

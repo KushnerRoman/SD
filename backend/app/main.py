@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 import asyncio
+import threading
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -15,14 +16,14 @@ from sqlalchemy.orm import Session, selectinload
 from app.database import SessionLocal, create_schema, get_session
 from app.google.scheduler import GoogleSyncScheduler
 from app.google.config import GoogleSettings
-from app.google.calendar import CalendarProvider
-from app.google.outbox import process_calendar_outbox
+from app.google.calendar import CalendarAuthorizationError, CalendarError, CalendarProvider, CalendarQuotaError
+from app.google.outbox import process_calendar_outbox, sync_calendar_changes
 from app.google.oauth import CredentialCipher, GoogleOAuthService, OAuthStateError
 from app.google.gmail import GmailProvider, GmailQuotaError, GmailRevokedError, GmailSyncError
 from app.google.sync import GoogleSyncCoordinator
 from app.models import EmailMessage, GoogleCredential, GoogleSyncState, Job, Notification, Site, Technician, Visit
+from app.models import CalendarOutbox
 from app.schemas import CalendarDeliveryOut, DashboardSummary, DispatchCreate, EmailMessageOut, GoogleConnectionOut, GoogleSyncCountsOut, GoogleSyncStatusOut, JobCreate, JobOut, JobUpdate, NotificationOut, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianReportCreate, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
-from app.seed_loader import load_seed_file, reset_and_load_seed
 from app.workflows import WorkflowConflict, WorkflowValidationError, convert_email_to_service_call, submit_technician_report
 from app.report_pages import report_form, success_page, unavailable_page
 from app.report_tokens import ReportTokenError, close_report_token, csrf_token_for, resolve_report_token
@@ -66,19 +67,47 @@ def startup() -> None:
     create_schema()
 
 
-app = FastAPI(title="Security Depot FSM Mock API", version="0.1.0", lifespan=lifespan)
+app = FastAPI(title="Security Depot FSM API", version="0.1.0", lifespan=lifespan)
+
+
+class CompositeSyncBusy(RuntimeError): pass
+
+
+_google_sync_lock = threading.Lock()
 
 
 def _perform_google_sync(session: Session, coordinator: GoogleSyncCoordinator, provider: CalendarProvider) -> dict:
-    counts = coordinator.sync_gmail(session)
-    delivered = process_calendar_outbox(session, provider)
-    return {
-        "status": "ok",
-        "added": counts.added,
-        "updated": counts.updated,
-        "deleted": counts.deleted,
-        "calendar_delivered": delivered,
-    }
+    if not _google_sync_lock.acquire(blocking=False):
+        raise CompositeSyncBusy("Google synchronization is already running")
+    try:
+        counts = coordinator.sync_gmail(session)
+        try:
+            attempts_before = {row.id: row.attempts for row in session.scalars(
+                select(CalendarOutbox).where(CalendarOutbox.status.in_(("pending", "reconnect"))))}
+            delivered = process_calendar_outbox(session, provider)
+            sync_calendar_changes(session, provider)
+        except (CalendarAuthorizationError, CalendarQuotaError, CalendarError) as calendar_error:
+            state = session.get(GoogleSyncState, 1) or GoogleSyncState(id=1)
+            state.status = "error"
+            state.last_error = ("calendar.authorization" if isinstance(calendar_error, CalendarAuthorizationError)
+                                else "calendar.quota" if isinstance(calendar_error, CalendarQuotaError)
+                                else "calendar.sync")
+            session.add(state); session.commit()
+            raise
+        reconnect = session.scalar(select(func.count()).select_from(CalendarOutbox).where(CalendarOutbox.status == "reconnect")) or 0
+        failed = session.scalar(select(func.count()).select_from(CalendarOutbox).where(CalendarOutbox.status == "failed")) or 0
+        attempted_failures = any(row.attempts > attempts_before.get(row.id, row.attempts)
+                                 for row in session.scalars(select(CalendarOutbox).where(CalendarOutbox.status == "pending")))
+        if reconnect or failed or attempted_failures:
+            state = session.get(GoogleSyncState, 1) or GoogleSyncState(id=1)
+            state.status = "error"
+            state.last_error = "calendar.authorization" if reconnect else "calendar.delivery"
+            session.add(state); session.commit()
+            raise CalendarError("Calendar delivery did not complete")
+        return {"status": "ok", "added": counts.added, "updated": counts.updated,
+                "deleted": counts.deleted, "calendar_delivered": delivered}
+    finally:
+        _google_sync_lock.release()
 
 WEB_BUILD_DIR = Path(__file__).resolve().parents[2] / "app" / "security_depot_fsm" / "build" / "web"
 
@@ -229,6 +258,14 @@ def google_sync(
         raise HTTPException(status_code=429, detail="Google quota is temporarily exhausted") from error
     except GmailSyncError as error:
         raise HTTPException(status_code=503, detail="Google synchronization is temporarily unavailable") from error
+    except CompositeSyncBusy as error:
+        raise HTTPException(status_code=409, detail="Google synchronization is already running") from error
+    except CalendarAuthorizationError as error:
+        raise HTTPException(status_code=401, detail="Google Calendar authorization is unavailable") from error
+    except CalendarQuotaError as error:
+        raise HTTPException(status_code=429, detail="Google Calendar quota is temporarily exhausted") from error
+    except CalendarError as error:
+        raise HTTPException(status_code=503, detail="Google Calendar synchronization failed") from error
 
 
 @app.get("/google/sync-status", response_model=GoogleSyncStatusOut)
@@ -254,11 +291,6 @@ def deliver_calendar_outbox(
 @app.get("/", include_in_schema=False)
 def web_root() -> RedirectResponse:
     return RedirectResponse(url="/web/")
-
-
-@app.post("/admin/load-seed")
-def load_seed(session: Session = Depends(get_session)) -> dict[str, int]:
-    return reset_and_load_seed(session, load_seed_file())
 
 
 @app.get("/emails", response_model=list[EmailMessageOut])
@@ -596,7 +628,7 @@ async def post_report(token: str, request: Request, session: Session = Depends(g
     payload = TechnicianReportCreate(status=values.get("status", ""), duration_minutes=duration,
         work_performed=values.get("work_performed", ""), materials_used=values.get("materials_used", ""),
         follow_up_notes=values.get("follow_up_notes", ""))
-    if not payload.follow_up_notes.strip():
+    if payload.status in {"Incomplete", "Return Required"} and not payload.follow_up_notes.strip():
         return HTMLResponse(report_form(visit, csrf, "All required fields must be completed."), status_code=422)
     try:
         submit_technician_report(session, visit.id, payload, commit=False)

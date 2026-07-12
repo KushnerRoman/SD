@@ -70,6 +70,8 @@ def test_authorization_url_generates_state_and_pkce(settings):
     assert query["prompt"] == ["consent"]
     assert query["code_challenge_method"] == ["S256"]
     assert query["scope"] == [" ".join(settings.scopes)]
+    assert "https://www.googleapis.com/auth/calendar.app.created" in settings.scopes
+    assert "https://www.googleapis.com/auth/calendar.events" not in settings.scopes
     pending = service.pending_authorizations[query["state"][0]]
     expected = base64.urlsafe_b64encode(hashlib.sha256(pending.code_verifier.encode()).digest()).rstrip(b"=").decode()
     assert query["code_challenge"] == [expected]

@@ -6,10 +6,12 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from app.database import Base
-from app.google.calendar import CalendarError, CalendarProvider
-from app.google.outbox import process_calendar_outbox, stable_event_id
+from app.google.calendar import CalendarAuthorizationError, CalendarError, CalendarProvider, CalendarQuotaError
+from app.google.outbox import process_calendar_outbox, stable_event_id, sync_calendar_changes
 from app.models import CalendarOutbox, GoogleCalendarSettings, Job, Site, Technician, Visit
 from app.report_tokens import resolve_report_token
+from app.main import _perform_google_sync
+from app.models import GoogleSyncState
 
 TEST_KEY = __import__("base64").urlsafe_b64encode(b"A" * 32).decode()
 
@@ -140,6 +142,20 @@ def test_backoff_skips_not_due_work_and_stops_after_five_attempts():
     assert item.last_error == "Calendar delivery failed"
 
 
+def test_composite_sync_status_reports_calendar_delivery_failure():
+    session = make_session(); seed(session)
+    class Gmail:
+        def sync_gmail(self, db):
+            from app.google.sync import SyncCounts
+            state = GoogleSyncState(id=1, status="ok"); db.merge(state); db.commit()
+            return SyncCounts()
+    provider = CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(
+        lambda request: (_ for _ in ()).throw(httpx.ConnectError("secret", request=request)))))
+    with pytest.raises(CalendarError): _perform_google_sync(session, Gmail(), provider)
+    state = session.get(GoogleSyncState, 1)
+    assert state.status == "error" and state.last_error == "calendar.delivery"
+
+
 def test_shared_same_name_calendar_is_not_reused():
     created = 0
     def handler(request):
@@ -154,6 +170,47 @@ def test_shared_same_name_calendar_is_not_reused():
     process_calendar_outbox(session, CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(handler))))
     assert created == 1
     assert session.get(GoogleCalendarSettings, 1).calendar_id == "owned"
+
+
+def test_reconnect_outbox_is_retried_after_authorization_returns():
+    session = make_session(); visit = seed(session)
+    item = session.query(CalendarOutbox).one(); item.status = "reconnect"
+    session.add(GoogleCalendarSettings(id=1, calendar_id="cal")); session.commit()
+    provider = CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(
+        lambda request: httpx.Response(200, json={"id": stable_event_id(visit.id), "etag": '"ok"'}))))
+    assert process_calendar_outbox(session, provider) == 1
+    assert item.status == "delivered" and visit.calendar_event_id
+
+
+def test_changed_calendar_events_use_sync_token_and_ignore_foreign_events():
+    session = make_session(); visit = seed(session)
+    visit.calendar_event_id = stable_event_id(visit.id)
+    settings = GoogleCalendarSettings(id=1, calendar_id="cal", sync_token="old")
+    session.add(settings); session.commit()
+    seen = []
+    def handler(request):
+        seen.append(dict(request.url.params))
+        return httpx.Response(200, json={"items": [
+            {"id": "foreign", "etag": '"x"'},
+            {"id": visit.calendar_event_id, "etag": '"new"',
+             "start": {"dateTime": "2026-07-13T11:00:00"},
+             "end": {"dateTime": "2026-07-13T12:00:00"}},
+        ], "nextSyncToken": "new-token"})
+    provider = CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(handler)))
+    assert sync_calendar_changes(session, provider) == 1
+    assert seen == [{"syncToken": "old"}]
+    assert settings.sync_token == "new-token" and visit.calendar_etag == '"new"'
+    assert visit.start_datetime.hour == 11
+
+
+@pytest.mark.parametrize(("status", "reason", "error"), [
+    (403, "rateLimitExceeded", CalendarQuotaError),
+    (403, "insufficientPermissions", CalendarAuthorizationError),
+])
+def test_calendar_403_reason_distinguishes_quota_from_authorization(status, reason, error):
+    provider = CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(
+        lambda request: httpx.Response(status, json={"error": {"errors": [{"reason": reason}]}}))))
+    with pytest.raises(error): provider.list_calendars()
 
 
 def test_calendar_list_and_create_classify_bad_responses_safely():

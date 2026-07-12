@@ -110,9 +110,9 @@ def test_post_requires_csrf_and_structured_fields_then_completes_atomically():
     session = make_session(); visit = seed(session); token = issue_report_token(session, visit); session.commit(); client = client_for(session)
     page = client.get(f"/report/{token}")
     csrf = page.cookies["report_csrf"]
-    base = {"csrf_token": csrf, "status": "Completed", "duration_minutes": "45", "work_performed": "Replaced camera", "materials_used": "Camera", "follow_up_notes": "None"}
+    base = {"csrf_token": csrf, "status": "Completed", "duration_minutes": "45", "work_performed": "Replaced camera", "materials_used": "Camera", "follow_up_notes": ""}
     assert client.post(f"/report/{token}", data={**base, "csrf_token": "bad"}).status_code == 403
-    for field in ("duration_minutes", "work_performed", "follow_up_notes"):
+    for field in ("duration_minutes", "work_performed"):
         assert client.post(f"/report/{token}", data={**base, field: ""}).status_code == 422
     response = client.post(f"/report/{token}", data=base)
     assert response.status_code == 200 and "Report submitted" in response.text

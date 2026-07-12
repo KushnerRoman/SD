@@ -5,7 +5,9 @@ import httpx
 
 class CalendarError(RuntimeError): pass
 class CalendarAuthorizationError(CalendarError): pass
+class CalendarQuotaError(CalendarError): pass
 class CalendarConflictError(CalendarError): pass
+class CalendarSyncTokenExpired(CalendarError): pass
 class CalendarNetworkError(CalendarError): pass
 
 
@@ -22,8 +24,18 @@ class CalendarProvider:
             response = self._client.request(method, self.base_url + path, params=params, json=json, headers=merged)
         except httpx.HTTPError as error:
             raise CalendarNetworkError("Calendar could not be reached") from error
-        if response.status_code in (401, 403): raise CalendarAuthorizationError("Google authorization is no longer valid")
+        if response.status_code == 401: raise CalendarAuthorizationError("Google authorization is no longer valid")
+        if response.status_code in (403, 429):
+            reasons = []
+            try:
+                reasons = [item.get("reason") for item in response.json().get("error", {}).get("errors", [])]
+            except (ValueError, TypeError, AttributeError):
+                pass
+            if response.status_code == 429 or any(reason in {"rateLimitExceeded", "userRateLimitExceeded", "quotaExceeded"} for reason in reasons):
+                raise CalendarQuotaError("Calendar quota is temporarily exhausted")
+            raise CalendarAuthorizationError("Google Calendar permission is unavailable")
         if response.status_code == 412: raise CalendarConflictError("Calendar event changed remotely")
+        if response.status_code == 410: raise CalendarSyncTokenExpired("Calendar sync cursor expired")
         if response.status_code >= 500: raise CalendarNetworkError("Calendar is temporarily unavailable")
         if response.status_code >= 400 and response.status_code != 409:
             raise CalendarError("Calendar rejected the request")
@@ -65,7 +77,8 @@ class CalendarProvider:
         response = self._request("PATCH", f"/calendars/{calendar_id}/events/{event_id}", params={"sendUpdates": "all"}, json=event, headers={"If-Match": etag})
         return self._json(response)
 
-    def get_changed_events(self, calendar_id, sync_token=None):
+    def get_changed_events(self, calendar_id, sync_token=None, page_token=None):
         params = {"syncToken": sync_token} if sync_token else {"singleEvents": "true"}
+        if page_token: params["pageToken"] = page_token
         response = self._request("GET", f"/calendars/{calendar_id}/events", params=params)
         return self._json(response)

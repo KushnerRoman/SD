@@ -30,10 +30,18 @@ class GmailProvider:
             response = self._client.get(self.base_url + path, params=params, headers={"Authorization": f"Bearer {self._token}"})
         except httpx.HTTPError as error:
             raise GmailNetworkError("Gmail could not be reached") from error
-        if response.status_code in (401, 403):
+        if response.status_code == 401:
             raise GmailRevokedError("Google authorization is no longer valid")
-        if response.status_code == 429:
+        reasons = []
+        if response.status_code == 403:
+            try:
+                reasons = [item.get("reason") for item in response.json().get("error", {}).get("errors", [])]
+            except (ValueError, TypeError, AttributeError):
+                pass
+        if response.status_code == 429 or any(reason in {"rateLimitExceeded", "userRateLimitExceeded", "quotaExceeded"} for reason in reasons):
             raise GmailQuotaError("Gmail quota is temporarily exhausted")
+        if response.status_code == 403:
+            raise GmailRevokedError("Google Gmail permission is unavailable")
         if response.status_code >= 500:
             raise GmailNetworkError("Gmail is temporarily unavailable")
         if response.status_code == 404:

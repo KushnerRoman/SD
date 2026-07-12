@@ -44,6 +44,22 @@ def test_manual_sync_runs_gmail_and_calendar_as_one_composite(monkeypatch):
     assert calls == ["gmail", "calendar"]
 
 
+def test_manual_sync_cannot_overlap_scheduled_composite():
+    from app import main
+    class Gmail:
+        def sync_gmail(self, session):
+            raise AssertionError("busy composite must not start")
+    app.dependency_overrides[get_google_sync_coordinator] = lambda: Gmail()
+    app.dependency_overrides[get_calendar_provider] = lambda: object()
+    main._google_sync_lock.acquire()
+    try:
+        response = TestClient(app).post("/google/sync")
+        assert response.status_code == 409
+    finally:
+        main._google_sync_lock.release()
+        app.dependency_overrides.clear()
+
+
 def test_lifespan_owns_exactly_one_scheduler_task():
     with TestClient(app):
         scheduler = app.state.google_sync_scheduler
