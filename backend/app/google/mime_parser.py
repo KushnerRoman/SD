@@ -22,11 +22,15 @@ class NormalizedMessage:
     attachments: list[tuple[str, int]]
 
 
-def _decode_data(value: str | None) -> str:
+def _decode_data(value: str | None, charset: str = "utf-8") -> str:
     if not value:
         return ""
     try:
-        return base64.urlsafe_b64decode(value + "=" * (-len(value) % 4)).decode("utf-8", errors="replace")
+        raw = base64.urlsafe_b64decode(value + "=" * (-len(value) % 4))
+        try:
+            return raw.decode(charset, errors="replace")
+        except LookupError:
+            return raw.decode("utf-8", errors="replace")
     except (ValueError, TypeError):
         return ""
 
@@ -58,7 +62,9 @@ def parse_gmail_message(message: dict) -> NormalizedMessage:
             attachments.append((filename, int(body.get("size") or 0)))
             return
         mime = str(part.get("mimeType") or "").lower()
-        text = _decode_data(body.get("data"))
+        part_headers = {str(item.get("name", "")).lower(): str(item.get("value", "")) for item in part.get("headers", [])}
+        match = re.search(r"(?i)charset\s*=\s*[\"']?([^;\s\"']+)", part_headers.get("content-type", ""))
+        text = _decode_data(body.get("data"), match.group(1) if match else "utf-8")
         if mime == "text/plain" and text:
             plain.append(text.strip())
         elif mime == "text/html" and text:

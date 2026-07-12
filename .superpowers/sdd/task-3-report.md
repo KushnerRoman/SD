@@ -34,3 +34,17 @@ All Gmail HTTP behavior in tests uses `httpx.MockTransport`; attachment bodies a
 
 - SQLAlchemy `create_all` does not migrate a pre-existing SQLite database. Existing installations need a migration/rebuild to add the new email/credential columns; clean databases and all automated tests are correct.
 - The repository already emits datetime/FastAPI deprecation warnings; this task does not introduce a functional failure from them.
+
+## Review remediation
+
+- RED: `backend\.venv\Scripts\pytest.exe backend\tests\test_gmail_sync.py -q` failed at collection because `upgrade_sqlite_schema` did not exist.
+- Added chronological history operations across pages, final-state reduction (add/delete and delete/re-add), no fetch for final deletions, and safe fetch-time 404 handling.
+- Added mailbox profile checkpointing so an empty initial import transitions to incremental history.
+- Added additive SQLite startup migration for Gmail columns and unique provider index; a legacy-schema fixture verifies Site rows survive.
+- Added Content-Type charset decoding with safe UTF-8 fallback and an ISO-8859-1 fixture.
+- Added mocked tests for history pagination/types/order, deleted/raced messages, rollback/checkpoint integrity, empty mailbox profile, OAuth refresh-to-provider integration, and old-schema migration.
+- GREEN focused: `backend\.venv\Scripts\pytest.exe backend\tests\test_gmail_sync.py -q` -> `17 passed`.
+- GREEN full: `backend\.venv\Scripts\pytest.exe backend\tests -q` -> `52 passed`.
+- `git diff --check` -> exit 0 (line-ending advisory only).
+
+Review concern resolved: existing SQLite installations are now upgraded additively at startup without dropping or rebuilding operational tables. Remaining output consists of pre-existing datetime/FastAPI/httpx deprecation warnings.

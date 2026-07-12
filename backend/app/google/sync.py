@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.google.mime_parser import parse_gmail_message
+from app.google.gmail import GmailMessageNotFound
 from app.models import EmailMessage, GoogleCredential, GoogleSyncState
 
 
@@ -32,12 +33,24 @@ class GoogleSyncCoordinator:
         try:
             if cursor:
                 history = self.gmail.list_history(cursor)
-                message_ids, deleted_ids, next_cursor = history.message_ids, history.deleted_ids, history.history_id
+                final_operations: dict[str, str] = {}
+                for action, message_id in history.operations:
+                    final_operations[message_id] = action
+                message_ids = [message_id for message_id, action in final_operations.items() if action == "add"]
+                deleted_ids = [message_id for message_id, action in final_operations.items() if action == "delete"]
+                next_cursor = history.history_id
             else:
-                message_ids, deleted_ids, next_cursor = self.gmail.list_recent(), [], cursor
+                message_ids, deleted_ids = self.gmail.list_recent(), []
+                next_cursor = self.gmail.current_history_id()
             added = updated = 0
             for message_id in dict.fromkeys(message_ids):
-                normalized = parse_gmail_message(self.gmail.get_message(message_id))
+                try:
+                    normalized = parse_gmail_message(self.gmail.get_message(message_id))
+                except GmailMessageNotFound:
+                    record = session.scalar(select(EmailMessage).where(EmailMessage.provider_id == message_id))
+                    if record is not None:
+                        session.delete(record)
+                    continue
                 if normalized.history_id and (
                     not next_cursor or int(normalized.history_id) > int(next_cursor)
                 ):

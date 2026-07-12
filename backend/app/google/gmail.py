@@ -9,12 +9,12 @@ class GmailSyncError(RuntimeError): pass
 class GmailRevokedError(GmailSyncError): pass
 class GmailQuotaError(GmailSyncError): pass
 class GmailNetworkError(GmailSyncError): pass
+class GmailMessageNotFound(GmailSyncError): pass
 
 
 @dataclass(frozen=True)
 class HistoryResult:
-    message_ids: list[str]
-    deleted_ids: list[str]
+    operations: list[tuple[str, str]]
     history_id: str
 
 
@@ -36,6 +36,8 @@ class GmailProvider:
             raise GmailQuotaError("Gmail quota is temporarily exhausted")
         if response.status_code >= 500:
             raise GmailNetworkError("Gmail is temporarily unavailable")
+        if response.status_code == 404:
+            raise GmailMessageNotFound("Gmail message no longer exists")
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as error:
@@ -59,9 +61,11 @@ class GmailProvider:
     def get_message(self, message_id: str) -> dict:
         return self._get(f"/messages/{message_id}", {"format": "full"})
 
+    def current_history_id(self) -> str:
+        return str(self._get("/profile").get("historyId") or "")
+
     def list_history(self, history_id: str) -> HistoryResult:
-        added: list[str] = []
-        deleted: list[str] = []
+        operations: list[tuple[str, str]] = []
         token = None
         latest = history_id
         while True:
@@ -70,7 +74,7 @@ class GmailProvider:
             page = self._get("/history", params)
             latest = str(page.get("historyId") or latest)
             for event in page.get("history", []):
-                added.extend(str(x["message"]["id"]) for x in event.get("messagesAdded", []) if x.get("message", {}).get("id"))
-                deleted.extend(str(x["message"]["id"]) for x in event.get("messagesDeleted", []) if x.get("message", {}).get("id"))
+                operations.extend(("add", str(x["message"]["id"])) for x in event.get("messagesAdded", []) if x.get("message", {}).get("id"))
+                operations.extend(("delete", str(x["message"]["id"])) for x in event.get("messagesDeleted", []) if x.get("message", {}).get("id"))
             token = page.get("nextPageToken")
-            if not token: return HistoryResult(list(dict.fromkeys(added)), list(dict.fromkeys(deleted)), latest)
+            if not token: return HistoryResult(operations, latest)
