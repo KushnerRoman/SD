@@ -368,6 +368,8 @@ class Visit {
     required this.status,
     required this.workDone,
     required this.partsStatus,
+    this.calendarDeliveryStatus = 'local',
+    this.reportUrl,
   });
 
   final String id;
@@ -379,6 +381,8 @@ class Visit {
   final VisitStatus status;
   final String workDone;
   final PartsStatus partsStatus;
+  final String calendarDeliveryStatus;
+  final Uri? reportUrl;
 
   int get durationMinutes => end.difference(start).inMinutes;
 
@@ -391,6 +395,8 @@ class Visit {
     VisitStatus? status,
     String? workDone,
     PartsStatus? partsStatus,
+    String? calendarDeliveryStatus,
+    Uri? reportUrl,
   }) {
     return Visit(
       id: id,
@@ -402,6 +408,9 @@ class Visit {
       status: status ?? this.status,
       workDone: workDone ?? this.workDone,
       partsStatus: partsStatus ?? this.partsStatus,
+      calendarDeliveryStatus:
+          calendarDeliveryStatus ?? this.calendarDeliveryStatus,
+      reportUrl: reportUrl ?? this.reportUrl,
     );
   }
 }

@@ -508,6 +508,12 @@ class _TechnicianEditorState extends State<_TechnicianEditor> {
       setState(() => _message = 'Name is required.');
       return;
     }
+    final email = _emailController.text.trim();
+    if (!RegExp(r'^[^@\s]+@gmail\.com$', caseSensitive: false)
+        .hasMatch(email)) {
+      setState(() => _message = 'Enter a valid Gmail address.');
+      return;
+    }
 
     setState(() {
       _saving = true;
@@ -519,7 +525,7 @@ class _TechnicianEditorState extends State<_TechnicianEditor> {
         : _initialsController.text.trim().toUpperCase();
     await widget.onSave(widget.technician.copyWith(
       name: name,
-      email: _emailController.text.trim(),
+      email: email,
       initials: initials,
     ));
 

@@ -7,7 +7,7 @@ import 'features/dashboard/dashboard_screen.dart';
 import 'features/inbox/inbox_screen.dart';
 import 'features/jobs/jobs_screen.dart';
 import 'features/history/history_screen.dart';
-import 'features/calendar_demo/calendar_demo_screen.dart';
+import 'features/calendar/calendar_screen.dart';
 import 'features/settings/settings_screen.dart';
 import 'features/schedule/schedule_screen.dart';
 import 'features/sites/sites_screen.dart';
@@ -21,9 +21,7 @@ void main() {
 
 Future<FieldServiceRepository> _loadRepository() async {
   final apiRepository = ApiFieldServiceRepository(baseUrl: _apiBaseUrl());
-  await apiRepository
-      .getDashboardSummary()
-      .timeout(const Duration(seconds: 2));
+  await apiRepository.getDashboardSummary().timeout(const Duration(seconds: 2));
   return apiRepository;
 }
 
@@ -124,7 +122,7 @@ class _AppShellState extends State<AppShell> {
       TechniciansScreen(repository: widget.repository),
       VisitUpdateScreen(repository: widget.repository),
       HistoryScreen(repository: widget.repository),
-      CalendarDemoScreen(repository: widget.repository),
+      CalendarScreen(repository: widget.repository),
       SettingsScreen(repository: widget.repository),
     ];
 
@@ -177,7 +175,7 @@ class _AppShellState extends State<AppShell> {
                         icon: Icon(Icons.history), label: Text('History')),
                     NavigationRailDestination(
                         icon: Icon(Icons.event_available_outlined),
-                        label: Text('Calendar Demo')),
+                        label: Text('Calendar')),
                     NavigationRailDestination(
                         icon: Icon(Icons.settings_outlined),
                         label: Text('Settings')),
@@ -215,7 +213,7 @@ class _AppShellState extends State<AppShell> {
                         icon: Icon(Icons.history), label: 'History'),
                     NavigationDestination(
                         icon: Icon(Icons.event_available_outlined),
-                        label: 'Calendar Demo'),
+                        label: 'Calendar'),
                     NavigationDestination(
                         icon: Icon(Icons.settings_outlined), label: 'Settings'),
                   ],

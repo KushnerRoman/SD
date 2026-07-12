@@ -5,7 +5,7 @@ from hashlib import sha256
 
 from sqlalchemy import select
 
-from app.google.calendar import CalendarAuthorizationError, CalendarConflictError, CalendarNetworkError
+from app.google.calendar import CalendarAuthorizationError, CalendarConflictError
 from app.models import CalendarOutbox, GoogleCalendarSettings, Visit
 
 REPORT_PUBLIC_BASE = "http://127.0.0.1:8765"

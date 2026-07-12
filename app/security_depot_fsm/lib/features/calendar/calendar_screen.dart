@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../data/field_service_repository.dart';
 import '../../domain/models.dart';
 
-class CalendarDemoScreen extends StatefulWidget {
-  const CalendarDemoScreen({super.key, required this.repository});
+class CalendarScreen extends StatefulWidget {
+  const CalendarScreen({super.key, required this.repository});
   final FieldServiceRepository repository;
   @override
-  State<CalendarDemoScreen> createState() => _CalendarDemoScreenState();
+  State<CalendarScreen> createState() => _CalendarScreenState();
 }
 
-class _CalendarDemoScreenState extends State<CalendarDemoScreen> {
+class _CalendarScreenState extends State<CalendarScreen> {
   String? _technicianId;
   int _refresh = 0;
 
@@ -49,11 +51,11 @@ class _CalendarDemoScreenState extends State<CalendarDemoScreen> {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                        Text('Google Calendar Demo',
+                        Text('Calendar',
                             style: TextStyle(
                                 fontSize: 28, fontWeight: FontWeight.w800)),
                         Text(
-                            'Technician view · structured updates sync back to Operations')
+                            'Manager preview of scheduled visits and Google delivery state')
                       ])),
                   SizedBox(
                       width: 260,
@@ -175,10 +177,30 @@ class _CalendarDemoScreenState extends State<CalendarDemoScreen> {
                                                               .ellipsis)
                                                     ])),
                                                 Chip(
-                                                    label: Text(
-                                                        visit.status.label)),
+                                                    label: Text(_deliveryLabel(visit
+                                                        .calendarDeliveryStatus))),
                                                 const SizedBox(width: 8),
-                                                const Icon(Icons.open_in_new)
+                                                if (visit.reportUrl !=
+                                                    null) ...[
+                                                  IconButton(
+                                                      tooltip:
+                                                          'Copy report link',
+                                                      onPressed: () => Clipboard
+                                                          .setData(ClipboardData(
+                                                              text: visit
+                                                                  .reportUrl
+                                                                  .toString())),
+                                                      icon: const Icon(
+                                                          Icons.copy)),
+                                                  IconButton(
+                                                      tooltip:
+                                                          'Open report link',
+                                                      onPressed: () =>
+                                                          launchUrl(
+                                                              visit.reportUrl!),
+                                                      icon: const Icon(
+                                                          Icons.open_in_new))
+                                                ]
                                               ]))));
                                 }))),
               ]);
@@ -191,6 +213,13 @@ class _CalendarDemoScreenState extends State<CalendarDemoScreen> {
     final hour = value.hour % 12 == 0 ? 12 : value.hour % 12;
     return '$hour:${value.minute.toString().padLeft(2, '0')} ${value.hour >= 12 ? 'PM' : 'AM'}';
   }
+
+  String _deliveryLabel(String status) => switch (status.toLowerCase()) {
+        'pending' => 'Queued',
+        'synced' => 'Synced',
+        'failed' => 'Failed',
+        _ => 'Local',
+      };
 }
 
 class _ReportDialog extends StatefulWidget {

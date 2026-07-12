@@ -169,6 +169,8 @@ class VisitOut(BaseModel):
     materials_used: str
     follow_up_notes: str
     calendar_event_id: str
+    calendar_delivery_status: str = "local"
+    report_url: str | None = None
 
 
 class VisitUpdate(BaseModel):

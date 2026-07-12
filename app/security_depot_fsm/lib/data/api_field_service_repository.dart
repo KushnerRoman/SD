@@ -447,6 +447,13 @@ Visit _visitFromJson(Map<String, dynamic> json) {
     status: _visitStatusFromText(_readString(json, 'status')),
     workDone: _readString(json, 'work_summary'),
     partsStatus: _partsStatusFromText(_readString(json, 'parts_status')),
+    calendarDeliveryStatus:
+        _readString(json, 'calendar_delivery_status').isEmpty
+            ? 'local'
+            : _readString(json, 'calendar_delivery_status'),
+    reportUrl: _readString(json, 'report_url').isEmpty
+        ? null
+        : Uri.tryParse(_readString(json, 'report_url')),
   );
 }
 

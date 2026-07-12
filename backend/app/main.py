@@ -466,8 +466,24 @@ def update_job(job_id: str, update: JobUpdate, session: Session = Depends(get_se
 
 
 @app.get("/visits", response_model=list[VisitOut])
-def list_visits(session: Session = Depends(get_session)) -> list[Visit]:
-    return list(session.scalars(select(Visit).order_by(Visit.start_datetime, Visit.id)))
+def list_visits(session: Session = Depends(get_session)) -> list[dict]:
+    visits = list(session.scalars(select(Visit).options(selectinload(Visit.outbox_items)).order_by(Visit.start_datetime, Visit.id)))
+    result = []
+    for visit in visits:
+        latest = max(visit.outbox_items, key=lambda item: item.id, default=None)
+        delivery = latest.status if latest is not None else ("synced" if visit.calendar_event_id else "local")
+        report_url = None
+        try:
+            from app.google.outbox import REPORT_PUBLIC_BASE
+            from app.report_tokens import issue_report_token
+            report_url = f"{REPORT_PUBLIC_BASE}/report/{issue_report_token(session, visit)}"
+        except RuntimeError:
+            pass
+        data = VisitOut.model_validate(visit).model_dump()
+        data.update(calendar_delivery_status=delivery, report_url=report_url)
+        result.append(data)
+    session.commit()
+    return result
 
 
 @app.post("/visits", response_model=VisitOut)

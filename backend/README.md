@@ -1,68 +1,19 @@
-# Security Depot FSM Mock API
+# Security Depot local API
 
-Temporary FastAPI backend for the Security Depot field service management system.
+FastAPI serves the persistent SQLite operations API and the built Flutter web application at `http://127.0.0.1:8765/web/`.
 
-## What It Does
-
-- Uses MySQL for the temporary development database.
-- Loads the generated historical data from:
-  `../app/security_depot_fsm/assets/data/seed_data.json`
-- Preserves full calendar descriptions/details inside each Job.
-- Exposes mock API endpoints for the Flutter app.
-
-## Start MySQL
-
-From the project root:
+From the repository root:
 
 ```powershell
-docker compose up -d mysql
+backend\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8765
 ```
 
-If Docker reports that the Docker Desktop pipe is missing, open Docker Desktop first and wait until it is running.
+Useful read endpoints include `/health`, `/dashboard/summary`, `/jobs`, `/sites`, `/technicians`, and `/visits`. Operational writes require the application workflows; destructive maintenance is CLI-only and confirmation-guarded.
 
-The container maps MySQL to host port `3307` to avoid conflicts with any existing local MySQL server.
-
-## Load Data
-
-From `backend/`:
+Run the complete backend suite with:
 
 ```powershell
-uv run python scripts/init_db.py
+backend\.venv\Scripts\pytest.exe backend\tests -q
 ```
 
-Expected counts:
-
-```text
-sites: 130
-jobs: 115
-visits: 180
-calendar_details: > 0
-```
-
-## Run API
-
-From `backend/`:
-
-```powershell
-uv run uvicorn app.main:app --reload --host 127.0.0.1 --port 8765
-```
-
-Useful endpoints:
-
-- `GET http://127.0.0.1:8765/health`
-- `POST http://127.0.0.1:8765/admin/load-seed`
-- `GET http://127.0.0.1:8765/dashboard/summary`
-- `GET http://127.0.0.1:8765/jobs`
-- `GET http://127.0.0.1:8765/jobs/{job_id}`
-- `PATCH http://127.0.0.1:8765/jobs/{job_id}`
-- `GET http://127.0.0.1:8765/sites`
-- `GET http://127.0.0.1:8765/technicians`
-- `GET http://127.0.0.1:8765/visits`
-
-## Run Tests
-
-Tests use SQLite in-memory, so they do not require Docker or MySQL.
-
-```powershell
-uv run pytest -q
-```
+For Google Cloud configuration, exact OAuth scopes and redirect URI, environment variables, guarded cleanup, startup, consent, real-email validation, credential rotation, and disconnect, follow [Google localhost setup](../docs/google-localhost-setup.md).

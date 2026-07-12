@@ -35,8 +35,7 @@ class _InboxScreenState extends State<InboxScreen> {
                       style:
                           TextStyle(fontSize: 28, fontWeight: FontWeight.w800)),
                   SizedBox(height: 4),
-                  Text(
-                      'Mixed Gmail demo · choose which messages become service calls')
+                  Text('Imported Gmail messages · choose which messages become service calls')
                 ])),
             SizedBox(
                 width: 320,
@@ -65,8 +64,10 @@ class _InboxScreenState extends State<InboxScreen> {
                             .contains(_query))
                         .toList();
                     if (messages.isEmpty) {
-                      return const Center(
-                          child: Text('No messages match this search.'));
+                      return Center(
+                          child: Text(_query.isEmpty
+                              ? 'No imported Gmail messages yet. Connect Google in Settings, then run Sync Now.'
+                              : 'No messages match this search.'));
                     }
                     _selected ??= messages.first;
                     return Row(children: [

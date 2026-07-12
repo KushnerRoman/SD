@@ -13,7 +13,7 @@ cd ..\..\backend
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8765
 ```
 
-Open `http://127.0.0.1:8765/web/`. SQLite data is stored in `backend/security_depot.db` and survives restarts. If the API is unavailable, the app shows a connection error instead of loading demo data.
+Open `http://127.0.0.1:8765/web/`. SQLite data is stored in `backend/security_depot.db` and survives restarts. If the API is unavailable, the app shows a connection error.
 
 ## Suggested walkthrough
 
@@ -23,4 +23,4 @@ Open `http://127.0.0.1:8765/web/`. SQLite data is stored in `backend/security_de
 4. Open the visit and submit time spent, work performed, materials, and result.
 5. Review the updated dashboard, notification count, job status, and History screen.
 
-Google connection setup is shown as disconnected until OAuth is configured.
+Google connection setup is shown as disconnected until OAuth is configured. Follow [Google localhost setup](../../docs/google-localhost-setup.md) for the exact scopes, redirect URI, guarded cleanup, consent, validation, rotation, and disconnect procedure.
