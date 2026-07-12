@@ -172,6 +172,21 @@ def test_shared_same_name_calendar_is_not_reused():
     assert session.get(GoogleCalendarSettings, 1).calendar_id == "owned"
 
 
+def test_arbitrary_owned_same_name_calendar_is_not_reused_on_fresh_state():
+    requests = []
+    def handler(request):
+        requests.append(request)
+        if request.url.path.endswith("/users/me/calendarList"):
+            return httpx.Response(200, json={"items": [{"id": "other-client", "summary": "Security Depot Service", "accessRole": "owner"}]})
+        if request.url.path.endswith("/calendars"):
+            return httpx.Response(200, json={"id": "created-by-this-app"})
+        return httpx.Response(200, json={"id": stable_event_id("visit_ABC-123"), "etag": '"v1"'})
+    session = make_session(); seed(session)
+    process_calendar_outbox(session, CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(handler))))
+    assert session.get(GoogleCalendarSettings, 1).calendar_id == "created-by-this-app"
+    assert not any(request.url.path.endswith("/users/me/calendarList") for request in requests)
+
+
 def test_reconnect_outbox_is_retried_after_authorization_returns():
     session = make_session(); visit = seed(session)
     item = session.query(CalendarOutbox).one(); item.status = "reconnect"
@@ -201,6 +216,32 @@ def test_changed_calendar_events_use_sync_token_and_ignore_foreign_events():
     assert seen == [{"syncToken": "old"}]
     assert settings.sync_token == "new-token" and visit.calendar_etag == '"new"'
     assert visit.start_datetime.hour == 11
+
+
+def test_changed_calendar_events_follow_pagination_and_store_final_token():
+    session = make_session(); visit = seed(session); visit.calendar_event_id = stable_event_id(visit.id)
+    settings = GoogleCalendarSettings(id=1, calendar_id="cal", sync_token="old"); session.add(settings); session.commit()
+    def handler(request):
+        if request.url.params.get("pageToken") == "page-2":
+            return httpx.Response(200, json={"items": [{"id": visit.calendar_event_id, "etag": '"v2"'}], "nextSyncToken": "final"})
+        return httpx.Response(200, json={"items": [], "nextPageToken": "page-2"})
+    provider = CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(handler)))
+    assert sync_calendar_changes(session, provider) == 1
+    assert settings.sync_token == "final" and visit.calendar_etag == '"v2"'
+
+
+def test_expired_calendar_sync_token_restarts_full_sync():
+    session = make_session(); visit = seed(session); visit.calendar_event_id = stable_event_id(visit.id)
+    settings = GoogleCalendarSettings(id=1, calendar_id="cal", sync_token="expired"); session.add(settings); session.commit()
+    calls = []
+    def handler(request):
+        calls.append(dict(request.url.params))
+        if request.url.params.get("syncToken") == "expired": return httpx.Response(410)
+        return httpx.Response(200, json={"items": [{"id": visit.calendar_event_id, "etag": '"fresh"'}], "nextSyncToken": "replacement"})
+    provider = CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(handler)))
+    assert sync_calendar_changes(session, provider) == 1
+    assert calls == [{"syncToken": "expired"}, {"singleEvents": "true"}]
+    assert settings.sync_token == "replacement"
 
 
 @pytest.mark.parametrize(("status", "reason", "error"), [

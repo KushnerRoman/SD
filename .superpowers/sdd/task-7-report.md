@@ -77,3 +77,11 @@ Fresh follow-up verification after the lifecycle assertion:
 - Removed an unused generic outbox exception binding.
 
 Verification: focused integration suites 70 passed; full backend suite 88 passed (429 existing deprecation warnings). No Flutter files changed.
+
+## Calendar ownership re-review
+
+- Fresh integration state now always creates the service calendar through the current OAuth application; summary/name matching was removed, so an arbitrary manually or other-client-created owned calendar cannot be adopted.
+- `GoogleCalendarSettings.calendar_id` remains the sole persisted restart identity.
+- Added regressions for arbitrary same-name owner calendars, changed-event multi-page pagination/final cursor persistence, and HTTP 410 cursor invalidation followed by a full resync and replacement cursor.
+- Focused `backend\.venv\Scripts\pytest.exe backend\tests\test_calendar_sync.py -q` — PASS, 15 tests (86 warnings).
+- Full `backend\.venv\Scripts\pytest.exe backend\tests -q` — PASS, 91 tests (442 existing deprecation warnings).

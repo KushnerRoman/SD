@@ -39,9 +39,7 @@ def _calendar_id(session, provider):
     if settings is None:
         settings = GoogleCalendarSettings(id=1); session.add(settings)
     if not settings.calendar_id:
-        calendars = provider.list_calendars()
-        match = next((x for x in calendars if isinstance(x, dict) and x.get("summary") == "Security Depot Service" and x.get("accessRole") == "owner"), None)
-        settings.calendar_id = (match or provider.create_service_calendar())["id"]
+        settings.calendar_id = provider.create_service_calendar()["id"]
     return settings.calendar_id
 
 
