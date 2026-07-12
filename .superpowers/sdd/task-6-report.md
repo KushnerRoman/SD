@@ -40,9 +40,14 @@ Green:
 
 - Manual Sync Now now executes the same Gmail-then-Calendar composite operation as the scheduler and reports both Gmail counts and Calendar deliveries.
 - Settings loads connection and prior sync status together on every construction/reload; prior timestamps and safe error codes are visible before a manual sync.
-- Current-window OAuth no longer starts a polling loop on the instance `_self` destroys. The callback reload creates a fresh Settings instance and performs the complete initial fetch.
+- Current-window OAuth does not poll on the instance `_self` destroys. The callback marker reload creates a fresh Settings instance, performs the complete initial fetch, then uses a bounded, dispose-cancelled two-second poll until connected, error, or timeout.
 - Connect, sync, and disconnect failures are converted to stable UI messages with mounted checks around asynchronous refreshes.
 - Scheduler ownership now uses an atomic event-loop claim flag, survives exceptions, skips overlap, starts idempotently, and waits for in-flight async/threaded work before lifespan exit.
 - Added red/green coverage for composite sync, one-task lifespan ownership, fake 90-second cadence, exception survival, overlap skip, in-flight async and threaded shutdown, initial status display, combined result display, reload navigation, and safe connect errors.
 
 Review verification: full backend suite 77 tests (after updating the intentional response contract), full Flutter suite 37 tests, and Flutter analyze.
+
+## Final compliance remediation (2026-07-12)
+
+- Added literal callback polling in the new post-redirect Flutter instance. Normal entry still performs one refresh; `google=connected` triggers at most 30 timer-driven retries, and disposal cancels the timer before any further repository refresh.
+- Replaced callable sleep-stub cadence verification with an injected asyncio-compatible clock. The fake clock advances 89 seconds without a run, then one additional second to prove the 90-second boundary deterministically.

@@ -5,6 +5,11 @@ import contextlib
 from collections.abc import Awaitable, Callable
 
 
+class AsyncioClock:
+    async def sleep(self, seconds: float) -> None:
+        await asyncio.sleep(seconds)
+
+
 class GoogleSyncScheduler:
     """One local periodic worker with skip-on-overlap semantics."""
 
@@ -13,11 +18,11 @@ class GoogleSyncScheduler:
         sync: Callable[[], Awaitable[None]],
         *,
         interval: float = 90,
-        sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
+        clock: AsyncioClock | None = None,
     ) -> None:
         self._sync = sync
         self._interval = interval
-        self._sleep = sleep
+        self._clock = clock or AsyncioClock()
         self._claimed = False
         self._stopping = False
         self.task: asyncio.Task[None] | None = None
@@ -44,7 +49,7 @@ class GoogleSyncScheduler:
                 # A provider outage must not kill future sync attempts.
                 pass
             if not self._stopping:
-                await self._sleep(self._interval)
+                await self._clock.sleep(self._interval)
 
     def start(self) -> None:
         if self.task is None or self.task.done():

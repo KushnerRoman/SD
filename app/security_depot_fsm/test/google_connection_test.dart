@@ -55,6 +55,19 @@ class FailingConnectRepository extends DisconnectedRepository {
       throw StateError('secret provider detail');
 }
 
+class CallbackTransitionRepository extends MockFieldServiceRepository {
+  int loads = 0;
+  @override
+  Future<GoogleConnectionState> getGoogleConnection() async {
+    loads++;
+    return GoogleConnectionState(
+        status: loads >= 2
+            ? GoogleConnectionStatus.connected
+            : GoogleConnectionStatus.disconnected,
+        accountEmail: loads >= 2 ? 'callback@example.com' : null);
+  }
+}
+
 void main() {
   test('API maps connection and uses safe Google endpoints', () async {
     final requests = <http.Request>[];
@@ -137,5 +150,19 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Could not start Google authorization.'), findsOneWidget);
     expect(find.textContaining('secret provider detail'), findsNothing);
+  });
+
+  testWidgets('reloaded callback marker polls until connection becomes visible',
+      (tester) async {
+    final repository = CallbackTransitionRepository();
+    await tester.pumpWidget(MaterialApp(
+        home: SettingsScreen(
+            repository: repository, callbackGoogleConnected: true)));
+    await tester.pump();
+    expect(repository.loads, 1);
+    await tester.pump(const Duration(seconds: 2));
+    await tester.pump();
+    expect(repository.loads, 2);
+    expect(find.text('callback@example.com'), findsOneWidget);
   });
 }

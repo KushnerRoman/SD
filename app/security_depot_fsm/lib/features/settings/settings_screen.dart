@@ -5,9 +5,14 @@ import '../../data/field_service_repository.dart';
 import '../../domain/models.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key, required this.repository, this.openGoogle});
+  const SettingsScreen(
+      {super.key,
+      required this.repository,
+      this.openGoogle,
+      this.callbackGoogleConnected});
   final FieldServiceRepository repository;
   final Future<bool> Function(Uri)? openGoogle;
+  final bool? callbackGoogleConnected;
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
@@ -17,13 +22,49 @@ class _SettingsScreenState extends State<SettingsScreen> {
   SyncStatus? sync;
   String? error;
   bool busy = false;
+  Timer? _pollTimer;
+  int _pollAttempts = 0;
   @override
   void initState() {
     super.initState();
-    _refresh();
+    _initialize();
   }
 
-  Future<void> _refresh() async {
+  bool get _isCallbackReload =>
+      widget.callbackGoogleConnected ??
+      (Uri.base.fragment.contains('google=connected') ||
+          Uri.base.queryParameters['google'] == 'connected');
+
+  Future<void> _initialize() async {
+    final loaded = await _refresh();
+    if (mounted &&
+        loaded &&
+        _isCallbackReload &&
+        connection?.isConnected != true) {
+      _scheduleCallbackPoll();
+    }
+  }
+
+  void _scheduleCallbackPoll() {
+    if (!mounted || _pollAttempts >= 30) return;
+    _pollTimer?.cancel();
+    _pollTimer = Timer(const Duration(seconds: 2), () async {
+      if (!mounted) return;
+      _pollAttempts++;
+      final loaded = await _refresh();
+      if (mounted && loaded && connection?.isConnected != true) {
+        _scheduleCallbackPoll();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _pollTimer?.cancel();
+    super.dispose();
+  }
+
+  Future<bool> _refresh() async {
     try {
       final values = await Future.wait([
         widget.repository.getGoogleConnection(),
@@ -36,8 +77,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           error = null;
         });
       }
+      return true;
     } catch (_) {
       if (mounted) setState(() => error = 'Could not check Google connection.');
+      return false;
     }
   }
 
