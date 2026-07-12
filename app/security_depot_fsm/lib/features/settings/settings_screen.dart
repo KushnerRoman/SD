@@ -5,8 +5,9 @@ import '../../data/field_service_repository.dart';
 import '../../domain/models.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key, required this.repository});
+  const SettingsScreen({super.key, required this.repository, this.openGoogle});
   final FieldServiceRepository repository;
+  final Future<bool> Function(Uri)? openGoogle;
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
@@ -24,10 +25,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _refresh() async {
     try {
-      final value = await widget.repository.getGoogleConnection();
+      final values = await Future.wait([
+        widget.repository.getGoogleConnection(),
+        widget.repository.getGoogleSyncStatus(),
+      ]);
       if (mounted) {
         setState(() {
-          connection = value;
+          connection = values[0] as GoogleConnectionState;
+          sync = values[1] as SyncStatus;
           error = null;
         });
       }
@@ -37,25 +42,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _connect() async {
-    final uri = await widget.repository.startGoogleConnection();
-    if (!await launchUrl(uri, webOnlyWindowName: '_self')) {
-      setState(() => error = 'Could not open Google authorization.');
-      return;
-    }
-    for (var i = 0; i < 30 && mounted; i++) {
-      await Future<void>.delayed(const Duration(seconds: 2));
-      await _refresh();
-      if (connection?.isConnected == true) break;
+    try {
+      final uri = await widget.repository.startGoogleConnection();
+      final opened = await (widget.openGoogle?.call(uri) ??
+          launchUrl(uri, webOnlyWindowName: '_self'));
+      if (!opened && mounted) {
+        setState(() => error = 'Could not open Google authorization.');
+      }
+      // `_self` navigates away. The callback reload constructs a fresh Settings
+      // screen whose initState loads both connection and prior sync status.
+    } catch (_) {
+      if (mounted) {
+        setState(() => error = 'Could not start Google authorization.');
+      }
     }
   }
 
   Future<void> _sync() async {
-    setState(() => busy = true);
+    if (mounted) setState(() => busy = true);
     try {
-      sync = await widget.repository.syncGoogleNow();
-      error = null;
+      final value = await widget.repository.syncGoogleNow();
+      if (mounted) {
+        setState(() {
+          sync = value;
+          error = null;
+        });
+      }
     } catch (_) {
-      error = 'Sync failed safely. Try again or reconnect Google.';
+      if (mounted) {
+        setState(
+            () => error = 'Sync failed safely. Try again or reconnect Google.');
+      }
     } finally {
       if (mounted) setState(() => busy = false);
     }
@@ -78,8 +95,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ])) ??
         false;
     if (yes) {
-      await widget.repository.disconnectGoogle();
-      await _refresh();
+      try {
+        await widget.repository.disconnectGoogle();
+        if (mounted) await _refresh();
+      } catch (_) {
+        if (mounted) setState(() => error = 'Could not disconnect Google.');
+      }
     }
   }
 
@@ -127,6 +148,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       Text('Last sync: ${sync!.lastSyncedAt}'),
                     if (sync?.nextSyncAt != null)
                       Text('Next sync: ${sync!.nextSyncAt}'),
+                    if (sync?.errorCode != null)
+                      Text('Last sync error: ${sync!.errorCode}'),
+                    if (sync != null &&
+                        (sync!.gmailAdded +
+                                sync!.gmailUpdated +
+                                sync!.gmailDeleted +
+                                sync!.calendarDelivered) >
+                            0) ...[
+                      Text(
+                          'Gmail: ${sync!.gmailAdded} added, ${sync!.gmailUpdated} updated, ${sync!.gmailDeleted} deleted'),
+                      Text('Calendar: ${sync!.calendarDelivered} delivered'),
+                    ],
                     if (error != null)
                       Text(error!,
                           style: TextStyle(

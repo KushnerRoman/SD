@@ -21,6 +21,8 @@ abstract class FieldServiceRepository {
       throw UnsupportedError('Google connection is unavailable');
   Future<void> disconnectGoogle() async =>
       throw UnsupportedError('Google connection is unavailable');
+  Future<SyncStatus> getGoogleSyncStatus() async =>
+      const SyncStatus(status: 'never');
   Future<SyncStatus> syncGoogleNow() async =>
       throw UnsupportedError('Google synchronization is unavailable');
 

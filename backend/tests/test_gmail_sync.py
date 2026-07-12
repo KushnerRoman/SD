@@ -209,11 +209,17 @@ def test_sync_routes_return_counts_and_safe_status(session):
             from app.google.sync import SyncCounts
             return SyncCounts(2, 1, 0)
     app.dependency_overrides[get_google_sync_coordinator] = lambda: Coordinator()
+    from app.main import get_calendar_provider
+    app.dependency_overrides[get_calendar_provider] = lambda: object()
+    from app import main
+    original = main.process_calendar_outbox
+    main.process_calendar_outbox = lambda db, provider: 0
     app.dependency_overrides[get_session] = lambda: session
     try:
         response = TestClient(app).post("/google/sync")
-        assert response.json() == {"added": 2, "updated": 1, "deleted": 0}
+        assert response.json() == {"status": "ok", "added": 2, "updated": 1, "deleted": 0, "calendar_delivered": 0}
         status = TestClient(app).get("/google/sync-status").json()
         assert "token" not in str(status).lower()
     finally:
+        main.process_calendar_outbox = original
         app.dependency_overrides.clear()

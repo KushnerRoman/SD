@@ -41,8 +41,7 @@ class ApiFieldServiceRepository extends FieldServiceRepository {
   }
 
   @override
-  Future<SyncStatus> syncGoogleNow() async {
-    await _post('/google/sync', {});
+  Future<SyncStatus> getGoogleSyncStatus() async {
     final json = await _getMap('/google/sync-status');
     return SyncStatus(
       status: _readString(json, 'status'),
@@ -52,6 +51,20 @@ class ApiFieldServiceRepository extends FieldServiceRepository {
           ? null
           : _readString(json, 'error_code'),
     );
+  }
+
+  @override
+  Future<SyncStatus> syncGoogleNow() async {
+    final result = await _postMap('/google/sync', {});
+    final previous = await getGoogleSyncStatus();
+    return SyncStatus(
+        status: _readString(result, 'status'),
+        lastSyncedAt: previous.lastSyncedAt,
+        errorCode: previous.errorCode,
+        gmailAdded: _readInt(result, 'added'),
+        gmailUpdated: _readInt(result, 'updated'),
+        gmailDeleted: _readInt(result, 'deleted'),
+        calendarDelivered: _readInt(result, 'calendar_delivered'));
   }
 
   @override
@@ -285,6 +298,11 @@ class ApiFieldServiceRepository extends FieldServiceRepository {
   }
 
   Future<void> _post(String path, Map<String, dynamic> body) async {
+    await _postMap(path, body);
+  }
+
+  Future<Map<String, dynamic>> _postMap(
+      String path, Map<String, dynamic> body) async {
     final response = await _client.post(baseUrl.resolve(path),
         headers: {'content-type': 'application/json'}, body: jsonEncode(body));
     if (response.statusCode < 200 || response.statusCode >= 300) {
@@ -293,6 +311,8 @@ class ApiFieldServiceRepository extends FieldServiceRepository {
           decoded is Map<String, dynamic> ? decoded['detail'] : response.body;
       throw StateError(detail?.toString() ?? 'Request failed');
     }
+    if (response.body.isEmpty) return {};
+    return jsonDecode(response.body) as Map<String, dynamic>;
   }
 }
 

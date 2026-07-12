@@ -8,14 +8,51 @@ import 'package:security_depot_fsm/domain/models.dart';
 import 'package:security_depot_fsm/features/settings/settings_screen.dart';
 
 class ConnectedRepository extends MockFieldServiceRepository {
+  int connectionLoads = 0;
+  int statusLoads = 0;
   @override
-  Future<GoogleConnectionState> getGoogleConnection() async =>
-      const GoogleConnectionState(
-          status: GoogleConnectionStatus.connected,
-          accountEmail: 'ops@example.com');
+  Future<GoogleConnectionState> getGoogleConnection() async {
+    connectionLoads++;
+    return const GoogleConnectionState(
+        status: GoogleConnectionStatus.connected,
+        accountEmail: 'ops@example.com');
+  }
+
   @override
-  Future<SyncStatus> syncGoogleNow() async =>
-      SyncStatus(status: 'ok', lastSyncedAt: DateTime(2026, 7, 11, 12));
+  Future<SyncStatus> getGoogleSyncStatus() async {
+    statusLoads++;
+    return SyncStatus(
+        status: 'error',
+        lastSyncedAt: DateTime(2026, 7, 11, 11),
+        errorCode: 'quota');
+  }
+
+  @override
+  Future<SyncStatus> syncGoogleNow() async => SyncStatus(
+      status: 'ok',
+      lastSyncedAt: DateTime(2026, 7, 11, 12),
+      calendarDelivered: 4,
+      gmailAdded: 2);
+}
+
+class DisconnectedRepository extends MockFieldServiceRepository {
+  int loads = 0;
+  @override
+  Future<GoogleConnectionState> getGoogleConnection() async {
+    loads++;
+    return const GoogleConnectionState(
+        status: GoogleConnectionStatus.disconnected);
+  }
+
+  @override
+  Future<Uri> startGoogleConnection() async =>
+      Uri.parse('http://localhost:8765/auth/google/start');
+}
+
+class FailingConnectRepository extends DisconnectedRepository {
+  @override
+  Future<Uri> startGoogleConnection() async =>
+      throw StateError('secret provider detail');
 }
 
 void main() {
@@ -53,13 +90,52 @@ void main() {
 
   testWidgets('connected screen offers sync and confirms disconnect',
       (tester) async {
-    await tester.pumpWidget(
-        MaterialApp(home: SettingsScreen(repository: ConnectedRepository())));
+    final repository = ConnectedRepository();
+    await tester
+        .pumpWidget(MaterialApp(home: SettingsScreen(repository: repository)));
     await tester.pumpAndSettle();
     expect(find.text('ops@example.com'), findsOneWidget);
     expect(find.text('Sync Now'), findsOneWidget);
+    expect(find.textContaining('Last sync:'), findsOneWidget);
+    expect(find.textContaining('quota'), findsOneWidget);
+    expect(repository.connectionLoads, 1);
+    expect(repository.statusLoads, 1);
+    await tester.tap(find.text('Sync Now'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Gmail: 2 added'), findsOneWidget);
+    expect(find.textContaining('Calendar: 4 delivered'), findsOneWidget);
     await tester.tap(find.text('Disconnect'));
     await tester.pumpAndSettle();
     expect(find.text('Disconnect Google?'), findsOneWidget);
+  });
+
+  testWidgets(
+      'current-window OAuth relies on callback reload instead of dead polling',
+      (tester) async {
+    final repository = DisconnectedRepository();
+    Uri? opened;
+    await tester.pumpWidget(MaterialApp(
+        home: SettingsScreen(
+      repository: repository,
+      openGoogle: (uri) async {
+        opened = uri;
+        return true;
+      },
+    )));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Connect Google'));
+    await tester.pumpAndSettle();
+    expect(opened?.path, '/auth/google/start');
+    expect(repository.loads, 1);
+  });
+
+  testWidgets('connect errors become safe UI state', (tester) async {
+    await tester.pumpWidget(MaterialApp(
+        home: SettingsScreen(repository: FailingConnectRepository())));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Connect Google'));
+    await tester.pumpAndSettle();
+    expect(find.text('Could not start Google authorization.'), findsOneWidget);
+    expect(find.textContaining('secret provider detail'), findsNothing);
   });
 }

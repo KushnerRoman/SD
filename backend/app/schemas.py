@@ -17,9 +17,11 @@ class GoogleConnectionOut(BaseModel):
 
 
 class GoogleSyncCountsOut(BaseModel):
+    status: str = "ok"
     added: int
     updated: int
     deleted: int
+    calendar_delivered: int = 0
 
 
 class CalendarDeliveryOut(BaseModel):

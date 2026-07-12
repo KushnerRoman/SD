@@ -18,18 +18,24 @@ class GoogleSyncScheduler:
         self._sync = sync
         self._interval = interval
         self._sleep = sleep
-        self._lock = asyncio.Lock()
+        self._claimed = False
+        self._stopping = False
         self.task: asyncio.Task[None] | None = None
 
     async def run_once(self) -> bool:
-        if self._lock.locked():
+        # No await occurs between checking and setting this event-loop-owned
+        # flag, so claiming a run is atomic with respect to other tasks.
+        if self._claimed or self._stopping:
             return False
-        async with self._lock:
+        self._claimed = True
+        try:
             await self._sync()
-        return True
+            return True
+        finally:
+            self._claimed = False
 
     async def _run(self) -> None:
-        while True:
+        while not self._stopping:
             try:
                 await self.run_once()
             except asyncio.CancelledError:
@@ -37,16 +43,23 @@ class GoogleSyncScheduler:
             except Exception:
                 # A provider outage must not kill future sync attempts.
                 pass
-            await self._sleep(self._interval)
+            if not self._stopping:
+                await self._sleep(self._interval)
 
     def start(self) -> None:
         if self.task is None or self.task.done():
+            self._stopping = False
             self.task = asyncio.create_task(self._run(), name="google-sync")
 
     async def stop(self) -> None:
-        task, self.task = self.task, None
+        task = self.task
         if task is None:
             return
-        task.cancel()
-        with contextlib.suppress(asyncio.CancelledError):
+        self._stopping = True
+        if not self._claimed:
+            task.cancel()
+            with contextlib.suppress(asyncio.CancelledError):
+                await task
+        else:
             await task
+        self.task = None

@@ -40,16 +40,20 @@ async def _scheduled_google_sync() -> None:
             access_token = tokens.get("access_token")
             if not isinstance(access_token, str) or not access_token:
                 return
-            GoogleSyncCoordinator(GmailProvider(access_token)).sync_gmail(session)
-            process_calendar_outbox(session, CalendarProvider(access_token))
+            _perform_google_sync(
+                session,
+                GoogleSyncCoordinator(GmailProvider(access_token)),
+                CalendarProvider(access_token),
+            )
 
     await asyncio.to_thread(run)
 
 
 @asynccontextmanager
-async def lifespan(_: FastAPI):
-    create_schema()
+async def lifespan(app_instance: FastAPI):
+    startup()
     scheduler = GoogleSyncScheduler(_scheduled_google_sync)
+    app_instance.state.google_sync_scheduler = scheduler
     scheduler.start()
     try:
         yield
@@ -57,7 +61,24 @@ async def lifespan(_: FastAPI):
         await scheduler.stop()
 
 
+def startup() -> None:
+    """Schema-only startup step, retained as a directly testable unit."""
+    create_schema()
+
+
 app = FastAPI(title="Security Depot FSM Mock API", version="0.1.0", lifespan=lifespan)
+
+
+def _perform_google_sync(session: Session, coordinator: GoogleSyncCoordinator, provider: CalendarProvider) -> dict:
+    counts = coordinator.sync_gmail(session)
+    delivered = process_calendar_outbox(session, provider)
+    return {
+        "status": "ok",
+        "added": counts.added,
+        "updated": counts.updated,
+        "deleted": counts.deleted,
+        "calendar_delivered": delivered,
+    }
 
 WEB_BUILD_DIR = Path(__file__).resolve().parents[2] / "app" / "security_depot_fsm" / "build" / "web"
 
@@ -198,9 +219,10 @@ def google_connection(session: Session = Depends(get_session)) -> GoogleConnecti
 def google_sync(
     session: Session = Depends(get_session),
     coordinator: GoogleSyncCoordinator = Depends(get_google_sync_coordinator),
+    provider: CalendarProvider = Depends(get_calendar_provider),
 ):
     try:
-        return coordinator.sync_gmail(session)
+        return _perform_google_sync(session, coordinator, provider)
     except GmailRevokedError as error:
         raise HTTPException(status_code=401, detail="Google authorization is no longer valid") from error
     except GmailQuotaError as error:

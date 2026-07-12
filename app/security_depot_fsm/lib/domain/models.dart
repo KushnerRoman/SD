@@ -21,10 +21,21 @@ class GoogleConnectionState {
 }
 
 class SyncStatus {
-  const SyncStatus({required this.status, this.lastSyncedAt, this.errorCode});
+  const SyncStatus(
+      {required this.status,
+      this.lastSyncedAt,
+      this.errorCode,
+      this.gmailAdded = 0,
+      this.gmailUpdated = 0,
+      this.gmailDeleted = 0,
+      this.calendarDelivered = 0});
   final String status;
   final DateTime? lastSyncedAt;
   final String? errorCode;
+  final int gmailAdded;
+  final int gmailUpdated;
+  final int gmailDeleted;
+  final int calendarDelivered;
   DateTime? get nextSyncAt => lastSyncedAt?.add(const Duration(seconds: 90));
 }
 
