@@ -65,6 +65,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              if (jobs.isEmpty && emails.isEmpty && notifications.isEmpty) ...[
+                const Card(
+                  child: ListTile(
+                    leading: Icon(Icons.check_circle_outline),
+                    title: Text('No operational activity yet'),
+                    subtitle: Text(
+                        'Connect Google to begin synchronizing Gmail and Calendar.'),
+                  ),
+                ),
+                const SizedBox(height: 20),
+              ],
               Wrap(
                 spacing: 12,
                 runSpacing: 12,

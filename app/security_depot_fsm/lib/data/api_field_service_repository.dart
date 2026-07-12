@@ -15,6 +15,46 @@ class ApiFieldServiceRepository extends FieldServiceRepository {
   final http.Client _client;
 
   @override
+  Future<GoogleConnectionState> getGoogleConnection() async {
+    final json = await _getMap('/google/connection');
+    final value = _readString(json, 'status');
+    return GoogleConnectionState(
+      status: switch (value) {
+        'connected' => GoogleConnectionStatus.connected,
+        'expired' => GoogleConnectionStatus.expired,
+        _ => GoogleConnectionStatus.disconnected,
+      },
+      accountEmail: _readString(json, 'account_email').isEmpty
+          ? null
+          : _readString(json, 'account_email'),
+      expiresAt: DateTime.tryParse(_readString(json, 'expires_at'))?.toLocal(),
+    );
+  }
+
+  @override
+  Future<Uri> startGoogleConnection() async =>
+      baseUrl.resolve('/auth/google/start');
+
+  @override
+  Future<void> disconnectGoogle() async {
+    await _post('/auth/google/disconnect', {});
+  }
+
+  @override
+  Future<SyncStatus> syncGoogleNow() async {
+    await _post('/google/sync', {});
+    final json = await _getMap('/google/sync-status');
+    return SyncStatus(
+      status: _readString(json, 'status'),
+      lastSyncedAt:
+          DateTime.tryParse(_readString(json, 'last_synced_at'))?.toLocal(),
+      errorCode: _readString(json, 'error_code').isEmpty
+          ? null
+          : _readString(json, 'error_code'),
+    );
+  }
+
+  @override
   Future<List<EmailMessage>> getEmails() async =>
       (await _getList('/emails')).map(_emailFromJson).toList();
 

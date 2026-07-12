@@ -15,6 +15,15 @@ class DashboardSummary {
 }
 
 abstract class FieldServiceRepository {
+  Future<GoogleConnectionState> getGoogleConnection() async =>
+      const GoogleConnectionState(status: GoogleConnectionStatus.disconnected);
+  Future<Uri> startGoogleConnection() async =>
+      throw UnsupportedError('Google connection is unavailable');
+  Future<void> disconnectGoogle() async =>
+      throw UnsupportedError('Google connection is unavailable');
+  Future<SyncStatus> syncGoogleNow() async =>
+      throw UnsupportedError('Google synchronization is unavailable');
+
   Future<List<EmailMessage>> getEmails() async => const [];
 
   Future<void> dispatchFromEmail(DispatchRequest request) async =>

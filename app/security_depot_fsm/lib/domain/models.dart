@@ -6,6 +6,28 @@ enum JobType {
   inspection,
 }
 
+enum GoogleConnectionStatus { disconnected, connected, expired }
+
+class GoogleConnectionState {
+  const GoogleConnectionState({
+    required this.status,
+    this.accountEmail,
+    this.expiresAt,
+  });
+  final GoogleConnectionStatus status;
+  final String? accountEmail;
+  final DateTime? expiresAt;
+  bool get isConnected => status == GoogleConnectionStatus.connected;
+}
+
+class SyncStatus {
+  const SyncStatus({required this.status, this.lastSyncedAt, this.errorCode});
+  final String status;
+  final DateTime? lastSyncedAt;
+  final String? errorCode;
+  DateTime? get nextSyncAt => lastSyncedAt?.add(const Duration(seconds: 90));
+}
+
 enum ServiceCategory {
   intercom,
   accessControl,

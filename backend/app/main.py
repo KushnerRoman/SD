@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta
+import asyncio
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 import httpx
@@ -10,7 +12,8 @@ from fastapi.staticfiles import StaticFiles
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
 
-from app.database import create_schema, get_session
+from app.database import SessionLocal, create_schema, get_session
+from app.google.scheduler import GoogleSyncScheduler
 from app.google.config import GoogleSettings
 from app.google.calendar import CalendarProvider
 from app.google.outbox import process_calendar_outbox
@@ -26,7 +29,35 @@ from app.report_tokens import ReportTokenError, close_report_token, csrf_token_f
 import secrets
 from urllib.parse import parse_qs
 
-app = FastAPI(title="Security Depot FSM Mock API", version="0.1.0")
+async def _scheduled_google_sync() -> None:
+    def run() -> None:
+        with SessionLocal() as session:
+            credential = session.query(GoogleCredential).first()
+            if credential is None:
+                return
+            oauth = get_google_oauth_service()
+            tokens = oauth.refresh_access_token(oauth.load_refresh_token(credential))
+            access_token = tokens.get("access_token")
+            if not isinstance(access_token, str) or not access_token:
+                return
+            GoogleSyncCoordinator(GmailProvider(access_token)).sync_gmail(session)
+            process_calendar_outbox(session, CalendarProvider(access_token))
+
+    await asyncio.to_thread(run)
+
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    create_schema()
+    scheduler = GoogleSyncScheduler(_scheduled_google_sync)
+    scheduler.start()
+    try:
+        yield
+    finally:
+        await scheduler.stop()
+
+
+app = FastAPI(title="Security Depot FSM Mock API", version="0.1.0", lifespan=lifespan)
 
 WEB_BUILD_DIR = Path(__file__).resolve().parents[2] / "app" / "security_depot_fsm" / "build" / "web"
 
@@ -80,11 +111,6 @@ def get_calendar_provider(
         raise HTTPException(status_code=status, detail="Google authorization refresh failed") from error
     except ValueError as error:
         raise HTTPException(status_code=401, detail="Google credential is unavailable") from error
-
-
-@app.on_event("startup")
-def startup() -> None:
-    create_schema()
 
 
 @app.get("/health")
