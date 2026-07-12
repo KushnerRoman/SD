@@ -17,6 +17,10 @@ class ReportTokenError(ValueError):
     pass
 
 
+class ReportTokenConfigurationError(RuntimeError):
+    pass
+
+
 UNAVAILABLE = "Report link is unavailable"
 
 
@@ -25,7 +29,14 @@ def _hash(value: str) -> str:
 
 
 def _signing_key() -> bytes:
-    return os.getenv("REPORT_TOKEN_SIGNING_KEY", "security-depot-local-report-token-v1").encode()
+    configured = os.getenv("TOKEN_ENCRYPTION_KEY", "").strip()
+    try:
+        master_key = base64.urlsafe_b64decode(configured.encode())
+    except (ValueError, TypeError) as error:
+        raise ReportTokenConfigurationError("Report token configuration is unavailable") from error
+    if len(master_key) != 32 or base64.urlsafe_b64encode(master_key).decode() != configured:
+        raise ReportTokenConfigurationError("Report token configuration is unavailable")
+    return hmac.new(master_key, b"security-depot-report-token-v1", hashlib.sha256).digest()
 
 
 def _derive(visit_id: str, nonce: str) -> str:

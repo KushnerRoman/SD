@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
 import httpx
+import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -9,6 +10,13 @@ from app.google.calendar import CalendarError, CalendarProvider
 from app.google.outbox import process_calendar_outbox, stable_event_id
 from app.models import CalendarOutbox, GoogleCalendarSettings, Job, Site, Technician, Visit
 from app.report_tokens import resolve_report_token
+
+TEST_KEY = __import__("base64").urlsafe_b64encode(b"A" * 32).decode()
+
+
+@pytest.fixture(autouse=True)
+def report_secret(monkeypatch):
+    monkeypatch.setenv("TOKEN_ENCRYPTION_KEY", TEST_KEY)
 
 
 def make_session():

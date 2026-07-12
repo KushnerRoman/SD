@@ -11,6 +11,13 @@ from app.main import app
 from app.models import ActivityEntry, CalendarOutbox, Job, Notification, ReportToken, Site, Technician, Visit
 from app.report_tokens import ReportTokenError, close_report_token, issue_report_token, resolve_report_token
 
+TEST_KEY = __import__("base64").urlsafe_b64encode(b"A" * 32).decode()
+
+
+@__import__("pytest").fixture(autouse=True)
+def report_secret(monkeypatch):
+    monkeypatch.setenv("TOKEN_ENCRYPTION_KEY", TEST_KEY)
+
 
 def make_session():
     engine = create_engine("sqlite+pysqlite:///:memory:", connect_args={"check_same_thread": False}, poolclass=StaticPool)
@@ -42,6 +49,33 @@ def test_token_is_256_bit_random_and_only_sha256_hash_is_stored():
     assert len(rows) == 1 and rows[0].token_hash not in (first, second) and len(rows[0].token_hash) == 64
     assert rows[0].token_hash == sha256(second.encode()).hexdigest()
     assert rows[0].revoked_at is None and rows[0].nonce not in first
+
+
+def test_missing_or_invalid_secret_fails_before_token_issuance(monkeypatch):
+    from app.report_tokens import ReportTokenConfigurationError
+    session = make_session(); visit = seed(session)
+    for value in (None, "short", "replace-with-fernet-key"):
+        if value is None: monkeypatch.delenv("TOKEN_ENCRYPTION_KEY", raising=False)
+        else: monkeypatch.setenv("TOKEN_ENCRYPTION_KEY", value)
+        with __import__("pytest").raises(ReportTokenConfigurationError, match="configuration is unavailable"):
+            issue_report_token(session, visit)
+        assert session.query(ReportToken).count() == 0
+
+
+def test_distinct_strong_secrets_derive_distinct_tokens_for_same_visit_nonce(monkeypatch):
+    from app.report_tokens import _derive
+    nonce = "persisted-random-nonce"
+    monkeypatch.setenv("TOKEN_ENCRYPTION_KEY", __import__("base64").urlsafe_b64encode(b"B" * 32).decode())
+    first = _derive("visit-1", nonce)
+    monkeypatch.setenv("TOKEN_ENCRYPTION_KEY", __import__("base64").urlsafe_b64encode(b"C" * 32).decode())
+    assert _derive("visit-1", nonce) != first
+
+
+def test_production_source_contains_no_report_signing_secret_constant():
+    from pathlib import Path
+    source = (Path(__file__).parents[1] / "app" / "report_tokens.py").read_text()
+    assert "security-depot-local-report-token-v1" not in source
+    assert 'os.getenv("REPORT_TOKEN_SIGNING_KEY"' not in source
 
 
 def test_resolve_rejects_invalid_expired_closed_and_revoked_neutrally():

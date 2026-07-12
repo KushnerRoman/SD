@@ -72,4 +72,24 @@ Review-fix focused green result: `13 passed`.
 
 Review-fix full regression result: `66 passed`.
 
-Remaining concern: `REPORT_TOKEN_SIGNING_KEY` must remain stable across application restarts. The localhost development default is deterministic; deployments should set and retain an environment-specific value. Existing deprecation warnings remain unchanged in nature.
+This intermediate concern was superseded by the security follow-up below, which removes the fallback and derives from the required encryption key.
+
+## Security Follow-up: Fail-closed Signing Key
+
+Removed the deterministic report signing fallback. Report signing now validates the already-required `TOKEN_ENCRYPTION_KEY` as a canonical 32-byte Fernet key and derives a domain-separated key using HMAC-SHA256 with label `security-depot-report-token-v1`. Missing, malformed, weak/placeholder key material fails before token issuance and creates no database row. The existing key remains stable across restarts, so report URLs remain stable without introducing another secret.
+
+Added tests proving:
+
+- missing, malformed, and placeholder secrets fail closed before issuance;
+- distinct strong secrets produce distinct bearer tokens for the same visit and persisted nonce;
+- production report-token source contains no deterministic signing-secret fallback.
+
+Updated `backend/.env.example` and the localhost integration design to document key retention, derivation, and failure behavior.
+
+Security follow-up red result: `3 failed, 13 passed` for the newly required configuration behaviors.
+
+Security follow-up focused green result: `16 passed`.
+
+Security follow-up full regression result: `69 passed`.
+
+Remaining concern: changing `TOKEN_ENCRYPTION_KEY` invalidates both encrypted Google credentials and existing report links by design. Operators must retain the generated key across restarts. Existing deprecation warnings remain; there are no test failures.

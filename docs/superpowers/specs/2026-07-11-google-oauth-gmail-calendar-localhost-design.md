@@ -39,7 +39,7 @@ Configuration is provided through local environment variables:
 
 The repository includes an example environment file with names and instructions but no credentials. The real environment file and SQLite token data are ignored by Git.
 
-The refresh token is encrypted at rest using authenticated encryption. Access tokens remain in memory and are refreshed as required. Disconnect Google revokes the token when possible and removes the local encrypted credential record.
+The refresh token is encrypted at rest using authenticated encryption. `TOKEN_ENCRYPTION_KEY` must be a valid 32-byte Fernet key and remain stable across restarts. A domain-separated report-link signing key is derived from it with HMAC-SHA256; there is no source-code fallback secret. Missing or invalid key material fails closed before report-token issuance. Access tokens remain in memory and are refreshed as required. Disconnect Google revokes the token when possible and removes the local encrypted credential record.
 
 ## Requested Permissions
 
@@ -106,7 +106,7 @@ Dispatch commits the service call, visit, report token, and a pending Calendar o
 
 ### Technician Report Links
 
-Each visit owns a cryptographically random opaque report token stored as a hash. The event contains a URL such as `http://127.0.0.1:8765/report/<token>`.
+Each visit owns a random nonce and a stable opaque 256-bit report token derived from that nonce, visit ID, and the domain-separated signing key. Only the nonce and SHA-256 token digest are stored; database fields and repository source are insufficient to reconstruct the bearer token. The event contains a URL such as `http://127.0.0.1:8765/report/<token>`.
 
 The report page exposes only the assigned visit's relevant site, schedule, contact, instructions, and structured result form. It captures Completed, Incomplete, or Return Required; duration; work performed; materials; and follow-up notes. Incomplete and Return Required require follow-up text.
 
