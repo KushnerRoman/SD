@@ -37,7 +37,7 @@ def _calendar_id(session, provider):
         settings = GoogleCalendarSettings(id=1); session.add(settings)
     if not settings.calendar_id:
         calendars = provider.list_calendars()
-        match = next((x for x in calendars if x.get("summary") == "Security Depot Service"), None)
+        match = next((x for x in calendars if isinstance(x, dict) and x.get("summary") == "Security Depot Service" and x.get("accessRole") == "owner"), None)
         settings.calendar_id = (match or provider.create_service_calendar())["id"]
     return settings.calendar_id
 
@@ -58,12 +58,10 @@ def process_calendar_outbox(session, provider) -> int:
                     current = provider.get_event(calendar_id, visit.calendar_event_id)
                     result = provider.update_event(calendar_id, visit.calendar_event_id, event, current.get("etag", ""))
             else:
-                try:
-                    result = provider.insert_event(calendar_id, event)
-                except CalendarNetworkError:
-                    # The POST may have committed before the transport failed. A retry with
-                    # the same client-supplied ID resolves as 409/get instead of duplicating.
-                    result = provider.insert_event(calendar_id, event)
+                # A later due retry uses the identical client-supplied ID. If the
+                # ambiguous POST committed, Calendar returns 409 and the provider
+                # retrieves that event instead of creating a duplicate.
+                result = provider.insert_event(calendar_id, event)
             visit.calendar_event_id = result.get("id", event["id"])
             visit.calendar_etag = result.get("etag", "")
             visit.calendar_updated_at = datetime.utcnow()

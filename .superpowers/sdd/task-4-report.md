@@ -62,3 +62,17 @@ Result before final retry-bound addition: `56 passed`. The final focused suite w
 - The report URL is intentionally a placeholder contract until Task 5 supplies signing/rendering.
 - Delivery is exposed as an explicit endpoint; production scheduling/worker orchestration is outside this task.
 - Existing naive UTC datetime usage emits Python 3.12 deprecation warnings and should be migrated project-wide rather than piecemeal.
+
+## Review Follow-up
+
+The initial review identified three gaps. Each was reproduced with a failing test before correction:
+
+- A shared/read-only calendar with the service-calendar summary was incorrectly reused. Selection now requires both the exact summary and `accessRole == "owner"`; otherwise a new owned calendar is created.
+- An ambiguous insert timeout issued an immediate second POST. It now records an attempt and future `next_attempt_at`, returns, skips the row until due, and performs the stable-ID retry later. A later 409 retrieves the existing stable-ID event. The five-attempt terminal bound remains enforced.
+- Calendar list/create accepted unclassified 4xx or malformed JSON, which could leak provider behavior as `KeyError`/decode errors. All non-special 4xx responses now raise a safe `CalendarError`, and response shape/JSON is validated without exposing provider payloads.
+
+Review RED command: `backend\.venv\Scripts\pytest.exe backend\tests\test_calendar_sync.py -q`
+
+Review RED result: 3 failed (`ambiguous timeout`, `shared same-name calendar`, and `safe bad-response classification`).
+
+Review GREEN result: 6 passed in the Calendar suite.

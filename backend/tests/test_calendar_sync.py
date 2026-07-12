@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from app.database import Base
-from app.google.calendar import CalendarProvider
+from app.google.calendar import CalendarError, CalendarProvider
 from app.google.outbox import process_calendar_outbox, stable_event_id
 from app.models import CalendarOutbox, GoogleCalendarSettings, Job, Site, Technician, Visit
 
@@ -80,7 +80,13 @@ def test_ambiguous_timeout_retries_without_duplicate_event():
         return httpx.Response(200, json={})
     session = make_session(); visit = seed(session)
     session.add(GoogleCalendarSettings(id=1, calendar_id="cal")); session.commit()
-    process_calendar_outbox(session, CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(handler))))
+    provider = CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(handler)))
+    process_calendar_outbox(session, provider)
+    assert inserts == 1
+    item = session.query(CalendarOutbox).one()
+    assert item.status == "pending" and item.attempts == 1 and item.next_attempt_at
+    item.next_attempt_at = datetime.utcnow() - timedelta(seconds=1); session.commit()
+    process_calendar_outbox(session, provider)
     assert inserts == 2
     assert visit.calendar_event_id == stable_event_id(visit.id)
     assert session.query(CalendarOutbox).one().status == "delivered"
@@ -101,3 +107,31 @@ def test_backoff_skips_not_due_work_and_stops_after_five_attempts():
     process_calendar_outbox(session, provider)
     assert item.status == "failed" and item.attempts == 5
     assert item.last_error == "Calendar delivery failed"
+
+
+def test_shared_same_name_calendar_is_not_reused():
+    created = 0
+    def handler(request):
+        nonlocal created
+        if request.url.path.endswith("/users/me/calendarList"):
+            return httpx.Response(200, json={"items": [{"id": "shared", "summary": "Security Depot Service", "accessRole": "reader"}]})
+        if request.url.path.endswith("/calendars"):
+            created += 1
+            return httpx.Response(200, json={"id": "owned"})
+        return httpx.Response(200, json={"id": stable_event_id("visit_ABC-123"), "etag": '"v1"'})
+    session = make_session(); seed(session)
+    process_calendar_outbox(session, CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(handler))))
+    assert created == 1
+    assert session.get(GoogleCalendarSettings, 1).calendar_id == "owned"
+
+
+def test_calendar_list_and_create_classify_bad_responses_safely():
+    for status, body in [(400, {"error": {"message": "sensitive"}}), (200, None)]:
+        def handler(request, status=status, body=body):
+            if body is None: return httpx.Response(status, content=b"not-json")
+            return httpx.Response(status, json=body)
+        provider = CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(handler)))
+        for operation in (provider.list_calendars, provider.create_service_calendar):
+            with __import__("pytest").raises(CalendarError, match="Calendar rejected the request|invalid response") as raised:
+                operation()
+            assert "sensitive" not in str(raised.value)
