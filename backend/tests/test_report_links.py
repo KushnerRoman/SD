@@ -37,11 +37,11 @@ def client_for(session):
 def test_token_is_256_bit_random_and_only_sha256_hash_is_stored():
     session = make_session(); visit = seed(session)
     first = issue_report_token(session, visit); second = issue_report_token(session, visit)
-    assert first != second and len(__import__("base64").urlsafe_b64decode(first + "==")) == 32
+    assert first == second and len(__import__("base64").urlsafe_b64decode(first + "==")) == 32
     rows = session.query(ReportToken).all()
-    assert all(row.token_hash not in (first, second) and len(row.token_hash) == 64 for row in rows)
-    assert rows[-1].token_hash == sha256(second.encode()).hexdigest()
-    assert rows[0].revoked_at is not None
+    assert len(rows) == 1 and rows[0].token_hash not in (first, second) and len(rows[0].token_hash) == 64
+    assert rows[0].token_hash == sha256(second.encode()).hexdigest()
+    assert rows[0].revoked_at is None and rows[0].nonce not in first
 
 
 def test_resolve_rejects_invalid_expired_closed_and_revoked_neutrally():
@@ -57,7 +57,7 @@ def test_resolve_rejects_invalid_expired_closed_and_revoked_neutrally():
 
 
 def test_report_page_is_escaped_isolated_and_responsive():
-    session = make_session(); token = issue_report_token(session, seed(session)); client = client_for(session)
+    session = make_session(); token = issue_report_token(session, seed(session)); session.commit(); client = client_for(session)
     response = client.get(f"/report/{token}")
     assert response.status_code == 200
     assert "<script>alert(1)</script>" not in response.text and "&lt;script&gt;" in response.text
@@ -66,14 +66,14 @@ def test_report_page_is_escaped_isolated_and_responsive():
 
 
 def test_invalid_links_have_same_neutral_response():
-    session = make_session(); token = issue_report_token(session, seed(session)); close_report_token(session, token)
+    session = make_session(); token = issue_report_token(session, seed(session)); close_report_token(session, token); session.commit()
     client = client_for(session)
     invalid = client.get("/report/not-a-token"); closed = client.get(f"/report/{token}")
     assert invalid.status_code == closed.status_code == 404 and invalid.text == closed.text
 
 
 def test_post_requires_csrf_and_structured_fields_then_completes_atomically():
-    session = make_session(); visit = seed(session); token = issue_report_token(session, visit); client = client_for(session)
+    session = make_session(); visit = seed(session); token = issue_report_token(session, visit); session.commit(); client = client_for(session)
     page = client.get(f"/report/{token}")
     csrf = page.cookies["report_csrf"]
     base = {"csrf_token": csrf, "status": "Completed", "duration_minutes": "45", "work_performed": "Replaced camera", "materials_used": "Camera", "follow_up_notes": "None"}
@@ -90,3 +90,14 @@ def test_post_requires_csrf_and_structured_fields_then_completes_atomically():
     stored = session.query(ReportToken).filter_by(token_hash=sha256(token.encode()).hexdigest()).one()
     assert stored.closed_at is not None
 
+
+def test_two_gets_do_not_invalidate_first_form_csrf():
+    session = make_session(); visit = seed(session); token = issue_report_token(session, visit); session.commit(); client = client_for(session)
+    first = client.get(f"/report/{token}"); first_csrf = first.cookies["report_csrf"]
+    second = client.get(f"/report/{token}")
+    assert second.cookies["report_csrf"] == first_csrf
+    response = client.post(f"/report/{token}", data={
+        "csrf_token": first_csrf, "status": "Completed", "duration_minutes": "20",
+        "work_performed": "Tested system", "materials_used": "None", "follow_up_notes": "None",
+    })
+    assert response.status_code == 200

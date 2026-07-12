@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import hashlib
+import hmac
+import base64
+import os
 import secrets
 from datetime import datetime, timedelta
 
@@ -21,14 +24,32 @@ def _hash(value: str) -> str:
     return hashlib.sha256(value.encode()).hexdigest()
 
 
+def _signing_key() -> bytes:
+    return os.getenv("REPORT_TOKEN_SIGNING_KEY", "security-depot-local-report-token-v1").encode()
+
+
+def _derive(visit_id: str, nonce: str) -> str:
+    digest = hmac.new(_signing_key(), f"report:{visit_id}:{nonce}".encode(), hashlib.sha256).digest()
+    return base64.urlsafe_b64encode(digest).rstrip(b"=").decode()
+
+
+def csrf_token_for(raw_token: str) -> str:
+    digest = hmac.new(_signing_key(), f"csrf:{raw_token}".encode(), hashlib.sha256).digest()
+    return base64.urlsafe_b64encode(digest).rstrip(b"=").decode()
+
+
 def issue_report_token(session: Session, visit: Visit) -> str:
     now = datetime.utcnow()
-    for row in session.scalars(select(ReportToken).where(
+    existing = session.scalar(select(ReportToken).where(
         ReportToken.visit_id == visit.id, ReportToken.closed_at.is_(None), ReportToken.revoked_at.is_(None)
-    )):
-        row.revoked_at = now
-    raw = secrets.token_urlsafe(32)
-    session.add(ReportToken(visit=visit, token_hash=_hash(raw), expires_at=now + timedelta(days=30)))
+    ).order_by(ReportToken.id.desc()))
+    if existing is not None and existing.expires_at > now and existing.nonce:
+        raw = _derive(visit.id, existing.nonce)
+        if hmac.compare_digest(existing.token_hash, _hash(raw)):
+            return raw
+    nonce = secrets.token_urlsafe(32)
+    raw = _derive(visit.id, nonce)
+    session.add(ReportToken(visit=visit, nonce=nonce, token_hash=_hash(raw), expires_at=now + timedelta(days=30)))
     session.flush()
     return raw
 

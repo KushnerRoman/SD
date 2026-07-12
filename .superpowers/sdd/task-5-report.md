@@ -50,4 +50,26 @@ Result: exit 0, no whitespace errors.
 ## Concerns
 
 - The suite reports existing FastAPI/Starlette and naive-UTC deprecation warnings; there are no test failures.
-- A new Calendar delivery attempt intentionally revokes the previous live report link because a hash-only design cannot recover a prior raw token. This keeps at-rest storage compliant but means an older invitation link can become unavailable after a Calendar retry/update.
+
+## Review Fix: Stable Retry Links and Multi-tab CSRF
+
+The original implementation minted and revoked a token on every Calendar delivery attempt, and replaced a single CSRF digest on every GET. Review correctly identified that retries invalidated delivered links and a second tab invalidated the first form.
+
+- Added a random 256-bit per-report nonce and derive the stable opaque 256-bit token with HMAC-SHA256 over visit ID plus nonce.
+- Persist only the nonce and SHA-256 token digest; the raw token remains absent from storage but can be re-derived for Calendar retries and updates.
+- Reuse active tokens during delivery rather than revoking them. Closure/revocation remains an explicit lifecycle action.
+- Added an additive SQLite migration for the nonce column.
+- Replaced rotating stored CSRF state with a stable token-bound HMAC value, still requiring the matching HttpOnly SameSite cookie and hidden form value.
+- Added regression coverage proving failed retry URL identity and continued validity, delivered-link validity after a later Calendar update, CSRF tamper rejection, and successful first-form submission after two GETs.
+
+Review-fix red result:
+
+`backend\.venv\Scripts\pytest.exe backend\tests\test_report_links.py backend\tests\test_calendar_sync.py -q`
+
+Result before implementation: `4 failed, 9 passed`, specifically stable token, two-GET CSRF, retry URL identity, and post-update link validity.
+
+Review-fix focused green result: `13 passed`.
+
+Review-fix full regression result: `66 passed`.
+
+Remaining concern: `REPORT_TOKEN_SIGNING_KEY` must remain stable across application restarts. The localhost development default is deterministic; deployments should set and retain an environment-specific value. Existing deprecation warnings remain unchanged in nature.

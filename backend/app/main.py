@@ -22,8 +22,7 @@ from app.schemas import CalendarDeliveryOut, DashboardSummary, DispatchCreate, E
 from app.seed_loader import load_seed_file, reset_and_load_seed
 from app.workflows import WorkflowConflict, WorkflowValidationError, convert_email_to_service_call, submit_technician_report
 from app.report_pages import report_form, success_page, unavailable_page
-from app.report_tokens import ReportTokenError, close_report_token, resolve_report_token, token_record
-import hashlib
+from app.report_tokens import ReportTokenError, close_report_token, csrf_token_for, resolve_report_token
 import secrets
 from urllib.parse import parse_qs
 
@@ -507,9 +506,7 @@ def get_report(token: str, session: Session = Depends(get_session)):
         visit = resolve_report_token(session, token)
     except ReportTokenError:
         return HTMLResponse(unavailable_page(), status_code=404)
-    csrf = secrets.token_urlsafe(32)
-    token_record(session, token).csrf_hash = hashlib.sha256(csrf.encode()).hexdigest()
-    session.commit()
+    csrf = csrf_token_for(token)
     response = HTMLResponse(report_form(visit, csrf))
     response.set_cookie("report_csrf", csrf, httponly=True, samesite="strict", path=f"/report/{token}")
     return response
@@ -519,12 +516,12 @@ def get_report(token: str, session: Session = Depends(get_session)):
 async def post_report(token: str, request: Request, session: Session = Depends(get_session)):
     try:
         visit = resolve_report_token(session, token)
-        row = token_record(session, token)
     except ReportTokenError:
         return HTMLResponse(unavailable_page(), status_code=404)
     values = {key: items[-1] for key, items in parse_qs((await request.body()).decode(), keep_blank_values=True).items()}
     csrf = values.get("csrf_token", ""); cookie = request.cookies.get("report_csrf", "")
-    if not csrf or not secrets.compare_digest(csrf, cookie) or not secrets.compare_digest(hashlib.sha256(csrf.encode()).hexdigest(), row.csrf_hash):
+    expected_csrf = csrf_token_for(token)
+    if not csrf or not secrets.compare_digest(csrf, cookie) or not secrets.compare_digest(csrf, expected_csrf):
         return HTMLResponse(unavailable_page(), status_code=403)
     try:
         duration = int(values.get("duration_minutes", ""))

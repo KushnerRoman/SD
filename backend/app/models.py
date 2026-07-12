@@ -109,6 +109,7 @@ class ReportToken(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     visit_id: Mapped[str] = mapped_column(String(64), ForeignKey("visits.id"), index=True)
     token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    nonce: Mapped[str] = mapped_column(String(64), default="")
     csrf_hash: Mapped[str] = mapped_column(String(64), default="")
     expires_at: Mapped[datetime] = mapped_column(DateTime)
     closed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)

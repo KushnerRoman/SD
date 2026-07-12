@@ -8,6 +8,7 @@ from app.database import Base
 from app.google.calendar import CalendarError, CalendarProvider
 from app.google.outbox import process_calendar_outbox, stable_event_id
 from app.models import CalendarOutbox, GoogleCalendarSettings, Job, Site, Technician, Visit
+from app.report_tokens import resolve_report_token
 
 
 def make_session():
@@ -71,10 +72,12 @@ def test_412_refreshes_etag_and_retries_update():
 
 def test_ambiguous_timeout_retries_without_duplicate_event():
     inserts = 0
+    urls = []
     def handler(request):
         nonlocal inserts
         if request.method == "POST":
             inserts += 1
+            urls.append(__import__("json").loads(request.content)["description"].split("Technician report: ")[1])
             if inserts == 1: raise httpx.ReadTimeout("unknown", request=request)
             return httpx.Response(409)
         if request.method == "GET": return httpx.Response(200, json={"id": stable_event_id("visit_ABC-123"), "etag": '"exists"'})
@@ -89,8 +92,27 @@ def test_ambiguous_timeout_retries_without_duplicate_event():
     item.next_attempt_at = datetime.utcnow() - timedelta(seconds=1); session.commit()
     process_calendar_outbox(session, provider)
     assert inserts == 2
+    assert urls[0] == urls[1]
+    assert resolve_report_token(session, urls[0].rsplit("/", 1)[1]).id == visit.id
     assert visit.calendar_event_id == stable_event_id(visit.id)
     assert session.query(CalendarOutbox).one().status == "delivered"
+
+
+def test_delivered_link_stays_valid_after_calendar_update():
+    urls = []
+    def handler(request):
+        if request.method in ("POST", "PATCH") and "/events" in request.url.path:
+            urls.append(__import__("json").loads(request.content)["description"].split("Technician report: ")[1])
+            return httpx.Response(200, json={"id": stable_event_id("visit_ABC-123"), "etag": f'"v{len(urls)}"'})
+        return httpx.Response(200, json={"items": []} if request.method == "GET" else {"id": "cal"})
+    session = make_session(); visit = seed(session)
+    provider = CalendarProvider("token", http_client=httpx.Client(transport=httpx.MockTransport(handler)))
+    process_calendar_outbox(session, provider)
+    first_token = urls[0].rsplit("/", 1)[1]
+    session.add(CalendarOutbox(visit=visit, operation="upsert")); session.commit()
+    process_calendar_outbox(session, provider)
+    assert urls == [urls[0], urls[0]]
+    assert resolve_report_token(session, first_token).id == visit.id
 
 
 def test_backoff_skips_not_due_work_and_stops_after_five_attempts():

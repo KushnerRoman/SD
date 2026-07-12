@@ -48,6 +48,7 @@ def upgrade_sqlite_schema(bind: Engine) -> None:
         "email_messages": {"provider_id": "VARCHAR(255)", "history_id": "VARCHAR(255) NOT NULL DEFAULT ''"},
         "google_credentials": {"gmail_history_id": "VARCHAR(255)"},
         "visits": {"calendar_etag": "VARCHAR(255) NOT NULL DEFAULT ''", "calendar_updated_at": "DATETIME"},
+        "report_tokens": {"nonce": "VARCHAR(64) NOT NULL DEFAULT ''"},
     }
     with bind.begin() as connection:
         table_names = set(inspect(connection).get_table_names())
