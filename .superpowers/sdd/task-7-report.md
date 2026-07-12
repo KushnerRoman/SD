@@ -32,7 +32,7 @@ The focused widget suite was first run with new assertions and failed on the old
 
 ## Self-review and concerns
 
-- Listing visits issues or reuses a signed report token only when `TOKEN_ENCRYPTION_KEY` is valid; with missing configuration the API safely returns no report URL. This makes Calendar actions configuration-dependent as intended.
+- Dispatch/outbox enqueue owns signed report-token creation. `GET /visits` only reconstructs an existing active token when `TOKEN_ENCRYPTION_KEY` is valid and otherwise returns no report URL; it never creates or mutates token state.
 - Localhost report links work only on the FastAPI host, not a technician phone or remote computer; documentation makes this limitation explicit.
 - Backend tests retain pre-existing `datetime.utcnow()` and TestClient dependency warnings; no failures result.
 - Changing `TOKEN_ENCRYPTION_KEY` invalidates encrypted Google credentials and report links by design; the rotation sequence explicitly requires disconnect/reconnect.
@@ -53,3 +53,13 @@ Fresh follow-up verification after the lifecycle assertion:
 - `flutter analyze` — PASS, no issues.
 - `flutter test` — PASS, 43 tests.
 - `flutter build web --base-href /web/` — PASS, built `build\web`.
+
+## Final cleanup-count follow-up
+
+- Expanded cleanup counts and `print_counts.py` JSON to cover every deleted operational table: jobs, visits, emails, technicians, activities, notifications, Calendar details, report tokens, Calendar outbox, Calendar settings, Google credentials, and Google sync state.
+- Cleanup now explicitly removes Google credential and sync-state rows as operational integration state while preserving Sites.
+- The isolated cleanup test populates every operational table, proves all before-counts are nonzero, runs cleanup, proves every after-count is zero, and verifies sorted Site IDs are unchanged.
+- Documentation now includes an executable PowerShell assertion that fails if Site count changes or any non-Site count remains.
+- Final focused command `backend\.venv\Scripts\pytest.exe backend\tests\test_cleanup.py -q` — PASS, 6 tests (24 warnings).
+- Final full command `backend\.venv\Scripts\pytest.exe backend\tests -q` — PASS, 80 tests (413 existing deprecation warnings).
+- Flutter was not rerun for this final follow-up because no Flutter source or tests changed after the prior clean 43-test/analyze/build verification.

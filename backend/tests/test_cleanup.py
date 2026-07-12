@@ -5,6 +5,7 @@ import os
 import subprocess
 import sys
 from copy import deepcopy
+from datetime import datetime
 from pathlib import Path
 
 import pytest
@@ -14,7 +15,7 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from app.cleanup import cleanup_operational_data, operational_snapshot
 from app.database import Base
-from app.models import ActivityEntry, CalendarOutbox, GoogleCalendarSettings, Job, Notification, Site, Technician, Visit
+from app.models import ActivityEntry, CalendarOutbox, GoogleCalendarSettings, GoogleCredential, GoogleSyncState, Job, Notification, ReportToken, Site, Technician, Visit
 from app.seed_loader import load_seed_file, reset_and_load_seed
 
 
@@ -31,6 +32,9 @@ def _populated_session() -> Session:
     session.add(Notification(job_id=job.id, visit_id=visit.id, kind="test", title="test"))
     session.add(CalendarOutbox(visit_id=visit.id, operation="update"))
     session.add(GoogleCalendarSettings(id=1, calendar_id="service"))
+    session.add(ReportToken(visit_id=visit.id, token_hash="hash", nonce="nonce", expires_at=datetime(2030, 1, 1)))
+    session.add(GoogleCredential(account_email="placeholder@example.invalid", encrypted_refresh_token=b"encrypted"))
+    session.add(GoogleSyncState(id=1, status="ok"))
     session.commit()
     return session
 
@@ -61,7 +65,10 @@ def test_print_counts_script_reads_isolated_database(tmp_path):
         "site_count": 2,
         "site_ids": ["site-a", "site-b"],
         "counts": {"sites": 2, "jobs": 0, "visits": 0, "emails": 0,
-                   "technicians": 0, "activities": 0, "notifications": 0},
+                   "technicians": 0, "activities": 0, "notifications": 0,
+                   "calendar_details": 0, "report_tokens": 0,
+                   "calendar_outbox": 0, "google_calendar_settings": 0,
+                   "google_credentials": 0, "google_sync_states": 0},
     }
 
 
@@ -72,23 +79,16 @@ def test_cleanup_preserves_sites_and_deletes_everything_else():
         result = cleanup_operational_data(session)
 
         assert {row.id for row in session.query(Site).all()} == site_ids
-        assert result.after == {
-            "sites": len(site_ids),
-            "jobs": 0,
-            "visits": 0,
-            "emails": 0,
-            "technicians": 0,
-            "activities": 0,
-            "notifications": 0,
+        operational_keys = {
+            "jobs", "visits", "emails", "technicians", "activities",
+            "notifications", "calendar_details", "report_tokens",
+            "calendar_outbox", "google_calendar_settings",
+            "google_credentials", "google_sync_states",
         }
-        assert result.before["jobs"] > 0
-        assert result.before["visits"] > 0
-        assert result.before["emails"] > 0
-        assert result.before["technicians"] > 0
-        assert result.before["activities"] == 1
-        assert result.before["notifications"] == 1
-        assert session.query(CalendarOutbox).count() == 0
-        assert session.query(GoogleCalendarSettings).count() == 0
+        assert set(result.after) == {"sites", *operational_keys}
+        assert result.after["sites"] == len(site_ids)
+        assert all(result.before[key] > 0 for key in operational_keys)
+        assert all(result.after[key] == 0 for key in operational_keys)
 
 
 def test_cleanup_cli_requires_exact_confirmation_flag(tmp_path: Path):
@@ -129,15 +129,8 @@ def test_cleanup_cli_prints_json_counts_for_isolated_database(tmp_path: Path):
 
     assert result.returncode == 0
     counts = json.loads(result.stdout)
-    assert counts["after"] == {
-        "sites": expected_sites,
-        "jobs": 0,
-        "visits": 0,
-        "emails": 0,
-        "technicians": 0,
-        "activities": 0,
-        "notifications": 0,
-    }
+    assert counts["after"]["sites"] == expected_sites
+    assert all(value == 0 for key, value in counts["after"].items() if key != "sites")
 
 
 def test_failed_seed_reset_rolls_back_cleanup_and_preserves_operational_data():

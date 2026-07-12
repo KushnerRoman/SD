@@ -42,9 +42,11 @@ $before = Get-Content -Raw backend\counts-before.json | ConvertFrom-Json
 $after = Get-Content -Raw backend\counts-after.json | ConvertFrom-Json
 Compare-Object $before.site_ids $after.site_ids
 $after.counts | ConvertTo-Json
+$nonSiteCounts = $after.counts.PSObject.Properties | Where-Object Name -ne 'sites'
+if ($before.site_count -ne $after.site_count -or ($nonSiteCounts.Value | Where-Object { $_ -ne 0 })) { throw 'Cleanup count verification failed' }
 ```
 
-`Compare-Object` must print no differences, and `site_count` must match before and after. Every other operational count must be zero. Restore the backup and investigate if any invariant fails.
+`Compare-Object` must print no differences. The final command fails unless `site_count` matches and every non-Site table is zero, including Calendar details/outbox/settings, report tokens, Google credentials, and Google sync state. Restore the backup and investigate if any invariant fails.
 
 ## 4. Build and start
 

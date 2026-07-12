@@ -15,6 +15,8 @@ def cleanup_operational_data(
     session.execute(delete(models.ReportToken))
     session.execute(delete(models.CalendarOutbox))
     session.execute(delete(models.GoogleCalendarSettings))
+    session.execute(delete(models.GoogleSyncState))
+    session.execute(delete(models.GoogleCredential))
     session.execute(delete(models.Notification))
     session.execute(delete(models.ActivityEntry))
     session.execute(delete(models.CalendarDetail))
@@ -39,6 +41,12 @@ def _counts(session: Session) -> dict[str, int]:
         "technicians": session.query(models.Technician).count(),
         "activities": session.query(models.ActivityEntry).count(),
         "notifications": session.query(models.Notification).count(),
+        "calendar_details": session.query(models.CalendarDetail).count(),
+        "report_tokens": session.query(models.ReportToken).count(),
+        "calendar_outbox": session.query(models.CalendarOutbox).count(),
+        "google_calendar_settings": session.query(models.GoogleCalendarSettings).count(),
+        "google_credentials": session.query(models.GoogleCredential).count(),
+        "google_sync_states": session.query(models.GoogleSyncState).count(),
     }
 
 
