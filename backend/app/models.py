@@ -94,10 +94,36 @@ class Visit(Base):
     materials_used: Mapped[str] = mapped_column(Text, default="")
     follow_up_notes: Mapped[str] = mapped_column(Text, default="")
     calendar_event_id: Mapped[str] = mapped_column(String(64), default="")
+    calendar_etag: Mapped[str] = mapped_column(String(255), default="")
+    calendar_updated_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
 
     job: Mapped[Job | None] = relationship(back_populates="visits")
     site: Mapped[Site | None] = relationship(back_populates="visits")
     technician: Mapped[Technician | None] = relationship(back_populates="visits")
+    outbox_items: Mapped[list["CalendarOutbox"]] = relationship(back_populates="visit", cascade="all, delete-orphan")
+
+
+class GoogleCalendarSettings(Base):
+    __tablename__ = "google_calendar_settings"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, default=1)
+    calendar_id: Mapped[str] = mapped_column(String(255), default="")
+    sync_token: Mapped[str] = mapped_column(Text, default="")
+    last_synced_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
+
+class CalendarOutbox(Base):
+    __tablename__ = "calendar_outbox"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    visit_id: Mapped[str] = mapped_column(String(64), ForeignKey("visits.id"), index=True)
+    operation: Mapped[str] = mapped_column(String(32), default="upsert")
+    status: Mapped[str] = mapped_column(String(32), default="pending", index=True)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    next_attempt_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    last_error: Mapped[str] = mapped_column(String(255), default="")
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    visit: Mapped[Visit] = relationship(back_populates="outbox_items")
 
 
 class CalendarDetail(Base):

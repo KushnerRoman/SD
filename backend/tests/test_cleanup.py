@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from app.cleanup import cleanup_operational_data
 from app.database import Base
-from app.models import ActivityEntry, Job, Notification, Site, Technician, Visit
+from app.models import ActivityEntry, CalendarOutbox, GoogleCalendarSettings, Job, Notification, Site, Technician, Visit
 from app.seed_loader import load_seed_file, reset_and_load_seed
 
 
@@ -29,6 +29,8 @@ def _populated_session() -> Session:
     assert visit is not None
     session.add(ActivityEntry(job_id=job.id, event_type="test", message="test"))
     session.add(Notification(job_id=job.id, visit_id=visit.id, kind="test", title="test"))
+    session.add(CalendarOutbox(visit_id=visit.id, operation="update"))
+    session.add(GoogleCalendarSettings(id=1, calendar_id="service"))
     session.commit()
     return session
 
@@ -55,6 +57,8 @@ def test_cleanup_preserves_sites_and_deletes_everything_else():
         assert result.before["technicians"] > 0
         assert result.before["activities"] == 1
         assert result.before["notifications"] == 1
+        assert session.query(CalendarOutbox).count() == 0
+        assert session.query(GoogleCalendarSettings).count() == 0
 
 
 def test_cleanup_cli_requires_exact_confirmation_flag(tmp_path: Path):

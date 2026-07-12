@@ -22,6 +22,10 @@ class GoogleSyncCountsOut(BaseModel):
     deleted: int
 
 
+class CalendarDeliveryOut(BaseModel):
+    delivered: int
+
+
 class GoogleSyncStatusOut(BaseModel):
     status: str
     last_synced_at: datetime | None = None

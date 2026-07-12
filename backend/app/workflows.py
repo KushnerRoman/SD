@@ -6,6 +6,7 @@ from uuid import uuid4
 from sqlalchemy.orm import Session
 
 from app.models import ActivityEntry, EmailMessage, Job, Notification, Site, Technician, Visit
+from app.google.outbox import enqueue_calendar_operation
 from app.schemas import DispatchCreate, TechnicianReportCreate
 
 
@@ -47,7 +48,7 @@ def convert_email_to_service_call(session: Session, payload: DispatchCreate) -> 
         id=f"visit_{token}", job=job, site=site, technician=technician, technician_name=technician.name,
         start_datetime=payload.scheduled_start, end_datetime=payload.scheduled_end,
         duration_minutes=int((payload.scheduled_end - payload.scheduled_start).total_seconds() // 60),
-        status="Scheduled", calendar_event_id=f"gcal_{token}",
+        status="Scheduled", calendar_event_id="",
     )
     job.activities.extend([
         ActivityEntry(event_type="created", message=f"Created from email: {email.subject}"),
@@ -55,6 +56,8 @@ def convert_email_to_service_call(session: Session, payload: DispatchCreate) -> 
     ])
     email.linked_job_id = job.id
     session.add_all([job, visit])
+    session.flush()
+    enqueue_calendar_operation(session, visit, "upsert")
     session.commit()
     session.refresh(job)
     return job

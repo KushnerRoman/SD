@@ -41,12 +41,13 @@ def create_schema() -> None:
 
 
 def upgrade_sqlite_schema(bind: Engine) -> None:
-    """Apply the small additive Gmail migration supported by legacy SQLite installs."""
+    """Apply supported additive migrations for legacy SQLite installs."""
     if bind.dialect.name != "sqlite":
         return
     additions = {
         "email_messages": {"provider_id": "VARCHAR(255)", "history_id": "VARCHAR(255) NOT NULL DEFAULT ''"},
         "google_credentials": {"gmail_history_id": "VARCHAR(255)"},
+        "visits": {"calendar_etag": "VARCHAR(255) NOT NULL DEFAULT ''", "calendar_updated_at": "DATETIME"},
     }
     with bind.begin() as connection:
         table_names = set(inspect(connection).get_table_names())

@@ -12,11 +12,13 @@ from sqlalchemy.orm import Session, selectinload
 
 from app.database import create_schema, get_session
 from app.google.config import GoogleSettings
+from app.google.calendar import CalendarProvider
+from app.google.outbox import process_calendar_outbox
 from app.google.oauth import CredentialCipher, GoogleOAuthService, OAuthStateError
 from app.google.gmail import GmailProvider, GmailQuotaError, GmailRevokedError, GmailSyncError
 from app.google.sync import GoogleSyncCoordinator
 from app.models import EmailMessage, GoogleCredential, GoogleSyncState, Job, Notification, Site, Technician, Visit
-from app.schemas import DashboardSummary, DispatchCreate, EmailMessageOut, GoogleConnectionOut, GoogleSyncCountsOut, GoogleSyncStatusOut, JobCreate, JobOut, JobUpdate, NotificationOut, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianReportCreate, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
+from app.schemas import CalendarDeliveryOut, DashboardSummary, DispatchCreate, EmailMessageOut, GoogleConnectionOut, GoogleSyncCountsOut, GoogleSyncStatusOut, JobCreate, JobOut, JobUpdate, NotificationOut, SiteCreate, SiteOut, SiteUpdate, TechnicianCreate, TechnicianOut, TechnicianReportCreate, TechnicianUpdate, VisitCreate, VisitOut, VisitUpdate
 from app.seed_loader import load_seed_file, reset_and_load_seed
 from app.workflows import WorkflowConflict, WorkflowValidationError, convert_email_to_service_call, submit_technician_report
 
@@ -49,6 +51,26 @@ def get_google_sync_coordinator(
         if not isinstance(access_token, str) or not access_token:
             raise HTTPException(status_code=502, detail="Google token refresh failed")
         return GoogleSyncCoordinator(GmailProvider(access_token))
+    except httpx.HTTPStatusError as error:
+        status = 401 if error.response.status_code in (400, 401, 403) else 503
+        raise HTTPException(status_code=status, detail="Google authorization refresh failed") from error
+    except ValueError as error:
+        raise HTTPException(status_code=401, detail="Google credential is unavailable") from error
+
+
+def get_calendar_provider(
+    session: Session = Depends(get_session),
+    oauth: GoogleOAuthService = Depends(get_google_oauth_service),
+) -> CalendarProvider:
+    credential = session.query(GoogleCredential).first()
+    if credential is None:
+        raise HTTPException(status_code=409, detail="Google account is not connected")
+    try:
+        tokens = oauth.refresh_access_token(oauth.load_refresh_token(credential))
+        access_token = tokens.get("access_token")
+        if not isinstance(access_token, str) or not access_token:
+            raise HTTPException(status_code=502, detail="Google token refresh failed")
+        return CalendarProvider(access_token)
     except httpx.HTTPStatusError as error:
         status = 401 if error.response.status_code in (400, 401, 403) else 503
         raise HTTPException(status_code=status, detail="Google authorization refresh failed") from error
@@ -167,6 +189,14 @@ def google_sync_status(session: Session = Depends(get_session)) -> GoogleSyncSta
         last_synced_at=state.last_synced_at,
         error_code=state.last_error or None,
     )
+
+
+@app.post("/google/calendar/deliver", response_model=CalendarDeliveryOut)
+def deliver_calendar_outbox(
+    session: Session = Depends(get_session),
+    provider: CalendarProvider = Depends(get_calendar_provider),
+) -> CalendarDeliveryOut:
+    return CalendarDeliveryOut(delivered=process_calendar_outbox(session, provider))
 
 
 @app.get("/", include_in_schema=False)

@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from app.database import Base
-from app.models import EmailMessage, Job, Notification, Site, Technician, Visit
+from app.models import CalendarOutbox, EmailMessage, Job, Notification, Site, Technician, Visit
 from app.schemas import DispatchCreate, TechnicianReportCreate
 from app.workflows import WorkflowConflict, WorkflowValidationError, convert_email_to_service_call, submit_technician_report
 
@@ -39,7 +39,9 @@ def test_email_conversion_creates_linked_job_visit_and_activity(session):
     assert job.source_email_id == "mail-1"
     assert job.status == "Scheduled"
     assert job.category == "Cameras/CCTV"
-    assert session.query(Visit).filter_by(job_id=job.id).one().calendar_event_id
+    visit = session.query(Visit).filter_by(job_id=job.id).one()
+    assert visit.calendar_event_id == ""
+    assert session.query(CalendarOutbox).filter_by(visit_id=visit.id, status="pending").one()
     assert session.get(EmailMessage, "mail-1").linked_job_id == job.id
     assert [item.event_type for item in job.activities] == ["created", "scheduled"]
 
