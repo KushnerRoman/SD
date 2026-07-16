@@ -1,0 +1,41 @@
+api:
+    listen: :1984
+rtsp:
+    listen: :8554
+security_depot:
+    fallback_recovery:
+        check_interval: 10s
+        enabled: true
+        primary_stable_for: 20s
+    onvif_discovery:
+        enabled: true
+        manufacturer: hikvision
+        model: DS-7616NI-E2/16P
+        name: Security Depot Gateway
+    onvif_profile:
+        channel_count: 16
+        firmware: V3.4.106 build 230316
+        manufacturer: hikvision
+        model: DS-7616NI-E2/16P
+        profile_family: hikvision-nvr
+        profile_id: hikvision-ds7616ni-16
+        sub_stream_offset: 16
+streams:
+    nvr_ch1_main:
+        - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/101
+        - ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy
+    nvr_ch1_sub:
+        - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/102
+        - ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy
+    nvr_ch2_main:
+        - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/201
+        - ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy
+    nvr_ch2_sub:
+        - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/202
+        - ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy
+    nvr_ch3_main:
+        - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/301
+        - ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy
+    nvr_ch3_sub:
+        - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/302
+        - ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy

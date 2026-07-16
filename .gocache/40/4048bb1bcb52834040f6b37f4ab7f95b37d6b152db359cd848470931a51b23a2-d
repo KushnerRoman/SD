@@ -1,0 +1,20 @@
+=== RUN   TestRecommendProfileMatchesHikvisionDS7616Pattern
+--- PASS: TestRecommendProfileMatchesHikvisionDS7616Pattern (0.00s)
+=== RUN   TestRecommendProfileFallsBackToGenericWhenNoRuleMatches
+--- PASS: TestRecommendProfileFallsBackToGenericWhenNoRuleMatches (0.00s)
+=== RUN   TestBuiltInProfilesIncludeHikvisionAndGeneric
+--- PASS: TestBuiltInProfilesIncludeHikvisionAndGeneric (0.00s)
+=== RUN   TestProfileByIDReturnsChannelCountAndTokenBase
+--- PASS: TestProfileByIDReturnsChannelCountAndTokenBase (0.00s)
+=== RUN   TestHikvisionRTSPURLUsesChannelMainAndSubPattern
+--- PASS: TestHikvisionRTSPURLUsesChannelMainAndSubPattern (0.00s)
+=== RUN   TestRTSPTemplatesForVendorRecommendsHikvision
+--- PASS: TestRTSPTemplatesForVendorRecommendsHikvision (0.00s)
+=== RUN   TestDefaultSiteConfigHasSafeDefaults
+--- PASS: TestDefaultSiteConfigHasSafeDefaults (0.00s)
+=== RUN   TestSiteConfigValidateRequiresNVRAddressAndChannels
+--- PASS: TestSiteConfigValidateRequiresNVRAddressAndChannels (0.00s)
+=== RUN   TestMergeScanSuggestionsDoesNotOverwriteManualChannelName
+--- PASS: TestMergeScanSuggestionsDoesNotOverwriteManualChannelName (0.00s)
+PASS
+ok  	github.com/AlexxIT/go2rtc/internal/securitydepot	0.974s

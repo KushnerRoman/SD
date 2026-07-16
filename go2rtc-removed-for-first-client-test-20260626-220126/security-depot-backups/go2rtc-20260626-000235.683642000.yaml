@@ -1,0 +1,47 @@
+api:
+  listen: ":1984"
+
+log:
+  level: info
+  api: debug
+  onvif: trace
+
+rtsp:
+  listen: ":8554"
+
+security_depot:
+  fallback_recovery:
+    enabled: true
+    check_interval: 10s
+    primary_stable_for: 20s
+  onvif_discovery:
+    enabled: true
+    name: DS-7616NI-E2/16P
+    manufacturer: hikvision
+    model: DS-7616NI-E2/16P
+    advertise_host: ""
+
+ffmpeg:
+  bin: C:/Users/kushn/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe
+
+streams:
+  nvr_ch1_main:
+    - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/101
+    - 'ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy'
+  nvr_ch1_sub:
+    - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/102
+    - 'ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy'
+
+  nvr_ch2_main:
+    - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/201
+    - 'ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy'
+  nvr_ch2_sub:
+    - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/202
+    - 'ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy'
+
+  nvr_ch3_main:
+    - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/301
+    - 'ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy'
+  nvr_ch3_sub:
+    - rtsp://admin:1234QWER@192.168.1.64:554/Streaming/Channels/302
+    - 'ffmpeg:C:/Users/kushn/OneDrive/Documents/SD/go2rtc/problem_contact_security_depot.mp4#video=copy'

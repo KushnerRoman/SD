@@ -1,0 +1,87 @@
+api:
+    listen: :1984
+rtsp:
+    listen: :8554
+security_depot:
+    fallback_recovery:
+        check_interval: 10s
+        enabled: true
+        primary_stable_for: 20s
+    onvif_discovery:
+        enabled: true
+        manufacturer: hikvision
+        model: DS-7616NI
+        name: Security Depot Gateway
+    onvif_profile:
+        channel_count: 16
+        firmware: Security Depot
+        manufacturer: hikvision
+        model: DS-7616NI
+        profile_family: hikvision-nvr
+        profile_id: hikvision-generic-16
+        sub_stream_offset: 16
+streams:
+    nvr_ch1_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/101
+    nvr_ch1_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/102
+    nvr_ch2_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/201
+    nvr_ch2_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/202
+    nvr_ch3_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/301
+    nvr_ch3_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/302
+    nvr_ch4_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/401
+    nvr_ch4_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/402
+    nvr_ch5_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/501
+    nvr_ch5_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/502
+    nvr_ch6_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/601
+    nvr_ch6_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/602
+    nvr_ch7_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/701
+    nvr_ch7_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/702
+    nvr_ch8_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/801
+    nvr_ch8_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/802
+    nvr_ch9_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/901
+    nvr_ch9_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/902
+    nvr_ch10_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1001
+    nvr_ch10_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1002
+    nvr_ch11_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1101
+    nvr_ch11_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1102
+    nvr_ch12_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1201
+    nvr_ch12_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1202
+    nvr_ch13_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1301
+    nvr_ch13_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1302
+    nvr_ch14_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1401
+    nvr_ch14_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1402
+    nvr_ch15_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1501
+    nvr_ch15_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1502
+    nvr_ch16_main:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1601
+    nvr_ch16_sub:
+        - rtsp://admin:@192.168.1.64:80/Streaming/Channels/1602

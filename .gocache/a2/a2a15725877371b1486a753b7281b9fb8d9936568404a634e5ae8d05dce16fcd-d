@@ -1,0 +1,8 @@
+./dwcompat.go
+./profiles.go
+./rtsp_templates.go
+./site_config.go
+./dwcompat_test.go
+./profiles_test.go
+./rtsp_templates_test.go
+./site_config_test.go

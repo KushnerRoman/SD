@@ -1,0 +1,136 @@
+{
+  "site": {
+    "name": "Security Depot Gateway"
+  },
+  "nvr": {
+    "vendor": "hikvision",
+    "address": "192.168.1.64",
+    "http_port": 0,
+    "rtsp_port": 80,
+    "onvif_port": 0,
+    "username": "admin",
+    "channel_count": 16
+  },
+  "channels": [
+    {
+      "enabled": true,
+      "number": 1,
+      "name": "Channel 1",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/101",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/102"
+    },
+    {
+      "enabled": true,
+      "number": 2,
+      "name": "Channel 2",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/201",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/202"
+    },
+    {
+      "enabled": true,
+      "number": 3,
+      "name": "Channel 3",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/301",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/302"
+    },
+    {
+      "enabled": true,
+      "number": 4,
+      "name": "Channel 4",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/401",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/402"
+    },
+    {
+      "enabled": true,
+      "number": 5,
+      "name": "Channel 5",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/501",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/502"
+    },
+    {
+      "enabled": true,
+      "number": 6,
+      "name": "Channel 6",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/601",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/602"
+    },
+    {
+      "enabled": true,
+      "number": 7,
+      "name": "Channel 7",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/701",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/702"
+    },
+    {
+      "enabled": true,
+      "number": 8,
+      "name": "Channel 8",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/801",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/802"
+    },
+    {
+      "enabled": true,
+      "number": 9,
+      "name": "Channel 9",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/901",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/902"
+    },
+    {
+      "enabled": true,
+      "number": 10,
+      "name": "Channel 10",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1001",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1002"
+    },
+    {
+      "enabled": true,
+      "number": 11,
+      "name": "Channel 11",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1101",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1102"
+    },
+    {
+      "enabled": true,
+      "number": 12,
+      "name": "Channel 12",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1201",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1202"
+    },
+    {
+      "enabled": true,
+      "number": 13,
+      "name": "Channel 13",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1301",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1302"
+    },
+    {
+      "enabled": true,
+      "number": 14,
+      "name": "Channel 14",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1401",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1402"
+    },
+    {
+      "enabled": true,
+      "number": 15,
+      "name": "Channel 15",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1501",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1502"
+    },
+    {
+      "enabled": true,
+      "number": 16,
+      "name": "Channel 16",
+      "main_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1601",
+      "sub_rtsp": "rtsp://admin:@192.168.1.64:80/Streaming/Channels/1602"
+    }
+  ],
+  "emulation": {
+    "profile_id": "hikvision-generic-16"
+  },
+  "fallback": {
+    "enabled": true,
+    "check_interval": "10s",
+    "primary_stable_for": "20s"
+  }
+}

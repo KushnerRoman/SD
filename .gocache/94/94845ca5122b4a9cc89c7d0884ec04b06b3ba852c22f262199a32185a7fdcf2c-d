@@ -1,0 +1,10 @@
+=== RUN   TestRecommendProfileMatchesHikvisionDS7616Pattern
+--- PASS: TestRecommendProfileMatchesHikvisionDS7616Pattern (0.00s)
+=== RUN   TestRecommendProfileFallsBackToGenericWhenNoRuleMatches
+--- PASS: TestRecommendProfileFallsBackToGenericWhenNoRuleMatches (0.00s)
+=== RUN   TestBuiltInProfilesIncludeHikvisionAndGeneric
+--- PASS: TestBuiltInProfilesIncludeHikvisionAndGeneric (0.00s)
+=== RUN   TestProfileByIDReturnsChannelCountAndTokenBase
+--- PASS: TestProfileByIDReturnsChannelCountAndTokenBase (0.00s)
+PASS
+ok  	github.com/AlexxIT/go2rtc/internal/securitydepot	1.104s
